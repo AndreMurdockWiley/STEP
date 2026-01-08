@@ -1,0 +1,91 @@
+# Functional Description: Ad Hoc Issue Creation
+
+## Overview
+This document describes the STIBO STEP business rule implemented in `IssuesGroup/IssuesUpsertGroup/AdHocIssueCreation.js`. It is generated from the embedded business rule metadata and the JavaScript implementation, following the same overall documentation shape as the Ad Hoc Issue Creation template.
+
+## Business Intent and Rationale
+### Primary Business Problem
+This rule automates and/or validates a specific step in the master data workflow. It is intended to reduce manual effort and enforce consistent data quality and integration-safe behavior.
+
+### Business Objectives
+- **Operational efficiency**: reduce repeated manual actions by automating common steps
+- **Data integrity**: validate required attributes and prevent conflicting/duplicate data where possible
+- **Consistency**: apply the same rules the same way in every execution context
+- **Integration safety**: support reliable downstream integrations by standardizing identifiers/values
+
+## Context
+- **Rule ID**: `AdHocIssueCreation`
+- **Rule type**: `BusinessAction`
+- **Setup group(s)**: `IssuesUpsertGroup`
+- **Scope**: `Global`
+- **Valid object types**: `JournalDigitalVolumes`, `JournalPrintVolumes`
+- **All object types valid**: `false`
+- **Run privileged**: `false`
+- **On approve**: `Never`
+
+## Object Hierarchy
+```
+NODE -> pubYear -> journalMedia
+```
+
+
+## Components
+### Plugin Definitions
+- Operation (JavaScriptBusinessActionWithBinds)
+- Precondition (JavaScriptBusinessConditionWithBinds)
+
+### Preconditions
+- `precondition0`
+
+### Operations
+- `operation0`
+
+## Inputs
+### Bound Inputs (Binds)
+- **Operation**: `NODE` (CurrentObjectBindContract)
+- **Operation**: `UI` (WebUiContextBind)
+- **Operation**: `numberOfIssues` (AttributeValidatedContextParameterStringBinding) → Attribute: `NumberOfIssues`
+- **Operation**: `issueTypeValueId` (AttributeValidatedContextParameterStringBinding) → Attribute: `IssueType`
+- **Operation**: `continuousNumberingValueId` (AttributeValidatedContextParameterStringBinding) → Attribute: `ContinuousNumbering`
+- **Operation**: `IssueType_LOV` (ListOfValuesBindContract)
+- **Operation**: `YESNO_LOV` (ListOfValuesBindContract)
+- **Operation**: `LOG` (LoggerBindContract)
+- **Precondition**: `node` (CurrentObjectBindContract)
+- **Precondition**: `manager` (ManagerBindContract)
+- **Precondition**: `IssueType_LOV` (ListOfValuesBindContract)
+
+### Attributes Referenced (getValue)
+- `IssueSAPMaterialNumber`
+- `IssueType`
+- `IssueVolumeNumber`
+- `JournalMediaCode`
+- `StartingIssueNumber`
+- `StartingIssueNumberVolume`
+- `StartingPubSequenceMedia`
+- `StartingSupplementNoVolume`
+- `StartingSupplementNoYear`
+
+### Keys Referenced (getObjectByKey)
+- `IssueSAPMaterialIdKey`
+
+### LOV IDs Referenced (getListOfValuesValueByID)
+- `ST`
+- `SU`
+
+## Outputs and Side Effects (Heuristic)
+- **Creates/updates objects**: look for calls like `createProduct`, `setSimpleValue`, `startWorkflowByID`, `delete().approve()` in the implementation.
+- **User feedback**: if present, the rule may call `UI.showAlert(...)` / `ui.showAlert(...)` or navigate screens.
+
+## Key Dependencies
+- `pubLibrary`: `PublicationYearFunctions`
+- `volumeLibrary`: `VolumeFunctions`
+- `journalLibrary`: `JournalFunctions`
+- `issueLibrary`: `IssueFunctions`
+
+## Source Implementation
+- **Source file**: `IssuesGroup/IssuesUpsertGroup/AdHocIssueCreation.js`
+- **Exports detected**: `operation0`, `precondition0`
+
+## Notes and Considerations
+- This document is **auto-generated** to match a consistent template across all rules; review and refine the narrative sections where deeper business context is required.
+- Where the rule relies on external libraries (listed above), the full behavior may be distributed across multiple scripts.

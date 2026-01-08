@@ -1,0 +1,5 @@
+generatedAt: 2026-01-08T12:52:54.671Z
+sourceRoot: /workspace
+outputDir: BusinessRuleDocs
+rulesGenerated: 394
+rulesSkipped: 0
