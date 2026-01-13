@@ -13,6 +13,97 @@ function mdEscapeInline(s) {
   return s.replaceAll('\\', '\\\\').replaceAll('`', '\\`');
 }
 
+function ensureSentence(s) {
+  const t = normalizeCell(s);
+  if (!t) return '';
+  if (/[.!?]$/.test(t)) return t;
+  return `${t}.`;
+}
+
+function summarizeUsageForParagraph(usage) {
+  if (!usage?.length) return '';
+  const u = usage[0];
+  const cfg = normalizeCell(u.cfg);
+  const tasks = normalizeCell(u.tasks);
+  if (cfg && tasks && tasks !== '—') return `${cfg} (${tasks})`;
+  if (cfg) return cfg;
+  return '';
+}
+
+function buildFunctionalDescriptionParagraph({ ruleId, functionalDescription, attrLine, mergedUsage, errorMessage, extractedErrors }) {
+  const desc = normalizeCell(functionalDescription);
+  const usageSummary = summarizeUsageForParagraph(mergedUsage);
+
+  const sentences = [];
+  if (desc) {
+    sentences.push(ensureSentence(desc));
+  } else {
+    sentences.push(ensureSentence(`This document describes the STEP business rule "${ruleId}"`));
+  }
+
+  if (attrLine) {
+    sentences.push(ensureSentence(`It primarily works with attribute(s): ${attrLine}`));
+  }
+
+  if (usageSummary) {
+    sentences.push(ensureSentence(`It is triggered from: ${usageSummary}`));
+  }
+
+  const err = normalizeCell(errorMessage) || (extractedErrors?.length ? extractedErrors[0] : '');
+  if (err) {
+    sentences.push(ensureSentence(`If validation fails, the user sees an error message such as: "${err}"`));
+  }
+
+  // Ensure we always have a “paragraph of details” (>= 2 sentences where possible).
+  if (sentences.length === 1) {
+    sentences.push(ensureSentence('See the Functional Logic and Usage sections below for the specific configuration and trigger context'));
+  }
+
+  return sentences.join(' ');
+}
+
+function buildFunctionalLogicParagraph({ logicBullets, hasWorkbookDefinition, inferredFromJs }) {
+  const sentences = [];
+  sentences.push(
+    ensureSentence(
+      hasWorkbookDefinition
+        ? 'This section summarizes the configured functional logic captured in the rules inventory'
+        : 'This section summarizes the functional logic based on the exported STEP rule configuration and/or script inspection'
+    )
+  );
+  if (logicBullets?.length) {
+    sentences.push(
+      ensureSentence(
+        inferredFromJs
+          ? 'The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script)'
+          : 'The bullet points below are a concise, human-readable summary of the rule logic'
+      )
+    );
+  } else {
+    sentences.push(
+      ensureSentence(
+        'No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization'
+      )
+    );
+  }
+  return sentences.join(' ');
+}
+
+function buildUsageParagraph({ mergedUsage, relPaths }) {
+  const sentences = [];
+  if (mergedUsage?.length) {
+    sentences.push(ensureSentence('This section documents where the rule is used or triggered in STEP'));
+    sentences.push(ensureSentence('The items listed below describe the workflow/configuration location(s) where this rule runs'));
+  } else if (relPaths?.length) {
+    sentences.push(ensureSentence('Usage information was not provided in the inventory workbook for this rule'));
+    sentences.push(ensureSentence(`A trigger location could not be inferred automatically; review STEP configuration for the source file(s): ${relPaths.join(', ')}`));
+  } else {
+    sentences.push(ensureSentence('Usage information was not provided in the inventory workbook for this rule'));
+    sentences.push(ensureSentence('A trigger location could not be inferred automatically; review STEP configuration to determine where it is called'));
+  }
+  return sentences.join(' ');
+}
+
 function toBullets(text) {
   const cleaned = normalizeCell(text);
   if (!cleaned) return [];
@@ -528,6 +619,9 @@ for (const record of byRuleId.values()) {
   // Merge attributes (workbook + inferred).
   const attrLine = attributeIds || (inferredAttrs.length ? inferredAttrs.join(', ') : '');
 
+  const hasWorkbookDefinition = Boolean(normalizeCell(definition || detailDescription));
+  const inferredFromJs = Boolean(jsText);
+
   const functionalDescription = synthesizeFunctionalDescription({
     ruleId,
     jsText,
@@ -561,15 +655,32 @@ for (const record of byRuleId.values()) {
 
   lines.push('### Functional description');
   lines.push('');
-  lines.push(functionalDescription || '—');
+  lines.push(
+    buildFunctionalDescriptionParagraph({
+      ruleId,
+      functionalDescription,
+      attrLine,
+      mergedUsage,
+      errorMessage,
+      extractedErrors,
+    })
+  );
   lines.push('');
 
   lines.push('### Functional logic');
   lines.push('');
+  lines.push(
+    buildFunctionalLogicParagraph({
+      logicBullets,
+      hasWorkbookDefinition,
+      inferredFromJs,
+    })
+  );
+  lines.push('');
   if (logicBullets.length) {
     for (const b of logicBullets) lines.push(`- ${b}`);
   } else {
-    lines.push('—');
+    lines.push('- No further functional logic details were extracted.');
   }
   lines.push('');
 
@@ -591,6 +702,8 @@ for (const record of byRuleId.values()) {
 
   lines.push('### Usage / trigger');
   lines.push('');
+  lines.push(buildUsageParagraph({ mergedUsage, relPaths }));
+  lines.push('');
   if (mergedUsage.length) {
     for (const u of mergedUsage) {
       const cfg = u.cfg ? mdEscapeInline(u.cfg) : '—';
@@ -599,7 +712,7 @@ for (const record of byRuleId.values()) {
       lines.push(`  - **Task/Event**: ${tasks}`);
     }
   } else {
-    lines.push('—');
+    lines.push('- No usage/trigger details were extracted.');
   }
   lines.push('');
 
