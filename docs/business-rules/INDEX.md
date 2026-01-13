@@ -1,0 +1,382 @@
+## Business rule documentation
+
+Generated from `Stibo STEP Global Business Rules v1.3.xlsx`.
+
+### Index
+
+- [`acn-177326ee-ddf3-4736-9015-b71de589738e`](acn-177326ee-ddf3-4736-9015-b71de589738e.md) — Sets ProductActivated status and transitions collection workflow to next state
+- [`AdHocIssueCreation`](AdHocIssueCreation.md) — Ad Hoc Issue Creation
+- [`AdHocIssueCreationWithCopyToOnline`](AdHocIssueCreationWithCopyToOnline.md) — Ad Hoc Issue Creation With Copy To Online
+- [`AdHocPublicationYearCreation`](AdHocPublicationYearCreation.md) — Ad Hoc Publication Year Creation
+- [`AdHocVolumeCreation`](AdHocVolumeCreation.md) — Ad Hoc Volume Creation
+- [`Approve_And_Send_Object`](Approve_And_Send_Object.md) — Approve And Send Object
+- [`ApproveNode`](ApproveNode.md) — Used  Approve the Current Node
+- [`ApproveNode_New`](ApproveNode_New.md) — Used to Delete and Approve the Deletion of the current Node
+- [`ApprovePackage`](ApprovePackage.md) — Approve Package
+- [`AuditStampUpdater`](AuditStampUpdater.md) — Audit Stamp Updater
+- [`Auto_Populate_Bundle_Code`](Auto_Populate_Bundle_Code.md) — Auto Populate Bundle Code
+- [`AutoClassificationBackfiles`](AutoClassificationBackfiles.md) — Auto Classification Backfiles
+- [`AutoClassificationCollections`](AutoClassificationCollections.md) — Auto Classification Collections
+- [`AutoClassificationJournalHistory`](AutoClassificationJournalHistory.md) — Auto Classification Journal History
+- [`AutoClassificationJournals`](AutoClassificationJournals.md) — Auto Classification Journals
+- [`AutoClassificationMultiJournalPackages`](AutoClassificationMultiJournalPackages.md) — Auto Classification MultiJournal Packages
+- [`AutoClassificationMultiMediaPackages`](AutoClassificationMultiMediaPackages.md) — Auto Classification MultiMedia Packages
+- [`AutoClassificationObooks`](AutoClassificationObooks.md) — Auto Classification Obooks
+- [`AutoClassificationOtherProducts`](AutoClassificationOtherProducts.md) — Auto Classification Other Products
+- [`AutoClassOtherProductCollections`](AutoClassOtherProductCollections.md) — Auto Classification Other Product Collection
+- [`Automatic Pub Year Creation (OLD)`](Automatic%20Pub%20Year%20Creation%20(OLD).md) — Automatic Pub Year Creation (OLD)
+- [`AutomaticPubYearVolumesIssuesCreation`](AutomaticPubYearVolumesIssuesCreation.md) — Automatic Pub Year/Volumes/Issues Creation
+- [`AutoPubYearVolumesIssuesCreation_Event`](AutoPubYearVolumesIssuesCreation_Event.md) — Automatic Pub Year/Volumes/Issues Creation (EventProcessor)
+- [`AutoSetIssueRunDate_Event`](AutoSetIssueRunDate_Event.md) — Automatic Set Issue Run Date (EventProcessor)
+- [`BA_AddEditorialContactsToJournals`](BA_AddEditorialContactsToJournals.md) — Add Editorial Contacts To Journals
+- [`BA_AddJournalToJournalHistoryReference`](BA_AddJournalToJournalHistoryReference.md) — Add Journal to Journal History Reference
+- [`BA_ApproveRevivalButton`](BA_ApproveRevivalButton.md) — In workflow "ReviveSoftDeleteWorkflow" at task/state "Review", triggers event "Approve" when "SoftDelete" == "No" and navigates the user to the Web UI homepage; otherwise shows an error.
+- [`BA_ApproveSoftDeleteButton`](BA_ApproveSoftDeleteButton.md) — In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Approve" when "SoftDelete" == "Yes" and navigates the user to the Web UI homepage; otherwise shows an error.
+- [`BA_AuthorServicesJournalDataExtract`](BA_AuthorServicesJournalDataExtract.md) — Author Services Journal Data Extract
+- [`BA_AutoClassOtherProdCollectionToArchive`](BA_AutoClassOtherProdCollectionToArchive.md) — Auto Classification Other Product Collection To Archive Folder
+- [`BA_ChangeRefMetaDataValue`](BA_ChangeRefMetaDataValue.md) — Change Ref Meta Data Value
+- [`BA_Collection_Submit_From_Workflow`](BA_Collection_Submit_From_Workflow.md) — Collection Submit from Workflow
+- [`BA_CreateJournalHistoryAndReference`](BA_CreateJournalHistoryAndReference.md) — Create Journal History and Reference
+- [`BA_CreateLink`](BA_CreateLink.md) — BA_CreateLink
+- [`BA_EditorialContactOnSave`](BA_EditorialContactOnSave.md) — BA_EditorialContactOnSave
+- [`BA_EditorialContactSendOIEP`](BA_EditorialContactSendOIEP.md) — BA_EditorialContactSendOIEP
+- [`BA_ExportCollections`](BA_ExportCollections.md) — Generates Collection Standard Report for Journal Collections, Database Collections, Static Collections, Static Access Collections, Dynamic Collections. And sends the report to requested user.
+- [`BA_ExportUserInventory`](BA_ExportUserInventory.md) — Export User List
+- [`BA_GroupIssuesToClassification`](BA_GroupIssuesToClassification.md) — BA_GroupIssuesToClassification
+- [`BA_InitiateDeleteObjectWorkflow`](BA_InitiateDeleteObjectWorkflow.md) — Initiate Delete Object Workflow
+- [`BA_InitiateSoftDelete`](BA_InitiateSoftDelete.md) — Executes logic within workflow "JournalCreationWFV3Backup" context.
+- [`BA_LinkModifiedCollectionComponents`](BA_LinkModifiedCollectionComponents.md) — Links recently added and removed components of collections to separate reference types for tracking changes between Main and Approved workspaces
+- [`BA_RejectRevivalButton`](BA_RejectRevivalButton.md) — In workflow "ReviveSoftDeleteWorkflow" at task/state "Review", triggers event "Cancel" when "SoftDelete" == "Yes" and navigates the user to the Web UI homepage; otherwise shows an error.
+- [`BA_RejectSoftDeleteButton`](BA_RejectSoftDeleteButton.md) — In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Cancel" when "SoftDelete" == "No" and navigates the user to the Web UI homepage; otherwise shows an error.
+- [`BA_RemoveLink`](BA_RemoveLink.md) — BA_RemoveLink
+- [`BA_RemoveSocietyMetadata`](BA_RemoveSocietyMetadata.md) — BA_RemoveSocietyMetadata
+- [`BA_ReviveSoftDelete`](BA_ReviveSoftDelete.md) — Revive Soft Delete
+- [`BA_StatusandStatusMessage`](BA_StatusandStatusMessage.md) — Sets integration status and timestamp for issues being sent to downstream systems
+- [`BA_SyncMediaNameTitle`](BA_SyncMediaNameTitle.md) — BA_SyncMediaNameTitle
+- [`BA_TAEligibility_Derivation`](BA_TAEligibility_Derivation.md) — BA_TAEligibility_Derivation
+- [`BA_TriggerECJournals`](BA_TriggerECJournals.md) — Trigger Editorial Contacts Journals
+- [`BA_triggerOIEPCollReport`](BA_triggerOIEPCollReport.md) — BA_triggerOIEPCollReport
+- [`BA_ValidateHistoryOrigin`](BA_ValidateHistoryOrigin.md) — BA_ValidateHistoryOrigin
+- [`BA_ValidateTextAttributesField`](BA_ValidateTextAttributesField.md) — Validate Text Attribute Field
+- [`BA_ValidateTextFields`](BA_ValidateTextFields.md) — BA_ValidateTextFields
+- [`BACheckSequenceCode`](BACheckSequenceCode.md) — Fetch Subject Group Name & Subject Code
+- [`Backfile_Date_Conversion`](Backfile_Date_Conversion.md) — Backfile Date Conversion
+- [`BackfileGenerateAttributesButtonValidity`](BackfileGenerateAttributesButtonValidity.md) — Backfile Generate Attributes Button Validity
+- [`BackfileNotesDCAction`](BackfileNotesDCAction.md) — Backfile Notes Data Container Action
+- [`BackfileSaveButton`](BackfileSaveButton.md) — Backfile Save Button
+- [`BackfilesDCDateConversion`](BackfilesDCDateConversion.md) — Backfiles DC Date Conversion
+- [`BackfilesNameAndTitleGeneration`](BackfilesNameAndTitleGeneration.md) — Backfiles Name And Title Generation
+- [`BackfilesSAPFinanceAttributesGenerator`](BackfilesSAPFinanceAttributesGenerator.md) — Backfiles SAP Finance Attributes Generator
+- [`BackfileToJournalReferenceLink`](BackfileToJournalReferenceLink.md) — Backfile To Journal Reference Link
+- [`BackfileToJournalReferenceLink2`](BackfileToJournalReferenceLink2.md) — Backfile To Journal Reference LinkV2
+- [`BACurrentPortfolioDerivation`](BACurrentPortfolioDerivation.md) — Current Portfolio Derivation
+- [`BACurrentPortOnTransition`](BACurrentPortOnTransition.md) — BACurrentPortOnTransition
+- [`BAReferenceDataNodeHandler`](BAReferenceDataNodeHandler.md) — Reference Data Node Handler Json Extract
+- [`BC_CheckManualAGA`](BC_CheckManualAGA.md) — Validates that "ManualAGA" = "Yes".
+- [`BC_DisplayHistoryTransition`](BC_DisplayHistoryTransition.md) — BC_DisplayHistoryTransition
+- [`BC_FalseForSoftDelete`](BC_FalseForSoftDelete.md) — Validates that "SoftDelete" = "No".
+- [`BC_MultiMedia_Check`](BC_MultiMedia_Check.md) — MultiMedia BOM Check
+- [`BC_SoftDeleteMainScreenMappingCondition`](BC_SoftDeleteMainScreenMappingCondition.md) — Soft Delete Main Screen Mapping Condition
+- [`BC_TrueForSoftDelete`](BC_TrueForSoftDelete.md) — Validates that "SoftDelete" = "Yes".
+- [`BC_ValidateTextFields`](BC_ValidateTextFields.md) — BC_ValidateTextFields
+- [`BC_ValidateTextFieldsMassUploads`](BC_ValidateTextFieldsMassUploads.md) — BC Validate Text Fields in Mass Update
+- [`bcFilterOnEditorial`](bcFilterOnEditorial.md) — bcFilterOnEditorial
+- [`bcFilterOnLov_OneSource`](bcFilterOnLov_OneSource.md) — bcFilterOnLov_OneSource
+- [`bcFilterOnSociety`](bcFilterOnSociety.md) — bcFilterOnSociety
+- [`BF_TargetSearchFuncForEditorialContacts`](BF_TargetSearchFuncForEditorialContacts.md) — Target Search Function for Editorial Contact Objects
+- [`BF_TargetSearchFunctionForHistoryObjects`](BF_TargetSearchFunctionForHistoryObjects.md) — Target Search Function for History Journal Objects
+- [`BF_TargetSearchFunctionForHistoryParent`](BF_TargetSearchFunctionForHistoryParent.md) — Target Search Function for History Journal Parent Objects
+- [`BF_TargetSearchFunctionForJournalObjects`](BF_TargetSearchFunctionForJournalObjects.md) — Target Search Function for Journal Objects
+- [`BR_I_eCore`](BR_I_eCore.md) — Inbound eCore
+- [`BR_I0402`](BR_I0402.md) — BR_I0402
+- [`BR_I0404`](BR_I0404.md) — BR_I0404
+- [`BR_I0408`](BR_I0408.md) — BR_I0408
+- [`BR_I0410`](BR_I0410.md) — BR_I0410
+- [`BR_I0430`](BR_I0430.md) — BR_I0430
+- [`BR_StatusandStatusMessage`](BR_StatusandStatusMessage.md) — BR_StatusandStatusMessage
+- [`BRESBError`](BRESBError.md) — BR ESB Errors
+- [`Check_Mandatory_Handover_Attr`](Check_Mandatory_Handover_Attr.md) — Check Mandatory Handover Attr
+- [`CheckBundleCode`](CheckBundleCode.md) — Check Bundle Code
+- [`CheckBundleCodeBundleGroup`](CheckBundleCodeBundleGroup.md) — Check Bundle Code Bundle Group
+- [`CheckBundleCodeGroupUniqueness`](CheckBundleCodeGroupUniqueness.md) — Check Bundle Code Group Uniqueness
+- [`CheckCollectionMandatory`](CheckCollectionMandatory.md) — Validates that "ProductActivated" = "Activated".
+- [`CheckOPMandatory`](CheckOPMandatory.md) — Check OP Mandatory
+- [`CheckSubjectCiodeReference`](CheckSubjectCiodeReference.md) — Check Subject Ciode Reference
+- [`CollectionCompsUpdateCurr&FutureDBModel`](CollectionCompsUpdateCurr&FutureDBModel.md) — Collection Component Update Curr & Future DB Model
+- [`CollectionContentDateConversion`](CollectionContentDateConversion.md) — Collection Content Date Conversion
+- [`CollectionCopy`](CollectionCopy.md) — Collection Copy
+- [`CollectionFunctions`](CollectionFunctions.md) — Collection Functions
+- [`CollectionGenerateName`](CollectionGenerateName.md) — Collection Generate Name
+- [`CollectionInitiateSaveButton`](CollectionInitiateSaveButton.md) — Collection Initiate Save Button
+- [`CollectionReferenceMaximumCheck`](CollectionReferenceMaximumCheck.md) — CollectionReferenceMaximumCheck
+- [`Collections_Endpoints_JSON_Utility_Lib`](Collections_Endpoints_JSON_Utility_Lib.md) — Collections Integrations JSON Utility Library
+- [`CollectionSaveAction`](CollectionSaveAction.md) — Collection Save Action
+- [`CollectionSetContentDates`](CollectionSetContentDates.md) — Validates that "CollectionType" = "Database Model Collections".
+- [`CollectionSetStatus`](CollectionSetStatus.md) — Sets CollectionStatus to 'Active' for 'Other Database' collection types
+- [`CollectionUpgradeProcess`](CollectionUpgradeProcess.md) — Collection Upgrade Process
+- [`CollectionUpgradeProcessState`](CollectionUpgradeProcessState.md) — Collection Upgrade Process State
+- [`CollectionValidFromPopulate`](CollectionValidFromPopulate.md) — Validates that "CollectionType" = "Database Model Collections".
+- [`Copy_ISSN_to_Data_Manual`](Copy_ISSN_to_Data_Manual.md) — Copy ISSN to Data Manual
+- [`CopyIssnToDataContainer`](CopyIssnToDataContainer.md) — Copy Issn To Data Container
+- [`CopyNameToTitle`](CopyNameToTitle.md) — Copy Name To Title
+- [`CopyOtherProductCollectionNameToTitle`](CopyOtherProductCollectionNameToTitle.md) — Copy Other Product Collection Name To Title
+- [`CopyPackageNameToTitle`](CopyPackageNameToTitle.md) — Copy Package Name To Title
+- [`Create_Journals_Transition`](Create_Journals_Transition.md) — Create Journals Transition
+- [`CreateJournalMediaObjects`](CreateJournalMediaObjects.md) — Create Journal Media Objects
+- [`Data_Tranformations`](Data_Tranformations.md) — Data Tranformations
+- [`Date_Conversion_Media_Import`](Date_Conversion_Media_Import.md) — Date Conversion Media Import
+- [`DateConversion`](DateConversion.md) — Date Conversion
+- [`DefaultMediaWebUITab`](DefaultMediaWebUITab.md) — Default Media Web UI Tab
+- [`DefaultWebUITab`](DefaultWebUITab.md) — Default Web UI Tab
+- [`Delete`](Delete.md) — Delete
+- [`DeleteAdServerDataContainer`](DeleteAdServerDataContainer.md) — Delete AdServer Data Container
+- [`DeleteDataContainer`](DeleteDataContainer.md) — Delete Data Container
+- [`DeleteDataContainer_ISSNHistory`](DeleteDataContainer_ISSNHistory.md) — Delete Data Container ISSN History
+- [`DeleteDataContainerBundleCode`](DeleteDataContainerBundleCode.md) — Delete Data Container Bundle Code
+- [`DeleteIFDataContainer`](DeleteIFDataContainer.md) — Delete IF Data Container
+- [`DeleteMarketingDataContainer`](DeleteMarketingDataContainer.md) — Delete Marketing Data Container
+- [`DeleteNode`](DeleteNode.md) — Used to Delete and Approve the Deletion of the current Node
+- [`Demo_Class_link`](Demo_Class_link.md) — Demo_Class_link
+- [`DEPLOYMENT_CHANGEPARENTHISTORY`](DEPLOYMENT_CHANGEPARENTHISTORY.md) — DEPLOYMENT_CHANGEPARENT
+- [`DerivedEvents`](DerivedEvents.md) — Republishes all child media objects to current event queue when journal is published
+- [`EditorialContactStatusUpdate`](EditorialContactStatusUpdate.md) — Validates that "ProductActivated" = "Activated".
+- [`EditorialStageDerivation`](EditorialStageDerivation.md) — Editorial Stage Derivation
+- [`Error_Node_Delete`](Error_Node_Delete.md) — Error_Node_Delete
+- [`ESBDefaultLogic`](ESBDefaultLogic.md) — ESB Default Logic
+- [`ESBERROS`](ESBERROS.md) — BR ESB VCH
+- [`EventGenerationOnApproval`](EventGenerationOnApproval.md) — Event Generation On Approval
+- [`Feed_Trigger_Action`](Feed_Trigger_Action.md) — Feed Trigger Action
+- [`GenerateMediaSAPMatNo`](GenerateMediaSAPMatNo.md) — Generate Media SAP Mat No
+- [`Generic_Search_Functions`](Generic_Search_Functions.md) — Generic Search Functions
+- [`GenericFunctions`](GenericFunctions.md) — Generic Functions
+- [`GetLastApprovedDate`](GetLastApprovedDate.md) — GetLastApprovedDate
+- [`Group Issue Functions`](Group%20Issue%20Functions.md) — Group Issue Functions
+- [`GroupIssue_Message_Joiner`](GroupIssue_Message_Joiner.md) — GroupIssue_Message_Joiner
+- [`GroupIssue_Node_Handler`](GroupIssue_Node_Handler.md) — GroupIssue Node Handler
+- [`HistoryNotesDCAction`](HistoryNotesDCAction.md) — History Notes Data Container Action
+- [`I0401_Node_Handler`](I0401_Node_Handler.md) — I0401_Node_Handler_Journals
+- [`I0401_Node_Handler_JournalNetwork`](I0401_Node_Handler_JournalNetwork.md) — I0401_Node_Handler_JournalNetwork
+- [`I0401_Node_Handler_Journals_New`](I0401_Node_Handler_Journals_New.md) — I0401_Node_Handler_Journals_New
+- [`I0409_Node_Handler_BOM`](I0409_Node_Handler_BOM.md) — I0409_Node_Handler_BOM
+- [`I0409_Node_Handler_BOM_MM`](I0409_Node_Handler_BOM_MM.md) — I0409_Node_Handler_BOM_MM
+- [`I0409_Node_Handler_Collection`](I0409_Node_Handler_Collection.md) — I0409_Node_Handler_Collection
+- [`I0409_Node_Handler_Collection_ModComp`](I0409_Node_Handler_Collection_ModComp.md) — I0409_Node_Handler_Collection_Modified_Components
+- [`I0409_Node_Handler_NonJournals`](I0409_Node_Handler_NonJournals.md) — I0409_Node_Handler_NonJournals
+- [`I040X_Node_Handler_Backfile`](I040X_Node_Handler_Backfile.md) — I040X Node Handler Backfile
+- [`I040X_Node_Handler_History`](I040X_Node_Handler_History.md) — I040X Node Handler History
+- [`I040X_Node_Handler_Partner_Journals`](I040X_Node_Handler_Partner_Journals.md) — I040X_Node_Handler_Partner_Journals
+- [`I0411_Node_Handler`](I0411_Node_Handler.md) — I0411_Node_Handler_Issues
+- [`Import_Issues_Manual`](Import_Issues_Manual.md) — Import Issues Manual
+- [`Import_Issues_Manual_V2`](Import_Issues_Manual_V2.md) — Import Issues Manual_V2
+- [`Import_Issues_Manual_V5`](Import_Issues_Manual_V5.md) — Import Issues Manual_V5
+- [`Integrations_Utility_Library`](Integrations_Utility_Library.md) — Integrations JSON Utility Library
+- [`isbn13_search_action`](isbn13_search_action.md) — ISBN13 Search Action for API
+- [`Issue_Creation`](Issue_Creation.md) — BA for Wiley Demo
+- [`Issue_Data_Extract`](Issue_Data_Extract.md) — Issues Data Extract
+- [`Issue_Date_Conversion`](Issue_Date_Conversion.md) — Issue Date Conversion
+- [`IssueAttributesOnSaveGeneration`](IssueAttributesOnSaveGeneration.md) — Issue Attributes On-Save Generation
+- [`IssueCopy`](IssueCopy.md) — Issue Copy
+- [`IssueCreationFinishButton`](IssueCreationFinishButton.md) — Issue Creation/Finish Button
+- [`IssueCreationMandatoryAttributes`](IssueCreationMandatoryAttributes.md) — Issue Creation Mandatory Attributes
+- [`IssueDelete`](IssueDelete.md) — Issue Delete
+- [`IssueDeleteBoth`](IssueDeleteBoth.md) — Issue Delete Both
+- [`IssueFunctions`](IssueFunctions.md) — Issue Functions
+- [`IssueMergeCreation`](IssueMergeCreation.md) — Issue Merge Creation
+- [`IssueMergeCreationWithCopyToOnline`](IssueMergeCreationWithCopyToOnline.md) — Issue Merge Creation With Copy To Online
+- [`IssuePubSequenceUpdate`](IssuePubSequenceUpdate.md) — Issue Pub Sequence Update
+- [`IssueStatusMassUpdate`](IssueStatusMassUpdate.md) — Issue Status Mass Update
+- [`IssueStatusMassUpdateBoth`](IssueStatusMassUpdateBoth.md) — Issue Status Mass Update Both
+- [`IssueSupplementNoVerification`](IssueSupplementNoVerification.md) — Issue Supplement No Verification
+- [`IssueTemplateLogicPrint`](IssueTemplateLogicPrint.md) — Issue Template Logic Print
+- [`IssueWF_IssueEnrichment`](IssueWF_IssueEnrichment.md) — Issue WF Issue Enrichment
+- [`IssueWF_PullFromJPCMS`](IssueWF_PullFromJPCMS.md) — Issue WF Pull From JPCMS
+- [`Journal_Approve`](Journal_Approve.md) — Journal Approve
+- [`Journal_Data_Extract`](Journal_Data_Extract.md) — Journal Data Extract
+- [`Journal_Data_Extract_New`](Journal_Data_Extract_New.md) — Journal Data Extract New
+- [`Journal_Status_Derivation`](Journal_Status_Derivation.md) — Journal Status Derivation
+- [`Journal_WF_Save_Button`](Journal_WF_Save_Button.md) — Journal WF Save Button
+- [`JournalEEOContentFlipDate_Validate`](JournalEEOContentFlipDate_Validate.md) — JournalEEOContentFlipDate_Validate
+- [`JournalFunctions`](JournalFunctions.md) — Journal Functions
+- [`JournalFutureDigitalStatusDateValidate`](JournalFutureDigitalStatusDateValidate.md) — Journal Future Digital Status Effect Date Validate
+- [`JournalFuturePrintDateValidate_Send`](JournalFuturePrintDateValidate_Send.md) — Journal Future Print Status Effect Date Validate Send
+- [`JournalFuturePrintStatusDateValidate`](JournalFuturePrintStatusDateValidate.md) — Journal Future Print Status Effect Date Validate
+- [`JournalFutureTitleEffectDate_Validate`](JournalFutureTitleEffectDate_Validate.md) — Journal Future Title Effect Date Validate
+- [`JournalHistoryAccessType_Derivation`](JournalHistoryAccessType_Derivation.md) — Journal History Access Type Derivation
+- [`JournalHistoryApprove`](JournalHistoryApprove.md) — Journal History Approve
+- [`JournalHistoryAttrGenerationButtonCheck`](JournalHistoryAttrGenerationButtonCheck.md) — Journal History Attr Generation Button Check
+- [`JournalHistoryAttributeGenerationButton`](JournalHistoryAttributeGenerationButton.md) — Journal History Attribute Generation Button
+- [`JournalHistoryAutoCreation`](JournalHistoryAutoCreation.md) — Journal History Auto Creation
+- [`JournalHistoryISSNUpdate`](JournalHistoryISSNUpdate.md) — Journal History ISSN Update
+- [`JournalHistoryManualSequencing`](JournalHistoryManualSequencing.md) — Journal History Manual Sequencing
+- [`JournalHistorySaveButton`](JournalHistorySaveButton.md) — Journal History Save Button
+- [`JournalHistorySend`](JournalHistorySend.md) — Journal History Send
+- [`JournalIssnAuthentication`](JournalIssnAuthentication.md) — Journal ISSN Authentication
+- [`JournallOARevenueSubcateriesDC_Populate`](JournallOARevenueSubcateriesDC_Populate.md) — Populate OA Revenue Subcategories DC
+- [`JournalMediaComplete`](JournalMediaComplete.md) — Journal Media Complete
+- [`JournalMediaSaveAction`](JournalMediaSaveAction.md) — Journal Media Save Action
+- [`JournalMediaToMultiMediaLink`](JournalMediaToMultiMediaLink.md) — Validates that "ProductMediaType" = "Both".
+- [`JournalNotesDCAction`](JournalNotesDCAction.md) — Journal Notes Data Container Action
+- [`JournalOnWorkflowCheck`](JournalOnWorkflowCheck.md) — Executes logic within workflow "JournalCreationWFV3Backup" context.
+- [`JournalPackageFunctions`](JournalPackageFunctions.md) — Journal Package Functions
+- [`JournalPrimaryContactCheck`](JournalPrimaryContactCheck.md) — Journal Primary Contact Check
+- [`Journals_Add_Media_To_Workflow`](Journals_Add_Media_To_Workflow.md) — Journals_Add_Media_To_Workflow
+- [`Journals_Completed_Transition`](Journals_Completed_Transition.md) — Journals Completed Transition
+- [`Journals_Completed_Transition_2`](Journals_Completed_Transition_2.md) — Journals Completed Transition(2)
+- [`JournalSaveAction`](JournalSaveAction.md) — Journal Save Action
+- [`JournalsCreatedTransitionCondition`](JournalsCreatedTransitionCondition.md) — Journals Created Transition Condition
+- [`JournaltoJournalHistoryReferenceLink`](JournaltoJournalHistoryReferenceLink.md) — Journal To Journal History Reference Link
+- [`JSON_Message_Joiner_LZ4`](JSON_Message_Joiner_LZ4.md) — JSON_Message_Joiner_LZ4
+- [`JSON_Reference_Entity_Classification_lib`](JSON_Reference_Entity_Classification_lib.md) — JSON_Reference_Entity_Classification_lib
+- [`JSON_Splitter`](JSON_Splitter.md) — JSON_Splitter
+- [`JSON_Util`](JSON_Util.md) — JSON Util
+- [`JSON_Utility_Library`](JSON_Utility_Library.md) — JSWA_Utility_Library
+- [`MassCreateStandardCollections`](MassCreateStandardCollections.md) — Mass Create Standard Collections
+- [`MassPopulateMMId`](MassPopulateMMId.md) — Mass Populate MM Id
+- [`MJPackageEnrichmentComplete`](MJPackageEnrichmentComplete.md) — MJ Package Enrichment Complete
+- [`MJPackageValidFromPopulate`](MJPackageValidFromPopulate.md) — MJ Package Valid From Populate
+- [`MJSequentialMatNoIncrement`](MJSequentialMatNoIncrement.md) — MJ Sequential Mat No Increment
+- [`MJSetCreationAtributes`](MJSetCreationAtributes.md) — MJ Set Creation Atributes
+- [`MM_Package_Status_Update`](MM_Package_Status_Update.md) — MM Package Status Update
+- [`MMPackageAttributesUpdate`](MMPackageAttributesUpdate.md) — MM Package Attributes Update
+- [`MultiJournalEffectiveDateValidate`](MultiJournalEffectiveDateValidate.md) — Multi Journal Effective Date Validate
+- [`MultiJournalWFSaveButton`](MultiJournalWFSaveButton.md) — Multi Journal WF Save Button
+- [`MultiMediaPackageCreation`](MultiMediaPackageCreation.md) — Validates that "ProductMediaType" = "Both".
+- [`Navigate_User_JournalCreate`](Navigate_User_JournalCreate.md) — Navigates user to the Journal Creation Baseline Workflow Task List screen after journal creation
+- [`NavigateAwayFromIssueCreationScreen`](NavigateAwayFromIssueCreationScreen.md) — Navigate Away From Issue Creation Screen
+- [`NavigateAwayFromPubReannouncement`](NavigateAwayFromPubReannouncement.md) — Navigate Away From Pub Reannouncement
+- [`NavigateAwayFromPubYearCreation`](NavigateAwayFromPubYearCreation.md) — Navigate Away From Pub Year Creation Screen
+- [`NavigateAwayFromVolumeCreationScreen`](NavigateAwayFromVolumeCreationScreen.md) — Navigate Away From Volume Creation Screen
+- [`NavigateToPubYearCreationScreen`](NavigateToPubYearCreationScreen.md) — Navigate To Pub Year Creation Screen
+- [`NavigateToPubYearOnWFCreationScreen`](NavigateToPubYearOnWFCreationScreen.md) — Navigate To Pub Year On-WF Creation Screen
+- [`NavigateToPubYearReannouncementScreen`](NavigateToPubYearReannouncementScreen.md) — Navigate To Pub Year Reannouncement Screen
+- [`NavigateToReannouncementByIssuesScreen`](NavigateToReannouncementByIssuesScreen.md) — Navigate To Reannouncement By Issues Screen
+- [`NavigateToReannouncementByVolumeScreen`](NavigateToReannouncementByVolumeScreen.md) — Navigate To Reannouncement By Volume Screen
+- [`NewEnrichWorkflow_Gate_Journals`](NewEnrichWorkflow_Gate_Journals.md) — NewEnrichWorkflow_Gate_Journals
+- [`NewEnrichWorkflow_Gate_Media`](NewEnrichWorkflow_Gate_Media.md) — NewEnrichWorkflow_Gate_Media
+- [`NodeJSONConverter`](NodeJSONConverter.md) — NodeJSONConverter
+- [`NotValidForCopyToOnline`](NotValidForCopyToOnline.md) — Not Valid For Copy To Online
+- [`NotValidForDeleteBoth`](NotValidForDeleteBoth.md) — Not Valid For Delete Both
+- [`OASubTypeOnChangeTriggers`](OASubTypeOnChangeTriggers.md) — OA Sub Type On Change Triggers
+- [`OIEP_Monitoring_2`](OIEP_Monitoring_2.md) — OIEP_Monitoring_2
+- [`OPRecieveDataFromCoreHub`](OPRecieveDataFromCoreHub.md) — OP Recieve Data From Core Hub
+- [`OPSAPFinanceAttributesGenerator`](OPSAPFinanceAttributesGenerator.md) — OP SAP Finance Attributes Generator
+- [`OtherProductCollectionSaveAction`](OtherProductCollectionSaveAction.md) — Other Product Collection Save Action
+- [`OtherProductCollectionSetBundleCode`](OtherProductCollectionSetBundleCode.md) — Placeholder rule for dynamic other product collections (currently no actions defined)
+- [`OtherProductCollectionSetPricingModel`](OtherProductCollectionSetPricingModel.md) — Other Product Collection Set Pricing Model
+- [`OtherProductCollectionSetStatus`](OtherProductCollectionSetStatus.md) — Other Product Collection Set Status
+- [`OtherProductDateConversion`](OtherProductDateConversion.md) — Other Product Date Conversion
+- [`OtherProductInitiateSaveButton`](OtherProductInitiateSaveButton.md) — Other Product Initiate Save Button
+- [`OtherProductOnSaveTriggers`](OtherProductOnSaveTriggers.md) — Other Product On Save Triggers
+- [`OtherProductsFunctions`](OtherProductsFunctions.md) — Other Products Functions
+- [`OtherProductsSaveButton`](OtherProductsSaveButton.md) — Other Products Save Button
+- [`PackageWFSAPCreateTransition`](PackageWFSAPCreateTransition.md) — MJ Package WF SAP Create Transition
+- [`parentLastUpdateddate`](parentLastUpdateddate.md) — parentLastUpdateddate
+- [`PartnerJournalSaveAction`](PartnerJournalSaveAction.md) — This business action is triggered, when save button is clicked on web ui for partner products
+- [`Polulate_Journal Maturity`](Polulate_Journal%20Maturity.md) — Polulate Journal Maturity
+- [`Populate_HandlingEditorNameDisplay`](Populate_HandlingEditorNameDisplay.md) — Populate Handling Editor Name Display
+- [`Populate_OA_Journal_Maturity`](Populate_OA_Journal_Maturity.md) — Populate OA Journal Maturity
+- [`Populate_OA_Origin`](Populate_OA_Origin.md) — Populate_OA_Origin
+- [`Populate_PrimaryPortfolio_Creation`](Populate_PrimaryPortfolio_Creation.md) — Populate PrimaryPortfolio Creation
+- [`PopulateAvailableForSaleAlert`](PopulateAvailableForSaleAlert.md) — PopulateAvailableForSaleAlert
+- [`PopulateAvailableOnOTISAlert`](PopulateAvailableOnOTISAlert.md) — PopulateAvailableOnOTISAlert
+- [`PopulateExcludeFromKBARTAlert`](PopulateExcludeFromKBARTAlert.md) — Populate Exclude From KBART Alert
+- [`PopulateFreeJournalAlert`](PopulateFreeJournalAlert.md) — PopulateFreeJournalAlert
+- [`PopulateHistoryUUID`](PopulateHistoryUUID.md) — Populate History UUID in Backfile DC
+- [`PopulateIssueProductIdentifier`](PopulateIssueProductIdentifier.md) — Populate Issue Product Identifier
+- [`PopulateIssueRunDate`](PopulateIssueRunDate.md) — PopulateIssueRunDate
+- [`PopulateJournalMediaProductIdentifier`](PopulateJournalMediaProductIdentifier.md) — Populate Journal Media Product Identifier
+- [`PopulateJournalProductIdentifier`](PopulateJournalProductIdentifier.md) — Populate Journal Product Identifier
+- [`PopulateJPCMSIssueID`](PopulateJPCMSIssueID.md) — PopulateJPCMSIssueID
+- [`PopulateLastPublishedbyWiley`](PopulateLastPublishedbyWiley.md) — Populate Last Published by Wiley
+- [`PopulatelStatusOnJpcmsAlert`](PopulatelStatusOnJpcmsAlert.md) — PopulatelStatusOnJpcmsAlert
+- [`PopulateMMPackageJournalRefAttributes`](PopulateMMPackageJournalRefAttributes.md) — Populate MM Package Journal Ref Attributes
+- [`PopulateNotPartOfSpecialProdAlert`](PopulateNotPartOfSpecialProdAlert.md) — PopulateNotPartOfSpecialProdAlert
+- [`PopulateOnlineOpenAlert`](PopulateOnlineOpenAlert.md) — PopulateOnlineOpenAlert
+- [`PopulateOnlineSubmissionURL`](PopulateOnlineSubmissionURL.md) — Populate Online Submission URL
+- [`PopulateOptInAlert`](PopulateOptInAlert.md) — PopulateOptInAlert
+- [`PopulateOverrideAsFrontFileAlert`](PopulateOverrideAsFrontFileAlert.md) — Populate Override As FrontFile Alert
+- [`PopulatePrevSubmission`](PopulatePrevSubmission.md) — Populate Prev Submission System
+- [`PopulateRebilling`](PopulateRebilling.md) — Populate Rebilling Web UI Alert
+- [`PopulateTakeOnAlert`](PopulateTakeOnAlert.md) — PopulateTakeOnAlert
+- [`prodIdentifierQuery`](prodIdentifierQuery.md) — prodIdentifierQuery
+- [`Product_Joiner`](Product_Joiner.md) — Product Joiner
+- [`PublicationYearCreationFinishButton`](PublicationYearCreationFinishButton.md) — Publication Year Creation/Finish Button
+- [`PublicationYearCreationNextButton`](PublicationYearCreationNextButton.md) — Publication Year Creation/Next Button
+- [`PublicationYearDelete`](PublicationYearDelete.md) — Publication Year Delete
+- [`PublicationYearFunctions`](PublicationYearFunctions.md) — Publication Year Functions
+- [`PublicationYearUtilityLibrary`](PublicationYearUtilityLibrary.md) — Publication Year Utility Library (OLD)
+- [`PubYearForCopyToOnlineCreationNextButton`](PubYearForCopyToOnlineCreationNextButton.md) — Pub Year For Copy To Online Creation/Next Button
+- [`ReannounceFullPubYear`](ReannounceFullPubYear.md) — Reannounce Full Pub Year
+- [`ReannouncePubYearIssues`](ReannouncePubYearIssues.md) — Reannounce Pub Year Issues
+- [`ReannouncePubYearVolumes`](ReannouncePubYearVolumes.md) — Reannounce Pub Year Volumes
+- [`RebillingTabPopulation`](RebillingTabPopulation.md) — Rebilling Tab Population
+- [`Remove_DataContainer`](Remove_DataContainer.md) — Remove_DataContainer
+- [`ReSendIssuesToSap`](ReSendIssuesToSap.md) — ReSend Issues To Sap
+- [`ReturnState`](ReturnState.md) — Return State
+- [`ReturnStateAndApproved`](ReturnStateAndApproved.md) — Return State and Approval
+- [`Sample_Message_Joiner`](Sample_Message_Joiner.md) — JSON_Message_Joiner
+- [`Sample_Node_Handler`](Sample_Node_Handler.md) — JSON_Node_Handler
+- [`SAPFinanceAttributesGenerator`](SAPFinanceAttributesGenerator.md) — SAP Finance Attributes Generator
+- [`Save_Journal_Creation`](Save_Journal_Creation.md) — Save Journal Creation
+- [`search_object_using_key`](search_object_using_key.md) — search_object_using_key
+- [`Send_Journal_Transition_Refs`](Send_Journal_Transition_Refs.md) — Send Journal Transition Refs
+- [`SendJournal`](SendJournal.md) — ResendJournalFromSearch
+- [`SendOPCollectionToHeaderEnrichment`](SendOPCollectionToHeaderEnrichment.md) — Send OP Collection To Header Enrichment
+- [`SetDefaultPublishingInitiatives`](SetDefaultPublishingInitiatives.md) — Sets the Publishing Initiatives attributes values to default No in Journal creation workflow
+- [`SetJournalDefaultValues`](SetJournalDefaultValues.md) — To set default values to some journal attributes, during journal creation with Journal Handover Form.
+- [`SetValueForJournalReconReport`](SetValueForJournalReconReport.md) — SetValueForJournalReconReport
+- [`Should_NonJournal_Trigger_Outbound`](Should_NonJournal_Trigger_Outbound.md) — Should_NonJournal_Trigger_Outbound
+- [`Status_Derivation_on_Media_Objects`](Status_Derivation_on_Media_Objects.md) — Status Derivation on Media Objects
+- [`StatusandStatusMessage`](StatusandStatusMessage.md) — StatusandStatusMessage
+- [`SupplementalIssuesCountTest`](SupplementalIssuesCountTest.md) — Supplemental Issues Count Test
+- [`test`](test.md) — test
+- [`Test_BR`](Test_BR.md) — Test_BR
+- [`test_delete`](test_delete.md) — test_delete
+- [`Test_Gateway_Integration`](Test_Gateway_Integration.md) — Test_Gateway_Integration
+- [`test_rules`](test_rules.md) — Test Rules
+- [`Test_Trigger_Rule`](Test_Trigger_Rule.md) — Test Trigger Rule Create
+- [`Test_Trigger_Rule_Journal_Refs_Send`](Test_Trigger_Rule_Journal_Refs_Send.md) — Test Trigger Rule Journal Refs Send
+- [`Test_Trigger_Rule_Update`](Test_Trigger_Rule_Update.md) — Test Trigger Rule Update
+- [`Test_Trigger_Rule_Update_withMessage`](Test_Trigger_Rule_Update_withMessage.md) — Test Trigger Rule UpdateV2
+- [`test2`](test2.md) — joiner tesr
+- [`Update_DOI_URL`](Update_DOI_URL.md) — Update DOI URL
+- [`Update_Issue_Status`](Update_Issue_Status.md) — Update Issue Status
+- [`UpdateDigitalISSNKey`](UpdateDigitalISSNKey.md) — Update Digital ISSN Key
+- [`UpdatePrintISSNKey`](UpdatePrintISSNKey.md) — Update Print ISSN Key
+- [`UpdateProduct`](UpdateProduct.md) — Update Product
+- [`ValdiateJournalGroupCodeDesc`](ValdiateJournalGroupCodeDesc.md) — Validate If JournalGroupCode Description Missing
+- [`ValidateIfBackfile`](ValidateIfBackfile.md) — Validate If Backfile
+- [`ValidateIfBeingCreated`](ValidateIfBeingCreated.md) — Validate If Being Created
+- [`ValidateIfBeingCreatedOnline`](ValidateIfBeingCreatedOnline.md) — Validate If Being Created - Online
+- [`ValidateIfBeingCreatedPrint`](ValidateIfBeingCreatedPrint.md) — Validate If Being Created - Print
+- [`ValidateIfCochraneLibrary`](ValidateIfCochraneLibrary.md) — Validate If Cochrane Library
+- [`ValidateIfDatabase`](ValidateIfDatabase.md) — Validate If Database
+- [`ValidateIfDatabaseForDatesButton`](ValidateIfDatabaseForDatesButton.md) — Validate If Database for Dates Button
+- [`ValidateIfJournalSpecialProduct`](ValidateIfJournalSpecialProduct.md) — Validate If Journal Special Product
+- [`ValidateIfNOTCochraneLibrary`](ValidateIfNOTCochraneLibrary.md) — Validate If NOT Cochrane Library
+- [`ValidateIfNOTCochraneLibraryAndStaticAcc`](ValidateIfNOTCochraneLibraryAndStaticAcc.md) — Validate If NOT Cochrane Library And Static Access Collection
+- [`ValidateIfNOTCochraneLibraryComponents`](ValidateIfNOTCochraneLibraryComponents.md) — Validate If NOT Cochrane Library - components
+- [`ValidateIfNotDynamic`](ValidateIfNotDynamic.md) — Validate If Not Dynamic
+- [`ValidateIfNotOtherOrDatabase`](ValidateIfNotOtherOrDatabase.md) — Validate If NOT Other or Database
+- [`ValidateIfOpenAccess`](ValidateIfOpenAccess.md) — Validate If Open Access
+- [`ValidateIfOtherDatbase`](ValidateIfOtherDatbase.md) — Validate If Other
+- [`ValidateIfOtherOrDatabase`](ValidateIfOtherOrDatabase.md) — Validate If Other or Database
+- [`ValidateIfOtherProductSpecialProduct`](ValidateIfOtherProductSpecialProduct.md) — Validate If Other Product Special Product
+- [`ValidateIfProductActivated`](ValidateIfProductActivated.md) — Validate If Product Activated
+- [`ValidateIfProductActveStandard`](ValidateIfProductActveStandard.md) — Validate If Product Activated&Standard
+- [`ValidateIfProductActveStandardNotSpec`](ValidateIfProductActveStandardNotSpec.md) — Validate If Product Activated/Standard/NotSpecific
+- [`ValidateIfSAPMaterialNumber`](ValidateIfSAPMaterialNumber.md) — Validate If SAP Material Number
+- [`ValidateIfSpecialProduct`](ValidateIfSpecialProduct.md) — Validate If Special Product
+- [`ValidateIfStaticAccCollection`](ValidateIfStaticAccCollection.md) — Validate If Static Access Collection
+- [`ValidateTextFields`](ValidateTextFields.md) — Journals Mass Update Validate Text Fields
+- [`ValidateUserGroup`](ValidateUserGroup.md) — Validate User Group
+- [`ValidForCopyToOnline`](ValidForCopyToOnline.md) — Valid For Copy To Online
+- [`ValidForDeleteBoth`](ValidForDeleteBoth.md) — Valid For Delete Both
+- [`VolumeCopyToOnline`](VolumeCopyToOnline.md) — Volume Copy To Online
+- [`VolumeCreationFinishButton`](VolumeCreationFinishButton.md) — Volume Creation/Finish Button
+- [`VolumeCreationNextButton`](VolumeCreationNextButton.md) — Volume Creation/Next Button
+- [`VolumeDelete`](VolumeDelete.md) — Volume Delete
+- [`VolumeFunctions`](VolumeFunctions.md) — Volume Functions
+- [`WALSJournalDataExtract`](WALSJournalDataExtract.md) — WALS Journal Data Extract
+- [`WebUI_Update_DOI_URL`](WebUI_Update_DOI_URL.md) — WebUI_Update_DOI_URL
+- [`Workflow_Test_Message`](Workflow_Test_Message.md) — Workflow_Test_Message
