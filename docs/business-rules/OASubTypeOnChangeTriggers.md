@@ -8,9 +8,11 @@
 
 ### Functional description
 
-OA Sub Type On Change Triggers
+OA Sub Type On Change Triggers. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, JournalLastPriceQuoteContractYear, JournalLastPubYear, JournalMediaCode, JournalMediaRebillingEffectEndDate, JournalOnlineOpen, JournalOpenAccess, JournalTransferredToOnlineOnly, JournalUrlOnlineOpenOrderFormLink, JournalUrlOpenAccessContent, JournalWISPERSStatus, PreviousJournalLastPubYear, PreviousLastPQContractYear, PreviousPublicationType, PreviousRenewalSubscriptionType, PreviousRevenueModel, ProductActivated, ProductBundleCode, ProductBundleGroup, ProductBundleSubscriptionType, ProductFinancePublicationType, ProductMediaType, ProductRenewalSubscriptionType, ProductRevenueModel, ProductStatus.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalMediaCode" == "Electronic", continue; otherwise error.
 - If "ProductStatus" == "Current publication", continue; otherwise error.
@@ -29,7 +31,9 @@ OA Sub Type On Change Triggers
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalUpsertGroup/OASubTypeOnChangeTriggers.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

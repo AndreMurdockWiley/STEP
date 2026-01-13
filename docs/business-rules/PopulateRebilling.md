@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Populate Rebilling Web UI Alert
+Populate Rebilling Web UI Alert. It primarily works with attribute(s): ProductActivated, ProductMediaType, ProductRenewalSubscriptionType.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductMediaType, ProductRenewalSubscriptionType, ProductActivated.
@@ -21,7 +23,9 @@ Populate Rebilling Web UI Alert
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalWorkflowGroup/PopulateRebilling.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

@@ -8,9 +8,11 @@
 
 ### Functional description
 
-MM Package Attributes Update
+MM Package Attributes Update. It primarily works with attribute(s): JournalMMPackageID, ProductFinanceBillingModel, ProductOwnershipStatus, ProductProfitCenter, ProductShortTitle, SAPProfitCenter, SocietyPrimaryAffiliated. If validation fails, the user sees an error message such as: "There is no Multimedia for the journal. Please Check".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Validate: "ProductActivated" = "Activated".
 - If "SocietyPrimaryAffiliated" == "Primary", continue; otherwise error.
@@ -24,7 +26,9 @@ MM Package Attributes Update
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PackageGroup/MMPackageAttributesUpdate.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

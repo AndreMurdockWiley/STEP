@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Publication Year Creation/Next Button
+Publication Year Creation/Next Button. It primarily works with attribute(s): JournalMediaCode, JournalPublicationYear.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: pubLibrary.createYear.
 - Reads/writes attributes including: JournalPublicationYear, JournalMediaCode.
@@ -21,7 +23,9 @@ Publication Year Creation/Next Button
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PubYearGroup/PubYearNavegationGroup/PublicationYearCreationNextButton.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

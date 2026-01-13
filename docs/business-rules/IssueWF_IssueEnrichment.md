@@ -11,9 +11,11 @@
 
 ### Functional description
 
-Issue WF Issue Enrichment
+Issue WF Issue Enrichment. It is triggered from: VolumeIssueCreationWF (On creation and state transitions).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: ReferenceOtherBABusinessAction.
 - Parameter "ReferencedBA": IssueAttributesOnSaveGeneration
@@ -23,6 +25,8 @@ Issue WF Issue Enrichment
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: VolumeIssueCreationWF
   - **Task/Event**: On creation and state transitions

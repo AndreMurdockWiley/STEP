@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Backfile Notes Data Container Action
+Backfile Notes Data Container Action. It primarily works with attribute(s): BackfileNotes, BackfileNotesCreatedBy, BackfileNotesCreatedDate, BackfileNotesIsModified, BackfileNotesModifiedBy, BackfileNotesModifiedDate, BackfileNotesType, JournalNotesBackfileUUID.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: BackfileNotesCreatedDate, BackfileNotesCreatedBy, BackfileNotesModifiedDate, BackfileNotesModifiedBy, BackfileNotesType, BackfileNotes, BackfileNotesIsModified, JournalNotesBackfileUUID.
 
@@ -24,7 +26,9 @@ Backfile Notes Data Container Action
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): AutoClassifyRules/BackfileNotesDCAction.js, BackfilesUpsertGroup/BackfileNotesDCAction.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

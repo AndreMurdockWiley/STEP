@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Sets CollectionStatus to 'Active' for 'Other Database' collection types
+Sets CollectionStatus to 'Active' for 'Other Database' collection types. It primarily works with attribute(s): CollectionType, CollectionStatus.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "CollectionType" == "Other Database", apply the corresponding branch logic.
 - Reads/writes attributes including: CollectionType, CollectionStatus.
@@ -25,7 +27,9 @@ Sets CollectionStatus to 'Active' for 'Other Database' collection types
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): CollectionGroup/CollectionUpsertGroup/CollectionSetStatus.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

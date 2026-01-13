@@ -8,9 +8,11 @@
 
 ### Functional description
 
-ESB Default Logic
+ESB Default Logic. It primarily works with attribute(s): ISMHIERARCHLEVL, ISMNIPTYPE, ISMPERRULE. It is triggered from: Business action (triggered via Web UI button / workflow event / configured action).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: ISMHIERARCHLEVL, ISMNIPTYPE, ISMPERRULE.
 
@@ -19,6 +21,8 @@ ESB Default Logic
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Business action (triggered via Web UI button / workflow event / configured action)
   - **Task/Event**: —

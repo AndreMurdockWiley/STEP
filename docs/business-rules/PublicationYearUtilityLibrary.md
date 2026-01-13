@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Publication Year Utility Library (OLD)
+Publication Year Utility Library (OLD). It primarily works with attribute(s): ContinuousNumbering, CreateIssueTypeIDL, IssueNumber, IssuePubSequence, IssueSentToSAP, IssueType, IssueVolumeNumber, JournalGroupCode, JournalMediaCode, JournalNumberOfVolumes, JournalPublicationYear, JournalStartingVolume, NumberOfIssues, ProductPublicationYear, VolumeGroupPublicationSet. It is triggered from: Workflow: "VolumeIssueCreationWF". If validation fails, the user sees an error message such as: "Can't Delete the Publication Year. There is an issue that had been sent to SAP".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: JavaScriptBusinessLibrary.
 - Locate workflow instance "VolumeIssueCreationWF".
@@ -30,6 +32,8 @@ Publication Year Utility Library (OLD)
 - **In-script message**: Can't Delete the Publication Year. There is an issue that had been sent to SAP
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Workflow: "VolumeIssueCreationWF"
   - **Task/Event**: —

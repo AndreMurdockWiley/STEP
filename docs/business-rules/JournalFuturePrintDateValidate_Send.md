@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Journal Future Print Status Effect Date Validate Send
+Journal Future Print Status Effect Date Validate Send. It primarily works with attribute(s): JournalFutureDigitalStatusEffectDate, JournalMediaFuturePrintStatusEffectDate. If validation fails, the user sees an error message such as: "The Effective date must be Future date or Greater than Today's date.".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: JournalMediaFuturePrintStatusEffectDate, JournalFutureDigitalStatusEffectDate.
 
@@ -25,7 +27,9 @@ Journal Future Print Status Effect Date Validate Send
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalMediaGroup/JournalMediaUpsertGroup/JournalFuturePrintDateValidate_Send.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

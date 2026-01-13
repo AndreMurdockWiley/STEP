@@ -8,9 +8,11 @@
 
 ### Functional description
 
-BA for Wiley Demo
+BA for Wiley Demo. It primarily works with attribute(s): IDLJournalPublicationSet, IssueVolumeNumber, JournalMediaCode, JournalNumberOfVolumes, JournalPublicationYear, JournalStartingVolume, NumberOfIssues, VolumeGroupPubSet, VolumeGroupVolumesInPubSet, WIL_SortNumber.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalMediaCode" == "Print", continue; otherwise error.
 - If "JournalMediaCode" == "Print", continue; otherwise error.
@@ -23,7 +25,9 @@ BA for Wiley Demo
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): WileyPOCRules/Issue_Creation.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

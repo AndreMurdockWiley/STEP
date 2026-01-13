@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Mass Create Standard Collections
+Mass Create Standard Collections. It primarily works with attribute(s): CollectionSubType, CollectionType, CollectionYear.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: collectionLibrary.createCollectionYear, collectionLibrary.createCollectionSubType, collectionLibrary.createCollection.
 - Reads/writes attributes including: CollectionYear, CollectionSubType, CollectionType.
@@ -21,7 +23,9 @@ Mass Create Standard Collections
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): CollectionGroup/CollectionUpsertGroup/MassCreateStandardCollections.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

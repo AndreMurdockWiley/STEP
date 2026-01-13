@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Collection Component Update Curr & Future DB Model
+Collection Component Update Curr & Future DB Model. It primarily works with attribute(s): CollectionCode, CollectionType, JournalInCurrentDatabaseModel, JournalInFutureDatabaseModel.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "CollectionCode" == "DB2025", continue; otherwise error.
 - If "CollectionCode" == "DB2026", continue; otherwise error.
@@ -26,7 +28,9 @@ Collection Component Update Curr & Future DB Model
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): CollectionGroup/CollectionUpsertGroup/CollectionCompsUpdateCurr&FutureDBModel.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

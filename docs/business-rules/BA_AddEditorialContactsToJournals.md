@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Add Editorial Contacts To Journals
+Add Editorial Contacts To Journals. It primarily works with attribute(s): EditorialContactEmail, EditorialContactFirstName, EditorialContactStatus. It is triggered from: Business action (triggered via Web UI button / workflow event / configured action). If validation fails, the user sees an error message such as: "Please select only one History object at a time.".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: EditorialContactFirstName, EditorialContactEmail, EditorialContactStatus.
 
@@ -22,6 +24,8 @@ Add Editorial Contacts To Journals
 - **In-script message**: : Status must be 'Active' to create reference.
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Business action (triggered via Web UI button / workflow event / configured action)
   - **Task/Event**: —

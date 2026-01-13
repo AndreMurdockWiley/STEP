@@ -12,17 +12,21 @@
 
 ### Functional description
 
-BA_triggerOIEPCollReport
+BA_triggerOIEPCollReport. It primarily works with attribute(s): DigitalJournalCode. It is triggered from: oiep_CollectionStandardReport (Republish events for collections and journals).
 
 ### Functional logic
 
-—
+This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+
+- No further functional logic details were extracted.
 
 ### Errors
 
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: oiep_CollectionStandardReport
   - **Task/Event**: Republish events for collections and journals

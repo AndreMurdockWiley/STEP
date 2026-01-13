@@ -8,9 +8,11 @@
 
 ### Functional description
 
-bcFilterOnEditorial
+bcFilterOnEditorial. It primarily works with attribute(s): EditorialContactEmail, EditorialContactFirstName, EditorialContactLastName. It is triggered from: Outbound integration rule (configured in STEP Outbound Integration).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: EditorialContactEmail, EditorialContactFirstName, EditorialContactLastName.
 
@@ -19,6 +21,8 @@ bcFilterOnEditorial
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Outbound integration rule (configured in STEP Outbound Integration)
   - **Task/Event**: —

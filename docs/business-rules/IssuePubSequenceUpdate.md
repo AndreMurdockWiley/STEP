@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Issue Pub Sequence Update
+Issue Pub Sequence Update. It primarily works with attribute(s): IssuePubSequence.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: issueLibrary.issueRePubSequence.
 - Reads/writes attributes including: IssuePubSequence.
@@ -21,7 +23,9 @@ Issue Pub Sequence Update
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): IssuesGroup/IssuesUpsertGroup/IssuePubSequenceUpdate.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

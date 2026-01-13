@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Create Journals Transition
+Create Journals Transition. It primarily works with attribute(s): JournalGroupCode, JournalProductCode, JournalProductionCode, JournalOnlineLibraryCode, JournalInCurrentDatabaseModel.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: ReferenceOtherBABusinessAction.
 - Parameter "ReferencedBA": Populate_HandlingEditorNameDisplay
@@ -25,7 +27,9 @@ Create Journals Transition
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalWorkflowGroup/Create_Journals_Transition.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Create Journal Media Objects
+Create Journal Media Objects. It primarily works with attribute(s): DigitalJournalCode, IDLDigitalJournalCode, IDLDigitalJournalISSN, IDLDigitalJournalStatus, IDLJournalAvailableInEarlyView, IDLJournalFinanceContentCategory, IDLJournalFinanceDivision, IDLJournalFinanceEntitlementPlatform, IDLJournalFinancePublicationType, IDLJournalHomeWarehouse, IDLJournalOnlineOpen, IDLJournalOpenAccess, IDLPrintJournalCode, IDLPrintJournalISSN, IDLPrintJournalStatus, JournalAvailableInEarlyView, JournalHomeWarehouse, JournalMediaCode, JournalOnlineOpen, JournalOpenAccess, PrintJournalCode, ProductContentCategory, ProductFinanceDivision, ProductFinanceEntitlementPlatform, ProductFinancePublicationType, ProductFullTitle, ProductIssn, ProductMediaType, ProductStatus, ProductTitle.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "ProductMediaType" == "Print", apply the corresponding branch logic.
 - If "ProductMediaType" == "Online", apply the corresponding branch logic.
@@ -28,7 +30,9 @@ Create Journal Media Objects
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalMediaGroup/JournalMediaUpsertGroup/CreateJournalMediaObjects.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

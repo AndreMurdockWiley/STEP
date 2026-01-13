@@ -12,9 +12,11 @@
 
 ### Functional description
 
-ISBN13 Search Action for API
+ISBN13 Search Action for API. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, ProductBundleCode, ProductBundleCodeID, ProductBundleGroup, ProductBundleGroupID, ProductBundleSubscriptionType, ProductDownloadStatus, ProductFullTitle, ProductIsbn13, ProductPrimaryProcessCode, ProductProcessStatusCode, ProductSubscriptionTypeID, SubjectCode, SubjectGroup, SubjectLevel2, SubjectOnlineCode.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Validate: "ProductIsbn" = "".
 - Reads/writes attributes including: ProductIsbn13, ProductPrimaryProcessCode, ProductProcessStatusCode, ProductDownloadStatus, ProductFullTitle, ProductBundleCodeID, ProductBundleGroupID, ProductSubscriptionTypeID, ProductBundleCode, ProductBundleGroup.
@@ -25,7 +27,9 @@ ISBN13 Search Action for API
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/isbn13_search_action.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

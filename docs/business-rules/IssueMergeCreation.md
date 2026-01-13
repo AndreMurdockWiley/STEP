@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Issue Merge Creation
+Issue Merge Creation. It primarily works with attribute(s): IssueFromIssueNumber, IssueStatus, IssueType, StartingPubSequenceMedia.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: volumeLibrary.validateIssuesRunDate, issueLibrary.mergeIssues.
 - Reads/writes attributes including: IssueFromIssueNumber, StartingPubSequenceMedia, IssueType, IssueStatus.
@@ -21,7 +23,9 @@ Issue Merge Creation
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): IssuesGroup/IssuesUpsertGroup/IssueMergeCreation.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

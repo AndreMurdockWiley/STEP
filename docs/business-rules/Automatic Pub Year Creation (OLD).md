@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Automatic Pub Year Creation (OLD)
+Automatic Pub Year Creation (OLD). It primarily works with attribute(s): JournalFinanceProductType, JournalMediaCode, ProductPublicationYear.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalMediaCode" == "Print", continue; otherwise error.
 - If "JournalFinanceProductType" == "Rolling", apply the corresponding branch logic.
@@ -23,7 +25,9 @@ Automatic Pub Year Creation (OLD)
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PubYearGroup/PubYearUpsertGroup/Automatic Pub Year Creation (OLD).js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

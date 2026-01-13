@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Journal History Auto Creation
+Journal History Auto Creation. It primarily works with attribute(s): HistoryOrigin, JournalGroupCode, JournalHistoryAccessType, JournalHistoryCopyright, JournalHistoryISSNOnline, JournalHistoryISSNPrint, JournalHistoryIdentifiersDoi, JournalHistoryJournalCode, JournalHistoryPrimaryUrl, JournalHistorySequenceNumber, JournalHistoryWolCode, JournalMediaCode, ProductAbbreviatedTitle, ProductCopyrightLine, ProductDoi, ProductIssn, ProductRenewalSubscriptionType, ProductShortTitle, ProductSortTitle, ProductTitle, ProductUrl, SoftDelete. If validation fails, the user sees an error message such as: "A Reference of type 'Journal_History_Reference' already exists. Only updating the existing Journal History.".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "ProductRenewalSubscriptionType" == "Calendar Year", apply the corresponding branch logic.
 - If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
@@ -31,7 +33,9 @@ Journal History Auto Creation
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalHistoryGroup/JournalHistoryAutoCreation.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

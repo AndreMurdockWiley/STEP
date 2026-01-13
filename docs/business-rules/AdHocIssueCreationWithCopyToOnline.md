@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Ad Hoc Issue Creation With Copy To Online
+Ad Hoc Issue Creation With Copy To Online. It primarily works with attribute(s): IssueSAPMaterialNumber, IssueType, IssueVolumeNumber, JournalMediaCode, StartingIssueNumber, StartingIssueNumberVolume, StartingPubSequenceMedia, StartingSupplementNoVolume, StartingSupplementNoYear. If validation fails, the user sees an error message such as: "Shows alert with number of issues created. Precondition returns: "An issue already exists with this Volume and issue number" if SAP Material check fails".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalMediaCode" == "Print", apply the corresponding branch logic.
 - Calls: issueLibrary.createIssue, pubLibrary.yearCopyToOnline, volumeLibrary.volumeCopyToOnline, issueLibrary.issueCopyToOnline.
@@ -27,7 +29,9 @@ Ad Hoc Issue Creation With Copy To Online
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): IssuesGroup/IssuesUpsertGroup/AdHocIssueCreationWithCopyToOnline.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

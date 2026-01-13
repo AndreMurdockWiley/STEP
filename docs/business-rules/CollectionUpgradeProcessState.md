@@ -10,9 +10,11 @@
 
 ### Functional description
 
-Collection Upgrade Process State
+Collection Upgrade Process State. It is triggered from: CollectionCreationWF (State-7: MoveToEnd event).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: BulkUpdateTriggerStateFlowEvent.
 - Parameter "currentStateID": State-7
@@ -24,6 +26,8 @@ Collection Upgrade Process State
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: CollectionCreationWF
   - **Task/Event**: State-7: MoveToEnd event

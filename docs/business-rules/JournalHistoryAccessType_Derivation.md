@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Journal History Access Type Derivation
+Journal History Access Type Derivation. It primarily works with attribute(s): JournalHistoryAccessType, JournalHistorySequenceNumber, ProductRenewalSubscriptionType.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalHistorySequenceNumber" == "1", apply the corresponding branch logic.
 - If "ProductRenewalSubscriptionType" == "Calendar Year", apply the corresponding branch logic.
@@ -28,7 +30,9 @@ Journal History Access Type Derivation
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalUpsertGroup/JournalHistoryAccessType_Derivation.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

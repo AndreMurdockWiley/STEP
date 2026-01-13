@@ -12,9 +12,11 @@
 
 ### Functional description
 
-MJ Sequential Mat No Increment
+MJ Sequential Mat No Increment. It primarily works with attribute(s): ProductSAPMaterialNumber.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: journalPackageLibrary.sequentialMatNoIncrement.
 - Reads/writes attributes including: ProductSAPMaterialNumber.
@@ -25,7 +27,9 @@ MJ Sequential Mat No Increment
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PackageGroup/MJSequentialMatNoIncrement.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

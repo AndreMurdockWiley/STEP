@@ -12,9 +12,11 @@
 
 ### Functional description
 
-PopulateJPCMSIssueID
+PopulateJPCMSIssueID. It primarily works with attribute(s): IDLIssueDOI, IssueDoi, IssueFromIssueNumber, IssueJpcmsId, IssueVolumeNumber, JournalGroupCode, JournalTrueStatus.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalTrueStatus" == "No", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalTrueStatus, JournalGroupCode, IssueVolumeNumber, IssueFromIssueNumber, IssueJpcmsId, IDLIssueDOI, IssueDoi.
@@ -25,7 +27,9 @@ PopulateJPCMSIssueID
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): IssuesGroup/PopulateJPCMSIssueID.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Issue Creation/Finish Button
+Issue Creation/Finish Button. It primarily works with attribute(s): ContinuousNumbering, CopyToOnline, CreateIssueTypeIDL, JournalGroupCode, NumberOfIssues, StartingIssueNumber, StartingIssueNumberVolume, StartingPubSequenceMedia, StartingSupplementNoVolume, StartingSupplementNoYear. It is triggered from: JournalCreationWFV3Backup (State-7, Event: Finalize). If validation fails, the user sees an error message such as: "ERROR IN TRIGGER FOR WORKFLOW:".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Locate workflow instance "JournalCreationWFV3Backup".
 - If "ContinuousNumbering" == "Yes", apply the corresponding branch logic.
@@ -30,6 +32,8 @@ Issue Creation/Finish Button
 - **In-script message**: ERROR IN TRIGGER FOR WORKFLOW:
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: JournalCreationWFV3Backup
   - **Task/Event**: State-7, Event: Finalize

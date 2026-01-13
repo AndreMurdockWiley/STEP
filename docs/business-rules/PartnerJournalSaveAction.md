@@ -13,9 +13,11 @@
 
 ### Functional description
 
-This business action is triggered, when save button is clicked on web ui for partner products
+This business action is triggered, when save button is clicked on web ui for partner products. It primarily works with attribute(s): JournalStatus, JournalUrlAuthorGuidelinesLink, ProductActivated, ProductEISSN, ProductPISSN, ProductRevenueModel, ProductUrl.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: ProductEISSN, ProductPISSN, ProductRevenueModel, JournalStatus, ProductUrl, JournalUrlAuthorGuidelinesLink, ProductActivated.
 
@@ -25,7 +27,9 @@ This business action is triggered, when save button is clicked on web ui for par
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PartnerJournalsGroup/PartnerJournalSaveAction.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

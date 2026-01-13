@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Issue Attributes On-Save Generation
+Issue Attributes On-Save Generation. It primarily works with attribute(s): IssueFromIssueNumber, IssueSAPMaterialNumber, IssueSupplementNo, IssueToIssueNumber, IssueType. It is triggered from: VolumeIssueCreationWF (Initiate workflow). If validation fails, the user sees an error message such as: "Various validation errors: 'Please provide Issue Type', 'Please provide From Issue Number for Standard Issue', 'Please provide From Issue Number & To Issue Number for Merged Issue', 'Please provide Supplement No for Supplement Issue'".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "IssueType" == "Standard Issue", apply the corresponding branch logic.
 - If "IssueType" == "Merged Issue", apply the corresponding branch logic.
@@ -33,6 +35,8 @@ Issue Attributes On-Save Generation
 - **In-script message**: Please provide Supplement No for Supplement Issue to proceed further
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: VolumeIssueCreationWF
   - **Task/Event**: Initiate workflow

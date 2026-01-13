@@ -7,11 +7,13 @@
 
 ### Functional description
 
-Journals_Add_Media_To_Workflow
+Journals_Add_Media_To_Workflow. If validation fails, the user sees an error message such as: "THIS FAILED TO GET INTO WORKFLOW:".
 
 ### Functional logic
 
-—
+This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+
+- No further functional logic details were extracted.
 
 ### Errors
 
@@ -19,7 +21,9 @@ Journals_Add_Media_To_Workflow
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalMediaGroup/JournalMediaWorkflowGroup/Journals_Add_Media_To_Workflow.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

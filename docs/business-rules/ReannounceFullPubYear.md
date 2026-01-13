@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Reannounce Full Pub Year
+Reannounce Full Pub Year. It primarily works with attribute(s): IssueReportingYear, PHPublicationYear. If validation fails, the user sees an error message such as: "Alert: Year {name} has been deleted since all volumes have been moved".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: pubLibrary.createYear.
 - Reads/writes attributes including: PHPublicationYear, IssueReportingYear.
@@ -26,7 +28,9 @@ Reannounce Full Pub Year
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): ReannouncementGroup/ReannounceFullPubYear.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

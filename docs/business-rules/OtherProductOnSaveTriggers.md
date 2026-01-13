@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Other Product On Save Triggers
+Other Product On Save Triggers. It primarily works with attribute(s): ProductActivated.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "ProductActivated" == "Activated", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductActivated.
@@ -26,7 +28,9 @@ Other Product On Save Triggers
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): OtherProducts/OtherProductsNavegation/OtherProductOnSaveTriggers.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

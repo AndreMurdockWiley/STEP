@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Placeholder rule for dynamic other product collections (currently no actions defined)
+Placeholder rule for dynamic other product collections (currently no actions defined). It primarily works with attribute(s): OtherProductCollectionType.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Precondition only: checks if OtherProductCollectionType equals 'Dynamic'. No actions defined in the rule body.
 
@@ -24,7 +26,9 @@ Placeholder rule for dynamic other product collections (currently no actions def
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): OtherProductCollectionRules/OtherProductCollectionSetBundleCode.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

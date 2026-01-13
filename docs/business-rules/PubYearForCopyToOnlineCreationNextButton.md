@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Pub Year For Copy To Online Creation/Next Button
+Pub Year For Copy To Online Creation/Next Button. It primarily works with attribute(s): CopyToOnline, JournalMediaCode, JournalPublicationYear.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: pubLibrary.createYear, journalLibrary.journalCopyToOnlineValidity, pubLibrary.yearCopyToOnline.
 - Reads/writes attributes including: JournalPublicationYear, JournalMediaCode, CopyToOnline.
@@ -21,7 +23,9 @@ Pub Year For Copy To Online Creation/Next Button
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PubYearGroup/PubYearNavegationGroup/PubYearForCopyToOnlineCreationNextButton.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

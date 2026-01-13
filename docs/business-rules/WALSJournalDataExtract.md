@@ -12,9 +12,11 @@
 
 ### Functional description
 
-WALS Journal Data Extract
+WALS Journal Data Extract. It primarily works with attribute(s): JournalWalsParticipation, JournalWalsParticipationStartDate, LicenseTemplate, template_LicenseSubType, template_licenseType, template_name, template_use.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: JournalWalsParticipation, JournalWalsParticipationStartDate, template_licenseType, template_LicenseSubType, template_use, template_name.
 
@@ -24,7 +26,9 @@ WALS Journal Data Extract
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/WALSJournalDataExtract.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

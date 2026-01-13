@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Backfiles DC Date Conversion
+Backfiles DC Date Conversion. It primarily works with attribute(s): JANISJournalBackfileContentEnd, JANISJournalBackfileContentStart, JournalBackfileContentEndDate, JournalBackfileContentStartDate.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: JANISJournalBackfileContentStart, JANISJournalBackfileContentEnd, JournalBackfileContentStartDate, JournalBackfileContentEndDate.
 
@@ -25,7 +27,9 @@ Backfiles DC Date Conversion
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): BackfilesUpsertGroup/BackfilesDCDateConversion.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

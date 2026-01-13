@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Group Issue Functions
+Group Issue Functions. It primarily works with attribute(s): C_GroupIssue_UUID, C_IssueState, C_JournalID, C_MessageStatus, C_Name, C_PubYearID, C_VolumeID, D_ID, D_JournalMediaID, D_PubYearID, D_VolumeID, GroupIssueID, IssueFromIssueNumber, IssueState, IssueSupplementNo, IssueToIssueNumber, IssueType, IssueVolumeNumber, JournalGroupCode, P_ID, P_JournalMediaID, P_PubYearID, P_VolumeID, ProductPublicationYear. It is triggered from: VolumeIssueCreationWF (State-11 (approval)).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: JavaScriptBusinessLibrary.
 - If "IssueType" == "Standard Issue", apply the corresponding branch logic.
@@ -30,6 +32,8 @@ Group Issue Functions
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: VolumeIssueCreationWF
   - **Task/Event**: State-11 (approval)

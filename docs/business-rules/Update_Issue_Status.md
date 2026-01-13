@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Update Issue Status
+Update Issue Status. It primarily works with attribute(s): IssueRunDate, IssueStatus. It is triggered from: Group_Issues_Data_Extract_Kafka.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: IssueRunDate, IssueStatus.
 
@@ -23,6 +25,8 @@ Update Issue Status
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Group_Issues_Data_Extract_Kafka
   - **Task/Event**: —

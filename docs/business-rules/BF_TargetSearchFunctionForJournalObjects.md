@@ -7,9 +7,11 @@
 
 ### Functional description
 
-Target Search Function for Journal Objects
+Target Search Function for Journal Objects. See the Functional Logic and Usage sections below for the specific configuration and trigger context.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: JavaScriptBusinessFunctionWithBinds.
 
@@ -19,7 +21,9 @@ Target Search Function for Journal Objects
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Functions/BF_TargetSearchFunctionForJournalObjects.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 
