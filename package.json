@@ -1,0 +1,25 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Testing integration",
+  "main": "index.js",
+  "scripts": {
+    "generate:rule-docs": "node scripts/generateBusinessRuleDocs.mjs",
+    "inspect:rules-xlsx": "node scripts/inspectRulesWorkbook.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreMurdockWiley/STEP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreMurdockWiley/STEP/issues"
+  },
+  "homepage": "https://github.com/AndreMurdockWiley/STEP#readme",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}
