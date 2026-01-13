@@ -13,9 +13,11 @@
 
 ### Functional description
 
-To set default values to some journal attributes, during journal creation with Journal Handover Form.
+To set default values to some journal attributes, during journal creation with Journal Handover Form. It primarily works with attribute(s): JournalTrueStatus, ProductSubType, JournalStatusOnOL, JournalAccessBasis, JournalRightsDarkArchServices, ProductDivision, ProductLanguage.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalTrueStatus" == "Yes", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalTrueStatus, ProductSubType, JournalStatusOnOL, JournalAccessBasis, JournalRightsDarkArchServices, ProductDivision, ProductLanguage.
@@ -26,7 +28,9 @@ To set default values to some journal attributes, during journal creation with J
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalUpsertGroup/SetJournalDefaultValues.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

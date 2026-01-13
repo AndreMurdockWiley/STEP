@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Populate MM Package Journal Ref Attributes
+Populate MM Package Journal Ref Attributes. It primarily works with attribute(s): JournalMMPackageID, ProductActivated, ProductOwnershipStatus, ProductProfitCenter, SAPProfitCenter, SocietyPrimaryAffiliated.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Validate: "ProductMediaType" = "Both".
 - If "SocietyPrimaryAffiliated" == "Primary", continue; otherwise error.
@@ -28,7 +30,9 @@ Populate MM Package Journal Ref Attributes
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PackageGroup/PopulateMMPackageJournalRefAttributes.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

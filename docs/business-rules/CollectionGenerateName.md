@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Collection Generate Name
+Collection Generate Name. It primarily works with attribute(s): CollectionType, CollectionYear.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "CollectionType" == "NURS", apply the corresponding branch logic.
 - Calls: collectionLibrary.collectionTypeConverter, collectionLibrary.createCollectionYear, collectionLibrary.generateStandardCollectionAttributes, collectionLibrary.generateCommonCollectionAttributes, collectionLibrary.generateSpecificCollectionAttributes.
@@ -26,7 +28,9 @@ Collection Generate Name
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): CollectionGroup/CollectionUpsertGroup/CollectionGenerateName.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

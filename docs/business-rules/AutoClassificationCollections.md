@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Auto Classification Collections
+Auto Classification Collections. It primarily works with attribute(s): CollectionStatus, CollectionSubType, CollectionType, CollectionYear, ProductTitle.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "CollectionType" == "Other Database", apply the corresponding branch logic.
 - If "CollectionType" == "Database Model Collections", apply the corresponding branch logic.
@@ -26,7 +28,9 @@ Auto Classification Collections
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): AutoClassifyRules/AutoClassificationCollections.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

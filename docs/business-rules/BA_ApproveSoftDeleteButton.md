@@ -8,9 +8,11 @@
 
 ### Functional description
 
-In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Approve" when "SoftDelete" == "Yes" and navigates the user to the Web UI homepage; otherwise shows an error.
+In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Approve" when "SoftDelete" == "Yes" and navigates the user to the Web UI homepage; otherwise shows an error. It primarily works with attribute(s): SoftDelete. It is triggered from: Workflow: "SoftDeleteWorkflow" (Workflow State/Task: "Review", Workflow Event: "Approve"). If validation fails, the user sees an error message such as: "Please set Soft Delete as 'Yes' to approve Soft Delete".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Locate workflow instance "SoftDeleteWorkflow".
 - Locate task/state "Review".
@@ -24,6 +26,8 @@ In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Approve
 - **In-script message**: Please set Soft Delete as 'Yes' to approve Soft Delete
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Workflow: "SoftDeleteWorkflow"
   - **Task/Event**: Workflow State/Task: "Review", Workflow Event: "Approve"

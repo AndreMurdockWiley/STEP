@@ -10,9 +10,11 @@
 
 ### Functional description
 
-Initiate Delete Object Workflow
+Initiate Delete Object Workflow. It is triggered from: DeleteObjectWorkflow (startWorkflowByID). If validation fails, the user sees an error message such as: "Cannot initiate because its in Journal Creation Workflow; Cannot initiate because its already in Delete Object Workflow; Unable to initiate product into Delete Object Workflow".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Navigate the user to the Web UI homepage.
 
@@ -23,6 +25,8 @@ Initiate Delete Object Workflow
 - **In-script message**: - Cannot initiate because its already in Delete Object Workflow
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: DeleteObjectWorkflow
   - **Task/Event**: startWorkflowByID

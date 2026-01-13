@@ -11,9 +11,11 @@
 
 ### Functional description
 
-NewEnrichWorkflow_Gate_Media
+NewEnrichWorkflow_Gate_Media. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Media_To_Complete).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: BulkUpdateTriggerStateFlowEvent.
 - Parameter "currentStateID": State-2
@@ -25,6 +27,8 @@ NewEnrichWorkflow_Gate_Media
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: JournalCreationWFV3Backup
   - **Task/Event**: State-2, Event: Media_To_Complete

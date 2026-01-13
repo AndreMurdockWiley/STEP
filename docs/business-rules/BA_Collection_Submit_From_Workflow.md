@@ -12,11 +12,13 @@
 
 ### Functional description
 
-Collection Submit from Workflow
+Collection Submit from Workflow. It primarily works with attribute(s): AT_SubmitMessage. It is triggered from: CollectionCreationWF (State-5, NextState event). If validation fails, the user sees an error message such as: "Missing references for mandatory reference types: "COLLECTIONS TO JOURNAL REFERENCE". [Attribute] is/are missing. Please provide.".
 
 ### Functional logic
 
-—
+This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+
+- No further functional logic details were extracted.
 
 ### Errors
 
@@ -27,6 +29,8 @@ Collection Submit from Workflow
 - **In-script message**: is/are missing. Please provide.
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: CollectionCreationWF
   - **Task/Event**: State-5, NextState event

@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Collection Upgrade Process
+Collection Upgrade Process. It primarily works with attribute(s): CollectionCode, CollectionYear.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: collectionLibrary.createCollectionSubType, collectionLibrary.createCollection.
 - Reads/writes attributes including: CollectionYear, CollectionCode.
@@ -25,7 +27,9 @@ Collection Upgrade Process
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): CollectionGroup/CollectionUpsertGroup/CollectionUpgradeProcess.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

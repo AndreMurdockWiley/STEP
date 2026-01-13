@@ -12,11 +12,13 @@
 
 ### Functional description
 
-MJ Package Valid From Populate
+MJ Package Valid From Populate. It primarily works with attribute(s): ProductValidFrom.
 
 ### Functional logic
 
-—
+This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+
+- No further functional logic details were extracted.
 
 ### Errors
 
@@ -24,7 +26,9 @@ MJ Package Valid From Populate
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PackageGroup/MJPackageValidFromPopulate.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

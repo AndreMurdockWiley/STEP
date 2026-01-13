@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Populate Online Submission URL
+Populate Online Submission URL. It primarily works with attribute(s): JournalEditorialSubmissionSystem, JournalGroupCode, JournalREXSiteName, JournalSubmissionUrlValue, PrevSubmissionSys_PIM. If validation fails, the user sees an error message such as: "Submission URL has been created using Journal Group Code because REX Site Name was Null. To update Submission URL please add a REX Site Name".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalEditorialSubmissionSystem" == "Research Exchange Submission", apply the corresponding branch logic.
 - If "JournalEditorialSubmissionSystem" == "Research Exchange Submission", apply the corresponding branch logic.
@@ -26,7 +28,9 @@ Populate Online Submission URL
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalMediaGroup/JournalMediaWorkflowGroup/PopulateOnlineSubmissionURL.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

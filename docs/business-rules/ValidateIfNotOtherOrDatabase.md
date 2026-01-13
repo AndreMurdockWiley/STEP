@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Validate If NOT Other or Database
+Validate If NOT Other or Database. It primarily works with attribute(s): CollectionType. It is triggered from: Business condition (validation configured in STEP).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "CollectionType" == "Other Database", continue; otherwise error.
 - If "CollectionType" == "Database Model Collections", continue; otherwise error.
@@ -22,6 +24,8 @@ Validate If NOT Other or Database
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Business condition (validation configured in STEP)
   - **Task/Event**: —

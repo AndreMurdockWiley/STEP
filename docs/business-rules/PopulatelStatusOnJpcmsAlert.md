@@ -8,9 +8,11 @@
 
 ### Functional description
 
-PopulatelStatusOnJpcmsAlert
+PopulatelStatusOnJpcmsAlert. It primarily works with attribute(s): JournalStatusOnJpcms.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalStatusOnJpcms" == "y", apply the corresponding branch logic.
 - If "JournalStatusOnJpcms" == "n", apply the corresponding branch logic.
@@ -22,7 +24,9 @@ PopulatelStatusOnJpcmsAlert
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalMediaGroup/JournalMediaWorkflowGroup/PopulatelStatusOnJpcmsAlert.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

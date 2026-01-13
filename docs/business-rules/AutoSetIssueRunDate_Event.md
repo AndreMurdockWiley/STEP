@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Automatic Set Issue Run Date (EventProcessor)
+Automatic Set Issue Run Date (EventProcessor). It primarily works with attribute(s): IssueJpcmsId, IssueRunDate, IssueStatus, JournalGroupCode, ProductOriginalPublicationDate, ProductRevisedPublicationDate. It is triggered from: Event Processor: "AutoSetIssueRunDate_Event".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: JournalGroupCode, IssueJpcmsId, IssueRunDate, ProductOriginalPublicationDate, ProductRevisedPublicationDate, IssueStatus.
 
@@ -19,6 +21,8 @@ Automatic Set Issue Run Date (EventProcessor)
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Event Processor: "AutoSetIssueRunDate_Event"
   - **Task/Event**: —

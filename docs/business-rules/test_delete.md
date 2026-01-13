@@ -13,9 +13,11 @@
 
 ### Functional description
 
-test_delete
+test_delete. It primarily works with attribute(s): JPCMS, OriginalPublicationDate. If validation fails, the user sees an error message such as: "The issue has JPCMS and Original Publication Date populated".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: issueLibrary.issueDeleteCheck, issueLibrary.deleteIssue.
 
@@ -26,7 +28,9 @@ test_delete
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): IssuesGroup/IssuesDeleteGroup/test_delete.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

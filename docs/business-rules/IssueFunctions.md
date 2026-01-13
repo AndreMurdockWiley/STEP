@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Issue Functions
+Issue Functions. It primarily works with attribute(s): IssueEmlo, IssueFromIssueNumber, IssueFurtherDescription, IssueId, IssueJpcmsId, IssuePubSequence, IssuePublicationType, IssueReportingYear, IssueSAPMaterialNumber, IssueStatus, IssueSupplementNo, IssueTitle, IssueToIssueNumber, IssueType, IssueVolumeNumber, JournalMediaCode, ProductOriginalPublicationDate, ProductPublicationYear, ProductSAPMaterialNumber, StartingPubSequenceMedia. It is triggered from: VolumeIssueCreationWF (On creation, state transitions).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: JavaScriptBusinessLibrary.
 - If "JournalMediaCode" == "Print", continue; otherwise error.
@@ -31,6 +33,8 @@ Issue Functions
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: VolumeIssueCreationWF
   - **Task/Event**: On creation, state transitions

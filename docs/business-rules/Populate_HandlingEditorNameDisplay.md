@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Populate Handling Editor Name Display
+Populate Handling Editor Name Display. It primarily works with attribute(s): JournalHandlingEditorNameDisplay.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: SetAttributeValueBusinessAction.
 - Reads/writes attributes including: JournalHandlingEditorNameDisplay.
@@ -27,7 +29,9 @@ Populate Handling Editor Name Display
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalUpsertGroup/Populate_HandlingEditorNameDisplay.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

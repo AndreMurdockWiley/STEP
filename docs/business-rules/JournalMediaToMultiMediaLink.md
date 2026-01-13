@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Validates that "ProductMediaType" = "Both".
+Validates that "ProductMediaType" = "Both". It primarily works with attribute(s): JournalMMPackageID. If validation fails, the user sees an error message such as: "ERROR DURRING LINKING:".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Validate: "ProductMediaType" = "Both".
 - Reads/writes attributes including: JournalMMPackageID, ProductMediaType.
@@ -25,6 +27,8 @@ Validates that "ProductMediaType" = "Both".
 - **In-script message**: ERROR DURRING LINKING:
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: —
   - **Task/Event**: Precondition: ProductMediaType = Both

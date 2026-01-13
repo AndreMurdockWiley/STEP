@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Other Product Collection Set Status
+Other Product Collection Set Status. It primarily works with attribute(s): CollectionStatus, OtherProductCollectionType.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: OtherProductCollectionType, CollectionStatus.
 
@@ -20,7 +22,9 @@ Other Product Collection Set Status
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): OtherProductCollectionRules/OtherProductCollectionSetStatus.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Issue Merge Creation With Copy To Online
+Issue Merge Creation With Copy To Online. It primarily works with attribute(s): IssueFromIssueNumber, IssueStatus, IssueType, StartingPubSequenceMedia. It is triggered from: VolumeIssueCreationWF (Initiate workflow). If validation fails, the user sees an error message such as: "Unable to merge! There are issues with Issue Run Date populated.".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Calls: volumeLibrary.validateIssuesRunDate, issueLibrary.findDigitalIssue, issueLibrary.mergeIssues.
 - Reads/writes attributes including: IssueFromIssueNumber, StartingPubSequenceMedia, IssueType, IssueStatus.
@@ -24,6 +26,8 @@ Issue Merge Creation With Copy To Online
 - **Configured error**: Unable to merge! There are issues with Issue Run Date populated.
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: VolumeIssueCreationWF
   - **Task/Event**: Initiate workflow

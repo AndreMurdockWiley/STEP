@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Inbound eCore
+Inbound eCore. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, Error_Description, Error_ISBN13, Error_JSON_Load, Error_ProductFullTitle, Error_Timestamp, Journals_Trigger_Attribute, ProducFirstEditor, ProductActivated, ProductBundleCode, ProductBundleCodeID, ProductBundleGroup, ProductBundleGroupID, ProductBundleSubscriptionType, ProductContentCategory, ProductContentEndDate, ProductContentEndDateCentury, ProductContentPublicationType, ProductContentStartDate, ProductContentStartDateCentury, ProductCopyrightYear, ProductCostCenter, ProductDateMonographPublishedOnline, ProductDoi, ProductDownloadStatus, ProductFinanceDivision, ProductFinanceEntitlementPlatform, ProductFinancePublicationType, ProductFirstAuthor, ProductFullTitle, ProductIPOwningCompany, ProductImprint, ProductIsTaxable, ProductIsbn, ProductIsbn13, ProductMediumCode, ProductMonographEdition, ProductMonographVolume, ProductOclcReferenceNumber, ProductOneSourceTaxCode, ProductOnlineIdentifier, ProductParentPublicationTitleID, ProductPrimaryProcessCode, ProductProcessStatusCode, ProductProductGroup, ProductProductLine, ProductProductTypeCode, ProductProfitCenter, ProductPublicationDate, ProductSAPMaterialNumber, ProductSendToWispers, ProductSubMediumCode, ProductSubscriptionTypeID, ProductUrl, SAPExternalMaterialGroup, SubjectCode, SubjectGroup, SubjectLevel2, SubjectOnlineCode. It is triggered from: OtherProductsCreationWF (State-2 initial state, conditional approval based on attribute completeness). If validation fails, the user sees an error message such as: "Creates Error_Record objects with error details, timestamps, and JSON payload when processing fails".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Locate task/state "New_Error".
 - Trigger workflow event "toeCore".
@@ -28,6 +30,8 @@ Inbound eCore
 - **In-script message**: ERROR IN PROCESSING Inbound eCore :
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: OtherProductsCreationWF
   - **Task/Event**: State-2 initial state, conditional approval based on attribute completeness

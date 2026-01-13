@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Backfile Generate Attributes Button Validity
+Backfile Generate Attributes Button Validity. It primarily works with attribute(s): JournalGroupCode, ProductSAPMaterialNumber. It is triggered from: Business condition (validation configured in STEP).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: ProductSAPMaterialNumber, JournalGroupCode.
 
@@ -19,6 +21,8 @@ Backfile Generate Attributes Button Validity
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Business condition (validation configured in STEP)
   - **Task/Event**: —

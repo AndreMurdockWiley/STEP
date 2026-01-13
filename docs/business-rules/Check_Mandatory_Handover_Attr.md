@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Check Mandatory Handover Attr
+Check Mandatory Handover Attr. It primarily works with attribute(s): JournalGroupCode, ProductMediaType, IDLPrintJournalCode, IDLPrintJournalISSN, IDLDigitalJournalCode, IDLDigitalJournalISSN. It is triggered from: Business condition (validation configured in STEP).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "ProductMediaType" == "Print", continue; otherwise error.
 - If "ProductMediaType" == "Print", continue; otherwise error.
@@ -24,6 +26,8 @@ Check Mandatory Handover Attr
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Business condition (validation configured in STEP)
   - **Task/Event**: —

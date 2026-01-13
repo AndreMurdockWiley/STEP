@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Issue Copy
+Issue Copy. It primarily works with attribute(s): IssueSAPMaterialNumber, IssueType, IssueVolumeNumber, JournalMediaCode. If validation fails, the user sees an error message such as: "An issue already exists with this Volume and issue number".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalMediaCode" == "Print", apply the corresponding branch logic.
 - Calls: issueLibrary.copyIssue.
@@ -26,7 +28,9 @@ Issue Copy
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): IssuesGroup/IssuesUpsertGroup/IssueCopy.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

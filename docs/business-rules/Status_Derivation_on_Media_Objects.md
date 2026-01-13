@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Status Derivation on Media Objects
+Status Derivation on Media Objects. It primarily works with attribute(s): DisplayDigitalMediaStatus, DisplayPrintMediaStatus, JournalAcceptingSubmission, JournalStatus.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalAcceptingSubmission" == "Pre-public Launch", apply the corresponding branch logic.
 - If "JournalAcceptingSubmission" == "Pre-public Takeover", apply the corresponding branch logic.
@@ -33,7 +35,9 @@ Status Derivation on Media Objects
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalUpsertGroup/Status_Derivation_on_Media_Objects.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

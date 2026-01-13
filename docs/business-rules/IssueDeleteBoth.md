@@ -13,9 +13,11 @@
 
 ### Functional description
 
-Issue Delete Both
+Issue Delete Both. It primarily works with attribute(s): C_IssueDeletedDate, C_IssueState, C_LastUpdated, C_MessageStatus, IssueState, JournalMediaCode. It is triggered from: Group_Issues_Data_Extract (OutBound Integration Endpoint - Republish on certain delete scenarios). If validation fails, the user sees an error message such as: "ERROR: Issue [name] can't be deleted - The issue has already been sent to SAP".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "IssueState" == "Draft", apply the corresponding branch logic.
 - If "C_IssueState" == "Enriched", apply the corresponding branch logic.
@@ -29,6 +31,8 @@ Issue Delete Both
 - **In-script message**: can't be deleted
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Group_Issues_Data_Extract
   - **Task/Event**: OutBound Integration Endpoint - Republish on certain delete scenarios

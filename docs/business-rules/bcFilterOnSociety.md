@@ -8,9 +8,11 @@
 
 ### Functional description
 
-bcFilterOnSociety
+bcFilterOnSociety. It primarily works with attribute(s): OrganizationName, OrganizationUrl, SocietyAcronym. It is triggered from: Outbound integration rule (configured in STEP Outbound Integration). If validation fails, the user sees an error message such as: "help me please".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: SocietyAcronym, OrganizationName, OrganizationUrl.
 
@@ -19,6 +21,8 @@ bcFilterOnSociety
 - **In-script message**: help me please
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Outbound integration rule (configured in STEP Outbound Integration)
   - **Task/Event**: —

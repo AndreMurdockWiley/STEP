@@ -8,9 +8,11 @@
 
 ### Functional description
 
-JSON_Splitter
+JSON_Splitter. It primarily works with attribute(s): PublicationDate.
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: PublicationDate.
 
@@ -20,7 +22,9 @@ JSON_Splitter
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/JSON_Splitter.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

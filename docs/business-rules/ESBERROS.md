@@ -12,9 +12,11 @@
 
 ### Functional description
 
-BR ESB VCH
+BR ESB VCH. It primarily works with attribute(s): EditorialContactCode, Error_Description, Error_EditorialCode, Error_EditorialID, Error_EditorialName, Error_JSON_Load, Error_Timestamp, JournalMediaFuturePrintStatusEffectDate, JournalVCHIdentifier, ProductTitle. It is triggered from: Error_Review_WF (New_Error task: toESB event). If validation fails, the user sees an error message such as: "ERROR IN Editorial Code :".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Locate task/state "New_Error".
 - Trigger workflow event "toESB".
@@ -25,6 +27,8 @@ BR ESB VCH
 - **In-script message**: ERROR IN Editorial Code :
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Error_Review_WF
   - **Task/Event**: New_Error task: toESB event

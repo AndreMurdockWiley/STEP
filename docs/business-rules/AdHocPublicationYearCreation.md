@@ -8,9 +8,11 @@
 
 ### Functional description
 
-Ad Hoc Publication Year Creation
+Ad Hoc Publication Year Creation. It primarily works with attribute(s): IssueSAPMaterialNumber, IssueType, IssueVolumeNumber, JournalMediaCode, JournalPublicationYear. If validation fails, the user sees an error message such as: "An issue already exists with this Volume and issue number".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - If "JournalMediaCode" == "Print", apply the corresponding branch logic.
 - Calls: pubLibrary.createYear.
@@ -22,7 +24,9 @@ Ad Hoc Publication Year Creation
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): PubYearGroup/PubYearUpsertGroup/AdHocPublicationYearCreation.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

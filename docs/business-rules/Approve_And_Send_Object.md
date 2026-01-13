@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Approve And Send Object
+Approve And Send Object. It primarily works with attribute(s): DynamicCollectionFlag, Journals_Trigger_Attribute, MessageStatus, OtherProductCollectionType. If validation fails, the user sees an error message such as: "ERROR DURING APPROVAL".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: JavaScriptBusinessLibrary.
 - If "OtherProductCollectionType" == "Dynamic", continue; otherwise error.
@@ -28,7 +30,9 @@ Approve And Send Object
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/Approve_And_Send_Object.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

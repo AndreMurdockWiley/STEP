@@ -9,9 +9,11 @@
 
 ### Functional description
 
-Navigates user to the Journal Creation Baseline Workflow Task List screen after journal creation
+Navigates user to the Journal Creation Baseline Workflow Task List screen after journal creation. It is triggered from: JournalCreationWFv2 (Journal_Baseline state).
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic.
 
 - Constructs URL to JournalCreationBaselineWorkflowTaskLIst screen and navigates user using UI.navigateUrl()
 
@@ -20,6 +22,8 @@ Navigates user to the Journal Creation Baseline Workflow Task List screen after 
 —
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: JournalCreationWFv2
   - **Task/Event**: Journal_Baseline state

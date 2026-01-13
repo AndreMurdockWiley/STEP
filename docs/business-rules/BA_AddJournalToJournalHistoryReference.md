@@ -11,11 +11,13 @@
 
 ### Functional description
 
-Add Journal to Journal History Reference
+Add Journal to Journal History Reference. If validation fails, the user sees an error message such as: "Error: "Please select only one History object at a time", "Cannot link History Journal object [name] to [journal] since [history] is already linked to [source]", "Selected object is not a Journal/Journal History object", "Cannot link more Journal to [name]. Only one Journal is allowed"".
 
 ### Functional logic
 
-—
+This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+
+- No further functional logic details were extracted.
 
 ### Errors
 
@@ -28,7 +30,9 @@ Add Journal to Journal History Reference
 
 ### Usage / trigger
 
-—
+Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalWorkflowGroup/BA_AddJournalToJournalHistoryReference.js.
+
+- No usage/trigger details were extracted.
 
 ### Dependencies / key functions
 

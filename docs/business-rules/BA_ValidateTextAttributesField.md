@@ -12,9 +12,11 @@
 
 ### Functional description
 
-Validate Text Attribute Field
+Validate Text Attribute Field. It primarily works with attribute(s): CollectionCode, CollectionYear, IssueVolumeNumber, JournalAIMassUpdateHistoryLog, JournalMarketingCopyHeadline, JournalMarketingCopySubjectArea, JournalMarketingCopyUSP1, JournalMarketingCopyUSP2, JournalMarketingCopyUSP3, JournalMarketingCopyUSP4, ProductActivated, ProductDoi, ProductOclcReferenceNumber, ProductSAPMaterialNumber, ProductShortTitle, ProductTitle, ProductUrl, SAPExternalMaterialGroup. It is triggered from: Journal_Data_Extract_Kafka (OutBound Integration Endpoint (commented out for testing as of 2/27/2025)). If validation fails, the user sees an error message such as: "<b>Please correct the Fields : </b>{errormessage}".
 
 ### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Reads/writes attributes including: JournalAIMassUpdateHistoryLog, ProductActivated.
 
@@ -23,6 +25,8 @@ Validate Text Attribute Field
 - **In-script message**: <b>Please correct the Fields : </b>{errormessage}
 
 ### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
 - **Configuration**: Journal_Data_Extract_Kafka
   - **Task/Event**: OutBound Integration Endpoint (commented out for testing as of 2/27/2025)
