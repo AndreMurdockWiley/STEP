@@ -12,7 +12,7 @@
 
 ### Functional description
 
-SAP Finance Attributes Generator. It primarily works with attribute(s): IssueTemplateMaterialNumber, IssueTemplateTitle, JournalFinanceHigherLevelMediaProduct, JournalFinanceJournalIdCodeProductlevel, JournalGroupCode, JournalIssueTemplateCreation, JournalMediaCode, ProductOneSourceTaxCode, ProductSAPMaterialNumber, ProductTitle, SAPExternalMaterialGroup.
+SAP Finance Attributes Generator. It primarily works with attribute(s): IssueTemplateMaterialNumber, IssueTemplateTitle, JournalFinanceHigherLevelMediaProduct, JournalFinanceJournalIdCodeProductlevel, JournalGroupCode, JournalIssueTemplateCreation, JournalMediaCode, ProductOneSourceTaxCode, ProductSAPMaterialNumber, ProductTitle, SAPExternalMaterialGroup. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

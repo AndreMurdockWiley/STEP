@@ -12,18 +12,17 @@
 
 ### Functional description
 
-Collection Upgrade Process. It primarily works with attribute(s): CollectionCode, CollectionYear.
+Collection Upgrade Process. It primarily works with attribute(s): CollectionCode, CollectionYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: collectionLibrary.createCollectionSubType, collectionLibrary.createCollection.
 - Reads/writes attributes including: CollectionYear, CollectionCode.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

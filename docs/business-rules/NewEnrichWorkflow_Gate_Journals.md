@@ -11,7 +11,7 @@
 
 ### Functional description
 
-NewEnrichWorkflow_Gate_Journals. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Update_1).
+NewEnrichWorkflow_Gate_Journals. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Update_1). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -24,7 +24,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

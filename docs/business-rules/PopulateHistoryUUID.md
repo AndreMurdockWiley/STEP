@@ -13,7 +13,7 @@
 
 ### Functional description
 
-Populate History UUID in Backfile DC. It primarily works with attribute(s): BackfileAutopopulateHistoryUUID, BackfileDCHistoryUUID, JournalBackfileContentISSN, JournalBackfileContentJournalGroupCode, JournalGroupCode, JournalHistoryISSNOnline, JournalHistoryISSNPrint.
+Populate History UUID in Backfile DC. It primarily works with attribute(s): BackfileAutopopulateHistoryUUID, BackfileDCHistoryUUID, JournalBackfileContentISSN, JournalBackfileContentJournalGroupCode, JournalGroupCode, JournalHistoryISSNOnline, JournalHistoryISSNPrint. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,7 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

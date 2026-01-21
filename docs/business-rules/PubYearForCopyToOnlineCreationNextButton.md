@@ -8,18 +8,17 @@
 
 ### Functional description
 
-Pub Year For Copy To Online Creation/Next Button. It primarily works with attribute(s): CopyToOnline, JournalMediaCode, JournalPublicationYear.
+Pub Year For Copy To Online Creation/Next Button. It primarily works with attribute(s): CopyToOnline, JournalMediaCode, JournalPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: pubLibrary.createYear, journalLibrary.journalCopyToOnlineValidity, pubLibrary.yearCopyToOnline.
 - Reads/writes attributes including: JournalPublicationYear, JournalMediaCode, CopyToOnline.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

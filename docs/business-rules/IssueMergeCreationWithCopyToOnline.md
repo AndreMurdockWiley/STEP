@@ -18,7 +18,6 @@ Issue Merge Creation With Copy To Online. It primarily works with attribute(s): 
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: volumeLibrary.validateIssuesRunDate, issueLibrary.findDigitalIssue, issueLibrary.mergeIssues.
 - Reads/writes attributes including: IssueFromIssueNumber, StartingPubSequenceMedia, IssueType, IssueStatus.
 
 ### Errors

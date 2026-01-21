@@ -12,24 +12,24 @@
 
 ### Functional description
 
-ISBN13 Search Action for API. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, ProductBundleCode, ProductBundleCodeID, ProductBundleGroup, ProductBundleGroupID, ProductBundleSubscriptionType, ProductDownloadStatus, ProductFullTitle, ProductIsbn13, ProductPrimaryProcessCode, ProductProcessStatusCode, ProductSubscriptionTypeID, SubjectCode, SubjectGroup, SubjectLevel2, SubjectOnlineCode.
+ISBN13 Search Action for API. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, ProductBundleCode, ProductBundleCodeID, ProductBundleGroup, ProductBundleGroupID, ProductBundleSubscriptionType, ProductDownloadStatus, ProductFullTitle, ProductIsbn13, ProductPrimaryProcessCode, ProductProcessStatusCode, ProductSubscriptionTypeID, SubjectCode, SubjectGroup, SubjectLevel2, SubjectOnlineCode. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Validate: "ProductIsbn" = "".
 - Reads/writes attributes including: ProductIsbn13, ProductPrimaryProcessCode, ProductProcessStatusCode, ProductDownloadStatus, ProductFullTitle, ProductBundleCodeID, ProductBundleGroupID, ProductSubscriptionTypeID, ProductBundleCode, ProductBundleGroup.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 
-Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/isbn13_search_action.js.
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- No usage/trigger details were extracted.
+- **Configuration**: Integration rule (configured in STEP Integration Endpoints)
+  - **Task/Event**: —
 
 ### Dependencies / key functions
 

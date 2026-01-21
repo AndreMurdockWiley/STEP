@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Auto Classification Other Product Collection To Archive Folder. It primarily works with attribute(s): CollectionStatus, OtherProductCollectionSubType, OtherProductCollectionType.
+Auto Classification Other Product Collection To Archive Folder. It primarily works with attribute(s): CollectionStatus, OtherProductCollectionSubType, OtherProductCollectionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

@@ -14,8 +14,6 @@ BC_DisplayHistoryTransition. It primarily works with attribute(s): HistoryOrigin
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "Journal_History_Relation" == "Regular Workflow", apply the corresponding branch logic.
-- If "Journal_History_Relation" == "Regular Workflow", apply the corresponding branch logic.
 - Reads/writes attributes including: HistoryOrigin, Journal_History_Relation.
 
 ### Errors

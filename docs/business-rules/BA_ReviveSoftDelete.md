@@ -7,7 +7,7 @@
 
 ### Functional description
 
-Revive Soft Delete. It is triggered from: Business action (triggered via Web UI button / workflow event / configured action). If validation fails, the user sees an error message such as: "- Cannot initiate because object is in Journal Creation Workflow".
+Revive Soft Delete. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -17,6 +17,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: - Cannot initiate because object is in Journal Creation Workflow
 - **In-script message**: - Cannot initiate because object is in Soft Delete Workflow
 - **In-script message**: - Cannot initiate because object is already in Revive Soft Delete Workflow
@@ -25,7 +26,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- **Configuration**: Business action (triggered via Web UI button / workflow event / configured action)
+- **Configuration**: Business action (triggered via Web UI / workflow event)
   - **Task/Event**: —
 
 ### Dependencies / key functions

@@ -14,7 +14,6 @@ Rebilling Tab Population. It primarily works with attribute(s): ProductActivated
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductRenewalSubscriptionType, ProductActivated.
 
 ### Errors

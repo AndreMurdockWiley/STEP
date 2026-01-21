@@ -12,7 +12,7 @@
 
 ### Functional description
 
-BA_triggerOIEPCollReport. It primarily works with attribute(s): DigitalJournalCode. It is triggered from: oiep_CollectionStandardReport (Republish events for collections and journals).
+BA_triggerOIEPCollReport. It primarily works with attribute(s): DigitalJournalCode. It is triggered from: oiep_CollectionStandardReport (Republish events for collections and journals). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

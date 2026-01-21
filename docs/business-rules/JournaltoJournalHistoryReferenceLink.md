@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Journal To Journal History Reference Link. It primarily works with attribute(s): JournalGroupCode, JournalHistorySequenceNumber, Journal_History_Seq. If validation fails, the user sees an error message such as: "Error:".
+Journal To Journal History Reference Link. It primarily works with attribute(s): JournalGroupCode, JournalHistorySequenceNumber, Journal_History_Seq. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,6 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: Error:
 
 ### Usage / trigger

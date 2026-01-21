@@ -12,18 +12,17 @@
 
 ### Functional description
 
-PopulateJPCMSIssueID. It primarily works with attribute(s): IDLIssueDOI, IssueDoi, IssueFromIssueNumber, IssueJpcmsId, IssueVolumeNumber, JournalGroupCode, JournalTrueStatus.
+PopulateJPCMSIssueID. It primarily works with attribute(s): IDLIssueDOI, IssueDoi, IssueFromIssueNumber, IssueJpcmsId, IssueVolumeNumber, JournalGroupCode, JournalTrueStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalTrueStatus" == "No", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalTrueStatus, JournalGroupCode, IssueVolumeNumber, IssueFromIssueNumber, IssueJpcmsId, IDLIssueDOI, IssueDoi.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

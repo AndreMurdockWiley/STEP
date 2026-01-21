@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Collection Functions. It primarily works with attribute(s): CollectionCode, CollectionStatus, CollectionSubType, CollectionType, CollectionYear, DatabaseCollectionDates, ProductActivated, ProductTitle. It is triggered from: CollectionCreationWF (On creation).
+Collection Functions. It primarily works with attribute(s): CollectionCode, CollectionStatus, CollectionSubType, CollectionType, CollectionYear, DatabaseCollectionDates, ProductActivated, ProductTitle. It is triggered from: CollectionCreationWF (On creation). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -25,7 +25,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

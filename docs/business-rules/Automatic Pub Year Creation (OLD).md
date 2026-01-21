@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Automatic Pub Year Creation (OLD). It primarily works with attribute(s): JournalFinanceProductType, JournalMediaCode, ProductPublicationYear.
+Automatic Pub Year Creation (OLD). It primarily works with attribute(s): JournalFinanceProductType, JournalMediaCode, ProductPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -21,7 +21,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

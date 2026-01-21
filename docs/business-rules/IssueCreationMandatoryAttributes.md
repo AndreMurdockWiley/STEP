@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **In-script message**: 'Supplement No' can't be empty for Supplement Issues
+- **Configured error**: 'Supplement No' can't be empty for Supplement Issues
 
 ### Usage / trigger
 

@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Links recently added and removed components of collections to separate reference types for tracking changes between Main and Approved workspaces. It primarily works with attribute(s): OtherProductCollectionType, CollectionCategory.
+Links recently added and removed components of collections to separate reference types for tracking changes between Main and Approved workspaces. It primarily works with attribute(s): OtherProductCollectionType, CollectionCategory. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

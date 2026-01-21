@@ -8,7 +8,7 @@
 
 ### Functional description
 
-BA for Wiley Demo. It primarily works with attribute(s): IDLJournalPublicationSet, IssueVolumeNumber, JournalMediaCode, JournalNumberOfVolumes, JournalPublicationYear, JournalStartingVolume, NumberOfIssues, VolumeGroupPubSet, VolumeGroupVolumesInPubSet, WIL_SortNumber.
+BA for Wiley Demo. It primarily works with attribute(s): IDLJournalPublicationSet, IssueVolumeNumber, JournalMediaCode, JournalNumberOfVolumes, JournalPublicationYear, JournalStartingVolume, NumberOfIssues, VolumeGroupPubSet, VolumeGroupVolumesInPubSet, WIL_SortNumber. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -21,7 +21,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

@@ -10,7 +10,7 @@
 
 ### Functional description
 
-BA_GroupIssuesToClassification. It is triggered from: Group_Issues_Data_Extract_Kafka.
+BA_GroupIssuesToClassification. It is triggered from: Group_Issues_Data_Extract_Kafka. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -20,7 +20,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

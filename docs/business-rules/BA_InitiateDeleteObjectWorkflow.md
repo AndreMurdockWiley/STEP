@@ -10,7 +10,7 @@
 
 ### Functional description
 
-Initiate Delete Object Workflow. It is triggered from: DeleteObjectWorkflow (startWorkflowByID). If validation fails, the user sees an error message such as: "Cannot initiate because its in Journal Creation Workflow; Cannot initiate because its already in Delete Object Workflow; Unable to initiate product into Delete Object Workflow".
+Initiate Delete Object Workflow. It is triggered from: DeleteObjectWorkflow (startWorkflowByID). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -20,7 +20,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **Configured error**: Cannot initiate because its in Journal Creation Workflow; Cannot initiate because its already in Delete Object Workflow; Unable to initiate product into Delete Object Workflow
+- **Configured error**: N/A (Business Action).
 - **In-script message**: - Cannot initiate because its in Journal Creation Workflow
 - **In-script message**: - Cannot initiate because its already in Delete Object Workflow
 

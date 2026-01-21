@@ -7,7 +7,7 @@
 
 ### Functional description
 
-Should_NonJournal_Trigger_Outbound. See the Functional Logic and Usage sections below for the specific configuration and trigger context.
+Should_NonJournal_Trigger_Outbound. It is triggered from: Integration rule (configured in STEP Integration Endpoints).
 
 ### Functional logic
 
@@ -21,9 +21,10 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Usage / trigger
 
-Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/Should_NonJournal_Trigger_Outbound.js.
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- No usage/trigger details were extracted.
+- **Configuration**: Integration rule (configured in STEP Integration Endpoints)
+  - **Task/Event**: —
 
 ### Dependencies / key functions
 

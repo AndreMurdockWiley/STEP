@@ -18,8 +18,6 @@ Ad Hoc Volume Creation. It primarily works with attribute(s): IssueSAPMaterialNu
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalMediaCode" == "Print", apply the corresponding branch logic.
-- Calls: volumeLibrary.createVolume.
 - Reads/writes attributes including: JournalStartingVolume, IssueType, IssueSAPMaterialNumber, IssueVolumeNumber, JournalMediaCode.
 
 ### Errors

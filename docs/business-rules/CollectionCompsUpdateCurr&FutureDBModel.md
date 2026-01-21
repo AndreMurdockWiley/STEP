@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Collection Component Update Curr & Future DB Model. It primarily works with attribute(s): CollectionCode, CollectionType, JournalInCurrentDatabaseModel, JournalInFutureDatabaseModel.
+Collection Component Update Curr & Future DB Model. It primarily works with attribute(s): CollectionCode, CollectionType, JournalInCurrentDatabaseModel, JournalInFutureDatabaseModel. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -24,7 +24,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

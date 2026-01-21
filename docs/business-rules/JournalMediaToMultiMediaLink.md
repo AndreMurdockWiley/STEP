@@ -13,17 +13,17 @@
 
 ### Functional description
 
-Validates that "ProductMediaType" = "Both". It primarily works with attribute(s): JournalMMPackageID. If validation fails, the user sees an error message such as: "ERROR DURRING LINKING:".
+Validates that "ProductMediaType" = "Both". It primarily works with attribute(s): JournalMMPackageID. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Validate: "ProductMediaType" = "Both".
-- Reads/writes attributes including: JournalMMPackageID, ProductMediaType.
+- Reads/writes attributes including: JournalMMPackageID.
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: ERROR DURRING LINKING:
 
 ### Usage / trigger

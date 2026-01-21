@@ -13,29 +13,27 @@
 
 ### Functional description
 
-Journal History Auto Creation. It primarily works with attribute(s): HistoryOrigin, JournalGroupCode, JournalHistoryAccessType, JournalHistoryCopyright, JournalHistoryISSNOnline, JournalHistoryISSNPrint, JournalHistoryIdentifiersDoi, JournalHistoryJournalCode, JournalHistoryPrimaryUrl, JournalHistorySequenceNumber, JournalHistoryWolCode, JournalMediaCode, ProductAbbreviatedTitle, ProductCopyrightLine, ProductDoi, ProductIssn, ProductRenewalSubscriptionType, ProductShortTitle, ProductSortTitle, ProductTitle, ProductUrl, SoftDelete. If validation fails, the user sees an error message such as: "A Reference of type 'Journal_History_Reference' already exists. Only updating the existing Journal History.".
+Automatically creates or updates a Journal History record and reference for a Journal (Print/Digital), keeping key identifiers and access type in sync. It primarily works with attribute(s): HistoryOrigin, JournalGroupCode, JournalHistoryAccessType, JournalHistoryCopyright, JournalHistoryISSNOnline, JournalHistoryISSNPrint, JournalHistoryIdentifiersDoi, JournalHistoryJournalCode, JournalHistoryPrimaryUrl, JournalHistorySequenceNumber, JournalHistoryWolCode, JournalMediaCode, ProductAbbreviatedTitle, ProductCopyrightLine, ProductDoi, ProductIssn, ProductRenewalSubscriptionType, ProductShortTitle, ProductSortTitle, ProductTitle, ProductUrl, SoftDelete. It is triggered from: Workflow: Journal Media workflow (completion) (Invoked by Business Action "JournalMediaComplete" (which references JournalHistoryAutoCreation).). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductRenewalSubscriptionType" == "Calendar Year", apply the corresponding branch logic.
-- If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
-- If "JournalMediaCode" == "Print", apply the corresponding branch logic.
-- If "JournalMediaCode" == "Print", apply the corresponding branch logic.
-- If "ProductRenewalSubscriptionType" == "Calendar Year", apply the corresponding branch logic.
-- If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalMediaCode, JournalGroupCode, ProductRenewalSubscriptionType, JournalHistoryAccessType, JournalHistoryISSNPrint, ProductIssn, JournalHistoryISSNOnline, ProductTitle, HistoryOrigin, ProductShortTitle.
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: A Reference of type 'Journal_History_Reference' already exists. Only updating the existing Journal History.
 
 ### Usage / trigger
 
-Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): JournalHistoryGroup/JournalHistoryAutoCreation.js.
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- No usage/trigger details were extracted.
+- **Configuration**: Workflow: Journal Media workflow (completion)
+  - **Task/Event**: Invoked by Business Action "JournalMediaComplete" (which references JournalHistoryAutoCreation).
+- **Configuration**: Workflow: Journal workflow (completion)
+  - **Task/Event**: Invoked by Business Action "Journals_Completed_Transition" (which references JournalHistoryAutoCreation).
 
 ### Dependencies / key functions
 

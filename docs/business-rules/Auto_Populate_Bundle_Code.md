@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Auto Populate Bundle Code. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, ProductBundleCode, ProductBundleGroup, ProductBundleSubscriptionType.
+Auto Populate Bundle Code. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, ProductBundleCode, ProductBundleGroup, ProductBundleSubscriptionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

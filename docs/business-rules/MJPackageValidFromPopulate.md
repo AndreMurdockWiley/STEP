@@ -12,7 +12,7 @@
 
 ### Functional description
 
-MJ Package Valid From Populate. It primarily works with attribute(s): ProductValidFrom.
+MJ Package Valid From Populate. It primarily works with attribute(s): ProductValidFrom. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

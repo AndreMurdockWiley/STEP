@@ -13,18 +13,17 @@
 
 ### Functional description
 
-Validates that "CollectionType" = "Database Model Collections". It primarily works with attribute(s): CollectionHeaderContentEndDate, CollectionHeaderContentStartDate, ComponentContentLicenseEndDate, ComponentContentLicenseStartDate.
+Validates that "CollectionType" = "Database Model Collections". It primarily works with attribute(s): CollectionHeaderContentEndDate, CollectionHeaderContentStartDate, ComponentContentLicenseEndDate, ComponentContentLicenseStartDate. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Validate: "CollectionType" = "Database Model Collections".
 - Reads/writes attributes including: CollectionType, CollectionHeaderContentStartDate, CollectionHeaderContentEndDate, ComponentContentLicenseStartDate, ComponentContentLicenseEndDate.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

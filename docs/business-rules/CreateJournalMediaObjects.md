@@ -12,21 +12,17 @@
 
 ### Functional description
 
-Create Journal Media Objects. It primarily works with attribute(s): DigitalJournalCode, IDLDigitalJournalCode, IDLDigitalJournalISSN, IDLDigitalJournalStatus, IDLJournalAvailableInEarlyView, IDLJournalFinanceContentCategory, IDLJournalFinanceDivision, IDLJournalFinanceEntitlementPlatform, IDLJournalFinancePublicationType, IDLJournalHomeWarehouse, IDLJournalOnlineOpen, IDLJournalOpenAccess, IDLPrintJournalCode, IDLPrintJournalISSN, IDLPrintJournalStatus, JournalAvailableInEarlyView, JournalHomeWarehouse, JournalMediaCode, JournalOnlineOpen, JournalOpenAccess, PrintJournalCode, ProductContentCategory, ProductFinanceDivision, ProductFinanceEntitlementPlatform, ProductFinancePublicationType, ProductFullTitle, ProductIssn, ProductMediaType, ProductStatus, ProductTitle.
+Create Journal Media Objects. It primarily works with attribute(s): DigitalJournalCode, IDLDigitalJournalCode, IDLDigitalJournalISSN, IDLDigitalJournalStatus, IDLJournalAvailableInEarlyView, IDLJournalFinanceContentCategory, IDLJournalFinanceDivision, IDLJournalFinanceEntitlementPlatform, IDLJournalFinancePublicationType, IDLJournalHomeWarehouse, IDLJournalOnlineOpen, IDLJournalOpenAccess, IDLPrintJournalCode, IDLPrintJournalISSN, IDLPrintJournalStatus, JournalAvailableInEarlyView, JournalHomeWarehouse, JournalMediaCode, JournalOnlineOpen, JournalOpenAccess, PrintJournalCode, ProductContentCategory, ProductFinanceDivision, ProductFinanceEntitlementPlatform, ProductFinancePublicationType, ProductFullTitle, ProductIssn, ProductMediaType, ProductStatus, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductMediaType" == "Print", apply the corresponding branch logic.
-- If "ProductMediaType" == "Online", apply the corresponding branch logic.
-- If "JournalTrueStatus" == "Yes", apply the corresponding branch logic.
-- If "JournalTrueStatus" == "Yes", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductTitle, ProductMediaType, IDLPrintJournalCode, IDLDigitalJournalCode, IDLDigitalJournalISSN, IDLDigitalJournalStatus, IDLJournalFinanceEntitlementPlatform, IDLPrintJournalISSN, IDLPrintJournalStatus, IDLJournalHomeWarehouse.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

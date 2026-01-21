@@ -18,8 +18,6 @@ Issue Copy. It primarily works with attribute(s): IssueSAPMaterialNumber, IssueT
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalMediaCode" == "Print", apply the corresponding branch logic.
-- Calls: issueLibrary.copyIssue.
 - Reads/writes attributes including: IssueType, IssueSAPMaterialNumber, IssueVolumeNumber, JournalMediaCode.
 
 ### Errors

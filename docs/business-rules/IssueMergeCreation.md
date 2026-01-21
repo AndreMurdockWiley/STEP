@@ -8,18 +8,17 @@
 
 ### Functional description
 
-Issue Merge Creation. It primarily works with attribute(s): IssueFromIssueNumber, IssueStatus, IssueType, StartingPubSequenceMedia.
+Issue Merge Creation. It primarily works with attribute(s): IssueFromIssueNumber, IssueStatus, IssueType, StartingPubSequenceMedia. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: volumeLibrary.validateIssuesRunDate, issueLibrary.mergeIssues.
 - Reads/writes attributes including: IssueFromIssueNumber, StartingPubSequenceMedia, IssueType, IssueStatus.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

@@ -8,20 +8,17 @@
 
 ### Functional description
 
-Issue Delete. It primarily works with attribute(s): C_IssueDeletedDate, C_IssueState, C_LastUpdated, C_MessageStatus, IssueState. If validation fails, the user sees an error message such as: "can't be deleted".
+Issue Delete. It primarily works with attribute(s): C_IssueDeletedDate, C_IssueState, C_LastUpdated, C_MessageStatus, IssueState. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "IssueState" == "Draft", apply the corresponding branch logic.
-- If "C_IssueState" == "Enriched", apply the corresponding branch logic.
-- If "IssueState" == "Enriched", apply the corresponding branch logic.
-- Calls: issueLibrary.issueDeleteCheck, issueLibrary.deleteIssue.
 - Reads/writes attributes including: IssueState, C_IssueState, C_MessageStatus, C_LastUpdated, C_IssueDeletedDate.
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: can't be deleted
 
 ### Usage / trigger

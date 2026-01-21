@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Collections Integrations JSON Utility Library. It primarily works with attribute(s): AG_Backfile_JSON_EXTRACT, AG_COLLECTION, AG_Common_Attributes, AG_History_JSON, AG_MultiJournal_Attributes, AG_MultiMedia_Attributes, AG_NonJournals_Export, Collection_Attributes_Extra_Grouping, History_Attributes_Extra_Grouping, Include_MJ_Journal_Attr, Issues_Extract_Grouping, Journal_Attributes_Extra_Grouping, Media_Attributes_Extra_Grouping. If validation fails, the user sees an error message such as: "Error in getReferencesAsJSON function:".
+Collections Integrations JSON Utility Library. It primarily works with attribute(s): AG_Backfile_JSON_EXTRACT, AG_COLLECTION, AG_Common_Attributes, AG_History_JSON, AG_MultiJournal_Attributes, AG_MultiMedia_Attributes, AG_NonJournals_Export, Collection_Attributes_Extra_Grouping, History_Attributes_Extra_Grouping, Include_MJ_Journal_Attr, Issues_Extract_Grouping, Journal_Attributes_Extra_Grouping, Media_Attributes_Extra_Grouping. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,6 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: Error in getReferencesAsJSON function:
 - **In-script message**: Error in getReferencesAsJSON_ModifiedComponents function:
 - **In-script message**: clearModifiedComponentsReferences failed:
@@ -31,9 +32,10 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Usage / trigger
 
-Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/Collections_Endpoints_JSON_Utility_Lib.js.
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- No usage/trigger details were extracted.
+- **Configuration**: Integration rule (configured in STEP Integration Endpoints)
+  - **Task/Event**: —
 
 ### Dependencies / key functions
 

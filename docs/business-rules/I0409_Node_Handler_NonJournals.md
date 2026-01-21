@@ -7,7 +7,7 @@
 
 ### Functional description
 
-I0409_Node_Handler_NonJournals. It is triggered from: Outbound integration rule (configured in STEP Outbound Integration).
+I0409_Node_Handler_NonJournals. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -17,13 +17,13 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 
 This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- **Configuration**: Outbound integration rule (configured in STEP Outbound Integration)
+- **Configuration**: Integration rule (configured in STEP Integration Endpoints)
   - **Task/Event**: —
 
 ### Dependencies / key functions

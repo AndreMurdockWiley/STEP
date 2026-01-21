@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Editorial Stage Derivation. It primarily works with attribute(s): JournalAcceptingSubmission, JournalEditorialStage, JournalMediaCode, ProductMediaType, ProductStatus.
+Editorial Stage Derivation. It primarily works with attribute(s): JournalAcceptingSubmission, JournalEditorialStage, JournalMediaCode, ProductMediaType, ProductStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

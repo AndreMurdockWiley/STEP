@@ -18,8 +18,6 @@ Populate Online Submission URL. It primarily works with attribute(s): JournalEdi
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalEditorialSubmissionSystem" == "Research Exchange Submission", apply the corresponding branch logic.
-- If "JournalEditorialSubmissionSystem" == "Research Exchange Submission", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalREXSiteName, JournalEditorialSubmissionSystem, JournalSubmissionUrlValue, PrevSubmissionSys_PIM, JournalGroupCode.
 
 ### Errors

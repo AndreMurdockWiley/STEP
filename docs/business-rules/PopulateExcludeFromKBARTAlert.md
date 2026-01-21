@@ -8,19 +8,17 @@
 
 ### Functional description
 
-Populate Exclude From KBART Alert. It primarily works with attribute(s): JournalHistoryExcludefromKbart.
+Populate Exclude From KBART Alert. It primarily works with attribute(s): JournalHistoryExcludefromKbart. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalHistoryExcludefromKbart" == "y", apply the corresponding branch logic.
-- If "JournalHistoryExcludefromKbart" == "n", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalHistoryExcludefromKbart.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

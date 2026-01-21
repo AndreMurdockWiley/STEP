@@ -7,7 +7,7 @@
 
 ### Functional description
 
-Journals_Add_Media_To_Workflow. If validation fails, the user sees an error message such as: "THIS FAILED TO GET INTO WORKFLOW:".
+Journals_Add_Media_To_Workflow. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -17,6 +17,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: THIS FAILED TO GET INTO WORKFLOW:
 
 ### Usage / trigger

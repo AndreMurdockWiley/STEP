@@ -21,7 +21,6 @@ This section summarizes the configured functional logic captured in the rules in
 
 - Locate task/state "New_Error".
 - Trigger workflow event "toeCore".
-- Calls: otherProductsLibrary.sequentialMatNoIncrement.
 - Reads/writes attributes including: Error_Description, Error_ISBN13, Error_ProductFullTitle, Error_Timestamp, Error_JSON_Load, ProductIsbn, ProductCopyrightYear, ProductUrl, ProductOclcReferenceNumber, SAPExternalMaterialGroup.
 
 ### Errors

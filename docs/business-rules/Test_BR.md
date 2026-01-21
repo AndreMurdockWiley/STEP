@@ -10,7 +10,7 @@
 
 ### Functional description
 
-Test_BR. It is triggered from: VolumeIssueCreationWF (Remove and Delete).
+Test_BR. It is triggered from: VolumeIssueCreationWF (Remove and Delete). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -20,7 +20,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

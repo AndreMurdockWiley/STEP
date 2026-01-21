@@ -13,7 +13,7 @@
 
 ### Functional description
 
-Backfile To Journal Reference LinkV2. It primarily works with attribute(s): JournalGroupCode. If validation fails, the user sees an error message such as: "Error:".
+Backfile To Journal Reference LinkV2. It primarily works with attribute(s): JournalGroupCode. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,6 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: Error:
 
 ### Usage / trigger

@@ -8,23 +8,17 @@
 
 ### Functional description
 
-Auto Classification Collections. It primarily works with attribute(s): CollectionStatus, CollectionSubType, CollectionType, CollectionYear, ProductTitle.
+Auto Classification Collections. It primarily works with attribute(s): CollectionStatus, CollectionSubType, CollectionType, CollectionYear, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CollectionType" == "Other Database", apply the corresponding branch logic.
-- If "CollectionType" == "Database Model Collections", apply the corresponding branch logic.
-- If "CollectionType" == "Specific", apply the corresponding branch logic.
-- If "CollectionStatus" == "Inactive", apply the corresponding branch logic.
-- If "CollectionStatus" == "Active", apply the corresponding branch logic.
-- Calls: collectionLibrary.collectionTypeConverter, collectionLibrary.createCollectionYear, collectionLibrary.createCollectionSubType.
 - Reads/writes attributes including: CollectionType, CollectionStatus, CollectionYear, CollectionSubType, ProductTitle.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

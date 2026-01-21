@@ -8,19 +8,17 @@
 
 ### Functional description
 
-Volume Creation/Next Button. It primarily works with attribute(s): CopyToOnline, CreateIssueTypeIDL, JournalMediaNumberOfVolumes, JournalNumberOfVolumes, JournalStartingVolume.
+Volume Creation/Next Button. It primarily works with attribute(s): CopyToOnline, CreateIssueTypeIDL, JournalMediaNumberOfVolumes, JournalNumberOfVolumes, JournalStartingVolume. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CopyToOnline" == "Yes", apply the corresponding branch logic.
-- Calls: volumeLibrary.createVolume, volumeLibrary.volumeCopyToOnline.
 - Reads/writes attributes including: CopyToOnline, JournalNumberOfVolumes, JournalMediaNumberOfVolumes, JournalStartingVolume, CreateIssueTypeIDL.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

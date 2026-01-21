@@ -8,18 +8,17 @@
 
 ### Functional description
 
-Populate Rebilling Web UI Alert. It primarily works with attribute(s): ProductActivated, ProductMediaType, ProductRenewalSubscriptionType.
+Populate Rebilling Web UI Alert. It primarily works with attribute(s): ProductActivated, ProductMediaType, ProductRenewalSubscriptionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductMediaType, ProductRenewalSubscriptionType, ProductActivated.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

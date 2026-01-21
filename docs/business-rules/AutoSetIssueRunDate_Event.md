@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Automatic Set Issue Run Date (EventProcessor). It primarily works with attribute(s): IssueJpcmsId, IssueRunDate, IssueStatus, JournalGroupCode, ProductOriginalPublicationDate, ProductRevisedPublicationDate. It is triggered from: Event Processor: "AutoSetIssueRunDate_Event".
+Automatic Set Issue Run Date (EventProcessor). It primarily works with attribute(s): IssueJpcmsId, IssueRunDate, IssueStatus, JournalGroupCode, ProductOriginalPublicationDate, ProductRevisedPublicationDate. It is triggered from: Event Processor: "AutoSetIssueRunDate_Event". If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

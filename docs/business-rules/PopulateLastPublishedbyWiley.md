@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Populate Last Published by Wiley. It primarily works with attribute(s): JournalLastPubYear, LastPublishedbyWiley, ProductStatus.
+Populate Last Published by Wiley. It primarily works with attribute(s): JournalLastPubYear, LastPublishedbyWiley, ProductStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

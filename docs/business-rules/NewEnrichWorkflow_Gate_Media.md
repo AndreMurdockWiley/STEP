@@ -11,7 +11,7 @@
 
 ### Functional description
 
-NewEnrichWorkflow_Gate_Media. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Media_To_Complete).
+NewEnrichWorkflow_Gate_Media. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Media_To_Complete). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -24,7 +24,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

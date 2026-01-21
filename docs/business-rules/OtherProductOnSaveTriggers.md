@@ -13,18 +13,17 @@
 
 ### Functional description
 
-Other Product On Save Triggers. It primarily works with attribute(s): ProductActivated.
+Other Product On Save Triggers. It primarily works with attribute(s): ProductActivated. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductActivated" == "Activated", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductActivated.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

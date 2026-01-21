@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Populate Prev Submission System. It primarily works with attribute(s): JournalEditorialSubmissionSystem, PrevSubmissionSys_PIM.
+Populate Prev Submission System. It primarily works with attribute(s): JournalEditorialSubmissionSystem, PrevSubmissionSys_PIM. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

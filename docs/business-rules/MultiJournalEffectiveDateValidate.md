@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Multi Journal Effective Date Validate. It primarily works with attribute(s): MultiJournalEffectiveDate, MultiJournalFuturePackageStatus, ProductTitle.
+Multi Journal Effective Date Validate. It primarily works with attribute(s): MultiJournalEffectiveDate, MultiJournalFuturePackageStatus, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

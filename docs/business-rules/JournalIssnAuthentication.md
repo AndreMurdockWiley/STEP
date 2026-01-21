@@ -23,7 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **In-script message**: Invalid ISSN - Expecting
+- **Configured error**: Invalid ISSN - Expecting
 
 ### Usage / trigger
 

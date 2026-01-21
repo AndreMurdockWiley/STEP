@@ -8,7 +8,7 @@
 
 ### Functional description
 
-StatusandStatusMessage. It primarily works with attribute(s): LastUpdatedNew, Status, StatusMessage.
+StatusandStatusMessage. It primarily works with attribute(s): LastUpdatedNew, Status, StatusMessage. It is triggered from: Integration rule (configured in STEP Integration Endpoints).
 
 ### Functional logic
 
@@ -22,9 +22,10 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Usage / trigger
 
-Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/StatusandStatusMessage.js.
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- No usage/trigger details were extracted.
+- **Configuration**: Integration rule (configured in STEP Integration Endpoints)
+  - **Task/Event**: —
 
 ### Dependencies / key functions
 

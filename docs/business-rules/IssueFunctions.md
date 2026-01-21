@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Issue Functions. It primarily works with attribute(s): IssueEmlo, IssueFromIssueNumber, IssueFurtherDescription, IssueId, IssueJpcmsId, IssuePubSequence, IssuePublicationType, IssueReportingYear, IssueSAPMaterialNumber, IssueStatus, IssueSupplementNo, IssueTitle, IssueToIssueNumber, IssueType, IssueVolumeNumber, JournalMediaCode, ProductOriginalPublicationDate, ProductPublicationYear, ProductSAPMaterialNumber, StartingPubSequenceMedia. It is triggered from: VolumeIssueCreationWF (On creation, state transitions).
+Issue Functions. It primarily works with attribute(s): IssueEmlo, IssueFromIssueNumber, IssueFurtherDescription, IssueId, IssueJpcmsId, IssuePubSequence, IssuePublicationType, IssueReportingYear, IssueSAPMaterialNumber, IssueStatus, IssueSupplementNo, IssueTitle, IssueToIssueNumber, IssueType, IssueVolumeNumber, JournalMediaCode, ProductOriginalPublicationDate, ProductPublicationYear, ProductSAPMaterialNumber, StartingPubSequenceMedia. It is triggered from: VolumeIssueCreationWF (On creation, state transitions). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -30,7 +30,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

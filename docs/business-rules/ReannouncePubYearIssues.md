@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Reannounce Pub Year Issues. It primarily works with attribute(s): IssueVolumeNumber. If validation fails, the user sees an error message such as: "Reannouncement not successful! Entered Volume {volumeNum} does not exist In the publication Year {pubname}".
+Reannounce Pub Year Issues. It primarily works with attribute(s): IssueVolumeNumber. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **Configured error**: Reannouncement not successful! Entered Volume {volumeNum} does not exist In the publication Year {pubname}
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

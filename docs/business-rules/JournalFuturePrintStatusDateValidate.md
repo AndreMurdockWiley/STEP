@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Journal Future Print Status Effect Date Validate. It primarily works with attribute(s): JournalMediaFuturePrintStatus, JournalMediaFuturePrintStatusEffectDate, ProductStatus, ProductTitle.
+Journal Future Print Status Effect Date Validate. It primarily works with attribute(s): JournalMediaFuturePrintStatus, JournalMediaFuturePrintStatusEffectDate, ProductStatus, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

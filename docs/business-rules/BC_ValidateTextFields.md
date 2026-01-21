@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **In-script message**: Please correct the Fields :
+- **Configured error**: Please correct the Fields :
 
 ### Usage / trigger
 

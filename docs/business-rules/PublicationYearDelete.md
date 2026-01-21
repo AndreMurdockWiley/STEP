@@ -12,20 +12,17 @@
 
 ### Functional description
 
-Publication Year Delete. It primarily works with attribute(s): C_IssueDeletedDate, C_IssueState, C_LastUpdated, C_MessageStatus, IssueState. It is triggered from: Group_Issues_Data_Extract. If validation fails, the user sees an error message such as: "The selected Publication Year contains a Volume which has an Issue with JPCMS and Original Publication Date populated; Issue [name] can't be deleted - The issue has already been sent to SAP".
+Publication Year Delete. It primarily works with attribute(s): C_IssueDeletedDate, C_IssueState, C_LastUpdated, C_MessageStatus, IssueState. It is triggered from: Group_Issues_Data_Extract. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "IssueState" == "Draft", apply the corresponding branch logic.
-- If "IssueState" == "Enriched", apply the corresponding branch logic.
-- Calls: pubLibrary.deletePubYear, pubYearLibrary.pubYearDeleteCheck, volumeLibrary.deleteVolume, pubYearLibrary.deletePubYear, issueLibrary.issueDeleteCheck, issueLibrary.deleteIssue.
 - Reads/writes attributes including: IssueState, C_IssueState, C_MessageStatus, C_IssueDeletedDate, C_LastUpdated.
 
 ### Errors
 
-- **Configured error**: The selected Publication Year contains a Volume which has an Issue with JPCMS and Original Publication Date populated; Issue [name] can't be deleted - The issue has already been sent to SAP
+- **Configured error**: N/A (Business Action).
 - **In-script message**: The Following Publication Year(s) can't be deleted.
 - **In-script message**: can't be deleted
 

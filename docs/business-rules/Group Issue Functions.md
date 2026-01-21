@@ -12,24 +12,17 @@
 
 ### Functional description
 
-Group Issue Functions. It primarily works with attribute(s): C_GroupIssue_UUID, C_IssueState, C_JournalID, C_MessageStatus, C_Name, C_PubYearID, C_VolumeID, D_ID, D_JournalMediaID, D_PubYearID, D_VolumeID, GroupIssueID, IssueFromIssueNumber, IssueState, IssueSupplementNo, IssueToIssueNumber, IssueType, IssueVolumeNumber, JournalGroupCode, P_ID, P_JournalMediaID, P_PubYearID, P_VolumeID, ProductPublicationYear. It is triggered from: VolumeIssueCreationWF (State-11 (approval)).
+Group Issue Functions. It primarily works with attribute(s): C_GroupIssue_UUID, C_IssueState, C_JournalID, C_MessageStatus, C_Name, C_PubYearID, C_VolumeID, D_ID, D_JournalMediaID, D_PubYearID, D_VolumeID, GroupIssueID, IssueFromIssueNumber, IssueState, IssueSupplementNo, IssueToIssueNumber, IssueType, IssueVolumeNumber, JournalGroupCode, P_ID, P_JournalMediaID, P_PubYearID, P_VolumeID, ProductPublicationYear. It is triggered from: VolumeIssueCreationWF (State-11 (approval)). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Plugin: JavaScriptBusinessLibrary.
-- If "IssueType" == "Standard Issue", apply the corresponding branch logic.
-- If "IssueType" == "Merged Issue", apply the corresponding branch logic.
-- If "IssueType" == "Supplement", apply the corresponding branch logic.
-- If "IssueType" == "Special Issue", apply the corresponding branch logic.
-- If "IssueState" == "Draft", apply the corresponding branch logic.
-- If "IssueState" == "Draft", apply the corresponding branch logic.
 - Reads/writes attributes including: IssueState, C_IssueState, IssueType, JournalGroupCode, ProductPublicationYear, IssueVolumeNumber, IssueFromIssueNumber, GroupIssueID, IssueToIssueNumber, IssueSupplementNo.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

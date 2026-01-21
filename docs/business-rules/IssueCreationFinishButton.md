@@ -13,22 +13,19 @@
 
 ### Functional description
 
-Issue Creation/Finish Button. It primarily works with attribute(s): ContinuousNumbering, CopyToOnline, CreateIssueTypeIDL, JournalGroupCode, NumberOfIssues, StartingIssueNumber, StartingIssueNumberVolume, StartingPubSequenceMedia, StartingSupplementNoVolume, StartingSupplementNoYear. It is triggered from: JournalCreationWFV3Backup (State-7, Event: Finalize). If validation fails, the user sees an error message such as: "ERROR IN TRIGGER FOR WORKFLOW:".
+Issue Creation/Finish Button. It primarily works with attribute(s): ContinuousNumbering, CopyToOnline, CreateIssueTypeIDL, JournalGroupCode, NumberOfIssues, StartingIssueNumber, StartingIssueNumberVolume, StartingPubSequenceMedia, StartingSupplementNoVolume, StartingSupplementNoYear. It is triggered from: JournalCreationWFV3Backup (State-7, Event: Finalize). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Locate workflow instance "JournalCreationWFV3Backup".
-- If "ContinuousNumbering" == "Yes", apply the corresponding branch logic.
-- If "ContinuousNumbering" == "Yes", apply the corresponding branch logic.
-- If "CopyToOnline" == "Yes", apply the corresponding branch logic.
 - Trigger workflow event "Finalize".
-- Calls: issueLibrary.createIssue, issueLibrary.issueCopyToOnline.
 - Reads/writes attributes including: ContinuousNumbering, CopyToOnline, JournalGroupCode, NumberOfIssues, CreateIssueTypeIDL, StartingPubSequenceMedia, StartingIssueNumber, StartingIssueNumberVolume, StartingSupplementNoYear, StartingSupplementNoVolume.
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: ERROR IN TRIGGER FOR WORKFLOW:
 
 ### Usage / trigger

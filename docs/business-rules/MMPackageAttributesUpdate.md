@@ -8,7 +8,7 @@
 
 ### Functional description
 
-MM Package Attributes Update. It primarily works with attribute(s): JournalMMPackageID, ProductFinanceBillingModel, ProductOwnershipStatus, ProductProfitCenter, ProductShortTitle, SAPProfitCenter, SocietyPrimaryAffiliated. If validation fails, the user sees an error message such as: "There is no Multimedia for the journal. Please Check".
+MM Package Attributes Update. It primarily works with attribute(s): JournalMMPackageID, ProductFinanceBillingModel, ProductOwnershipStatus, ProductProfitCenter, ProductShortTitle, SAPProfitCenter, SocietyPrimaryAffiliated. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,6 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: There is no Multimedia for the journal. Please Check
 
 ### Usage / trigger

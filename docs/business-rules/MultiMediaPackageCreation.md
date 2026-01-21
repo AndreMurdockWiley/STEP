@@ -12,18 +12,17 @@
 
 ### Functional description
 
-Validates that "ProductMediaType" = "Both". It primarily works with attribute(s): JournalGroupCode, ProductFinanceBillingModel, ProductSAPMaterialNumber, ProductShortTitle, ProductStatus, ProductTitle.
+Validates that "ProductMediaType" = "Both". It primarily works with attribute(s): JournalGroupCode, ProductFinanceBillingModel, ProductSAPMaterialNumber, ProductShortTitle, ProductStatus, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Validate: "ProductMediaType" = "Both".
-- Reads/writes attributes including: JournalGroupCode, ProductStatus, ProductShortTitle, ProductFinanceBillingModel, ProductSAPMaterialNumber, ProductTitle, ProductMediaType.
+- Reads/writes attributes including: JournalGroupCode, ProductStatus, ProductShortTitle, ProductFinanceBillingModel, ProductSAPMaterialNumber, ProductTitle.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

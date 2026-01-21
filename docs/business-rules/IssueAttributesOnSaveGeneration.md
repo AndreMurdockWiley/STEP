@@ -18,10 +18,6 @@ Issue Attributes On-Save Generation. It primarily works with attribute(s): Issue
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "IssueType" == "Standard Issue", apply the corresponding branch logic.
-- If "IssueType" == "Merged Issue", apply the corresponding branch logic.
-- If "IssueType" == "Supplement", apply the corresponding branch logic.
-- Calls: issueLibrary.generateIssueUniqueAttributes, issueLibrary.generateIssueDescription.
 - Reads/writes attributes including: IssueSAPMaterialNumber, IssueType, IssueFromIssueNumber, IssueToIssueNumber, IssueSupplementNo.
 
 ### Errors

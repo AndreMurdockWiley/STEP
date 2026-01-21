@@ -8,7 +8,7 @@
 
 ### Functional description
 
-In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Approve" when "SoftDelete" == "Yes" and navigates the user to the Web UI homepage; otherwise shows an error. It primarily works with attribute(s): SoftDelete. It is triggered from: Workflow: "SoftDeleteWorkflow" (Workflow State/Task: "Review", Workflow Event: "Approve"). If validation fails, the user sees an error message such as: "Please set Soft Delete as 'Yes' to approve Soft Delete".
+In workflow "SoftDeleteWorkflow" at task/state "Review", triggers event "Approve" when "SoftDelete" == "Yes" and navigates the user to the Web UI homepage; otherwise shows an error. It primarily works with attribute(s): SoftDelete. It is triggered from: Workflow: "SoftDeleteWorkflow" (Workflow State/Task: "Review", Workflow Event: "Approve"). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,6 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: Please set Soft Delete as 'Yes' to approve Soft Delete
 
 ### Usage / trigger

@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Volume Functions. It primarily works with attribute(s): IssueFromIssueNumber, IssueRunDate, IssueVolumeNumber, JournalMediaCode, ProductPublicationYear.
+Volume Functions. It primarily works with attribute(s): IssueFromIssueNumber, IssueRunDate, IssueVolumeNumber, JournalMediaCode, ProductPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -25,7 +25,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

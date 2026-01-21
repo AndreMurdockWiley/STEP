@@ -7,7 +7,7 @@
 
 ### Functional description
 
-Executes logic within workflow "JournalCreationWFV3Backup" context. It is triggered from: Workflow: "JournalCreationWFV3Backup". If validation fails, the user sees an error message such as: "- Cannot initiate because object is already in Soft Delete Workflow".
+Executes logic within workflow "JournalCreationWFV3Backup" context. It is triggered from: Workflow: "JournalCreationWFV3Backup". If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,6 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: - Cannot initiate because object is already in Soft Delete Workflow
 
 ### Usage / trigger

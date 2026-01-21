@@ -8,25 +8,24 @@
 
 ### Functional description
 
-Test Trigger Rule Journal Refs Send. It primarily works with attribute(s): JournalIssueTemplateCreation, MessageStatus, ProductTitle.
+Test Trigger Rule Journal Refs Send. It primarily works with attribute(s): JournalIssueTemplateCreation, MessageStatus, ProductTitle. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Plugin: ReferenceOtherBABusinessAction.
 - Reads/writes attributes including: ProductTitle, JournalIssueTemplateCreation, MessageStatus.
-- Parameter "ReferencedBA": BA_GroupIssuesToClassification
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 
-Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Integrations/Test_Trigger_Rule_Journal_Refs_Send.js.
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- No usage/trigger details were extracted.
+- **Configuration**: Integration rule (configured in STEP Integration Endpoints)
+  - **Task/Event**: —
 
 ### Dependencies / key functions
 

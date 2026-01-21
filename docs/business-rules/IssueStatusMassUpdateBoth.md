@@ -13,7 +13,7 @@
 
 ### Functional description
 
-Issue Status Mass Update Both. It primarily works with attribute(s): IssueStatus, JournalMediaCode.
+Issue Status Mass Update Both. It primarily works with attribute(s): IssueStatus, JournalMediaCode. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,7 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

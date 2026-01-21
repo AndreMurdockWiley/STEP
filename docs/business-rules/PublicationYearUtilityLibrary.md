@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Publication Year Utility Library (OLD). It primarily works with attribute(s): ContinuousNumbering, CreateIssueTypeIDL, IssueNumber, IssuePubSequence, IssueSentToSAP, IssueType, IssueVolumeNumber, JournalGroupCode, JournalMediaCode, JournalNumberOfVolumes, JournalPublicationYear, JournalStartingVolume, NumberOfIssues, ProductPublicationYear, VolumeGroupPublicationSet. It is triggered from: Workflow: "VolumeIssueCreationWF". If validation fails, the user sees an error message such as: "Can't Delete the Publication Year. There is an issue that had been sent to SAP".
+Publication Year Utility Library (OLD). It primarily works with attribute(s): ContinuousNumbering, CreateIssueTypeIDL, IssueNumber, IssuePubSequence, IssueSentToSAP, IssueType, IssueVolumeNumber, JournalGroupCode, JournalMediaCode, JournalNumberOfVolumes, JournalPublicationYear, JournalStartingVolume, NumberOfIssues, ProductPublicationYear, VolumeGroupPublicationSet. It is triggered from: Workflow: "VolumeIssueCreationWF". If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -29,6 +29,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: Can't Delete the Publication Year. There is an issue that had been sent to SAP
 
 ### Usage / trigger

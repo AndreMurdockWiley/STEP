@@ -10,7 +10,7 @@
 
 ### Functional description
 
-Collection Upgrade Process State. It is triggered from: CollectionCreationWF (State-7: MoveToEnd event).
+Collection Upgrade Process State. It is triggered from: CollectionCreationWF (State-7: MoveToEnd event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,7 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

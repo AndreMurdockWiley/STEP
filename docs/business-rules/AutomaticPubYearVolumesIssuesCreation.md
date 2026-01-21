@@ -19,7 +19,6 @@ Automatic Pub Year/Volumes/Issues Creation. It primarily works with attribute(s)
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalMergedIssues" == "No", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalContinuousNumbering, JournalVolumeIntervalOffset, JournalMergedIssues, Copy_Continuous_Number, Copy_Volume_Interval_offset.
 
 ### Errors

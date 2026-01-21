@@ -8,19 +8,17 @@
 
 ### Functional description
 
-Journal History Attribute Generation Button. It primarily works with attribute(s): JournalGroupCode, JournalHistoryAccessType, JournalHistoryJournalCode, JournalHistoryWolCode, ProductAbbreviatedTitle, ProductRenewalSubscriptionType, ProductShortTitle, ProductSortTitle, ProductTitle.
+Journal History Attribute Generation Button. It primarily works with attribute(s): JournalGroupCode, JournalHistoryAccessType, JournalHistoryJournalCode, JournalHistoryWolCode, ProductAbbreviatedTitle, ProductRenewalSubscriptionType, ProductShortTitle, ProductSortTitle, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductRenewalSubscriptionType" == "Calendar Year", apply the corresponding branch logic.
-- If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductTitle, ProductShortTitle, ProductAbbreviatedTitle, ProductSortTitle, JournalGroupCode, ProductRenewalSubscriptionType, JournalHistoryJournalCode, JournalHistoryWolCode, JournalHistoryAccessType.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

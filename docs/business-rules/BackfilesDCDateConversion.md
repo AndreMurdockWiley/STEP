@@ -13,7 +13,7 @@
 
 ### Functional description
 
-Backfiles DC Date Conversion. It primarily works with attribute(s): JANISJournalBackfileContentEnd, JANISJournalBackfileContentStart, JournalBackfileContentEndDate, JournalBackfileContentStartDate.
+Backfiles DC Date Conversion. It primarily works with attribute(s): JANISJournalBackfileContentEnd, JANISJournalBackfileContentStart, JournalBackfileContentEndDate, JournalBackfileContentStartDate. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,7 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

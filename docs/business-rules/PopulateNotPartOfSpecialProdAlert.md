@@ -8,19 +8,17 @@
 
 ### Functional description
 
-PopulateNotPartOfSpecialProdAlert. It primarily works with attribute(s): JournalNotPartOfSpecialProd.
+PopulateNotPartOfSpecialProdAlert. It primarily works with attribute(s): JournalNotPartOfSpecialProd. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalNotPartOfSpecialProd" == "y", apply the corresponding branch logic.
-- If "JournalNotPartOfSpecialProd" == "n", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalNotPartOfSpecialProd.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

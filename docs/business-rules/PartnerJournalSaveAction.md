@@ -13,7 +13,7 @@
 
 ### Functional description
 
-This business action is triggered, when save button is clicked on web ui for partner products. It primarily works with attribute(s): JournalStatus, JournalUrlAuthorGuidelinesLink, ProductActivated, ProductEISSN, ProductPISSN, ProductRevenueModel, ProductUrl.
+This business action is triggered, when save button is clicked on web ui for partner products. It primarily works with attribute(s): JournalStatus, JournalUrlAuthorGuidelinesLink, ProductActivated, ProductEISSN, ProductPISSN, ProductRevenueModel, ProductUrl. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -23,7 +23,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

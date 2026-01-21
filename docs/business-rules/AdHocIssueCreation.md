@@ -18,8 +18,6 @@ Ad Hoc Issue Creation. It primarily works with attribute(s): IssueSAPMaterialNum
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalMediaCode" == "Print", apply the corresponding branch logic.
-- Calls: issueLibrary.createIssue.
 - Reads/writes attributes including: StartingPubSequenceMedia, StartingIssueNumber, StartingIssueNumberVolume, StartingSupplementNoYear, StartingSupplementNoVolume, IssueType, IssueSAPMaterialNumber, IssueVolumeNumber, JournalMediaCode.
 
 ### Errors

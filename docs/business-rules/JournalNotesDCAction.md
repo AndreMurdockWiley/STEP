@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Journal Notes Data Container Action. It primarily works with attribute(s): JournalNotes, JournalNotesCreatedBy, JournalNotesCreatedDate, JournalNotesIsModified, JournalNotesJournalUUID, JournalNotesModifiedBy, JournalNotesModifiedDate, JournalNotesSendToSAP, JournalNotesType, JournalSAPNotes.
+Journal Notes Data Container Action. It primarily works with attribute(s): JournalNotes, JournalNotesCreatedBy, JournalNotesCreatedDate, JournalNotesIsModified, JournalNotesJournalUUID, JournalNotesModifiedBy, JournalNotesModifiedDate, JournalNotesSendToSAP, JournalNotesType, JournalSAPNotes. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

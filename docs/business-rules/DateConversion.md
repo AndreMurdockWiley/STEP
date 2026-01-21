@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Date Conversion. It primarily works with attribute(s): JournalEditorialAuthorServicesEnabldDt, JournalRightsFromWhatDate, JournalStartDate, ProductContentEndDate, ProductContentStartDate. It is triggered from: Business action (triggered via Web UI button / workflow event / configured action).
+Date Conversion. It primarily works with attribute(s): JournalEditorialAuthorServicesEnabldDt, JournalRightsFromWhatDate, JournalStartDate, ProductContentEndDate, ProductContentStartDate. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,13 +22,13 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 
 This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- **Configuration**: Business action (triggered via Web UI button / workflow event / configured action)
+- **Configuration**: Business action (triggered via Web UI / workflow event)
   - **Task/Event**: —
 
 ### Dependencies / key functions

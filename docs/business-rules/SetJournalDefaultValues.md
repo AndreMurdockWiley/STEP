@@ -13,18 +13,17 @@
 
 ### Functional description
 
-To set default values to some journal attributes, during journal creation with Journal Handover Form. It primarily works with attribute(s): JournalTrueStatus, ProductSubType, JournalStatusOnOL, JournalAccessBasis, JournalRightsDarkArchServices, ProductDivision, ProductLanguage.
+To set default values to some journal attributes, during journal creation with Journal Handover Form. It primarily works with attribute(s): JournalTrueStatus, ProductSubType, JournalStatusOnOL, JournalAccessBasis, JournalRightsDarkArchServices, ProductDivision, ProductLanguage. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalTrueStatus" == "Yes", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalTrueStatus, ProductSubType, JournalStatusOnOL, JournalAccessBasis, JournalRightsDarkArchServices, ProductDivision, ProductLanguage.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

@@ -12,21 +12,17 @@
 
 ### Functional description
 
-Automatic Pub Year/Volumes/Issues Creation (EventProcessor). It primarily works with attribute(s): Copy_Continuous_Number, Copy_Volume_Interval_offset, IssueStatus, IssueType, JournalFinanceProductType, JournalPublicationYear, JournalStartingVolume, ManualAGA, MediaVolumeCount, MultiVolumeJournals, StartingIssueNumber, StartingPubSequenceMedia. It is triggered from: Event Processor: "AutoPubYearVolumesIssuesCreation_Event".
+Automatic Pub Year/Volumes/Issues Creation (EventProcessor). It primarily works with attribute(s): Copy_Continuous_Number, Copy_Volume_Interval_offset, IssueStatus, IssueType, JournalFinanceProductType, JournalPublicationYear, JournalStartingVolume, ManualAGA, MediaVolumeCount, MultiVolumeJournals, StartingIssueNumber, StartingPubSequenceMedia. It is triggered from: Event Processor: "AutoPubYearVolumesIssuesCreation_Event". If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "Copy_Continuous_Number" == "Yes", apply the corresponding branch logic.
-- If "Copy_Continuous_Number" == "No", apply the corresponding branch logic.
-- If "Copy_Continuous_Number" == "No", apply the corresponding branch logic.
-- Calls: pubLibrary.getLastPublicationYear, pubLibrary.createYear, volumeLibrary.createVolume, issueLibrary.createIssue.
 - Reads/writes attributes including: Copy_Continuous_Number, Copy_Volume_Interval_offset, MultiVolumeJournals, MediaVolumeCount, ManualAGA, JournalFinanceProductType, JournalStartingVolume, StartingIssueNumber, JournalPublicationYear, IssueType.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

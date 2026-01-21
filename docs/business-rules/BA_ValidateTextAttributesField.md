@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Validate Text Attribute Field. It primarily works with attribute(s): CollectionCode, CollectionYear, IssueVolumeNumber, JournalAIMassUpdateHistoryLog, JournalMarketingCopyHeadline, JournalMarketingCopySubjectArea, JournalMarketingCopyUSP1, JournalMarketingCopyUSP2, JournalMarketingCopyUSP3, JournalMarketingCopyUSP4, ProductActivated, ProductDoi, ProductOclcReferenceNumber, ProductSAPMaterialNumber, ProductShortTitle, ProductTitle, ProductUrl, SAPExternalMaterialGroup. It is triggered from: Journal_Data_Extract_Kafka (OutBound Integration Endpoint (commented out for testing as of 2/27/2025)). If validation fails, the user sees an error message such as: "<b>Please correct the Fields : </b>{errormessage}".
+Validate Text Attribute Field. It primarily works with attribute(s): CollectionCode, CollectionYear, IssueVolumeNumber, JournalAIMassUpdateHistoryLog, JournalMarketingCopyHeadline, JournalMarketingCopySubjectArea, JournalMarketingCopyUSP1, JournalMarketingCopyUSP2, JournalMarketingCopyUSP3, JournalMarketingCopyUSP4, ProductActivated, ProductDoi, ProductOclcReferenceNumber, ProductSAPMaterialNumber, ProductShortTitle, ProductTitle, ProductUrl, SAPExternalMaterialGroup. It is triggered from: Journal_Data_Extract_Kafka (OutBound Integration Endpoint (commented out for testing as of 2/27/2025)). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,6 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: <b>Please correct the Fields : </b>{errormessage}
 
 ### Usage / trigger

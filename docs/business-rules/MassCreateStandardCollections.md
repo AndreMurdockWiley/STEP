@@ -8,18 +8,17 @@
 
 ### Functional description
 
-Mass Create Standard Collections. It primarily works with attribute(s): CollectionSubType, CollectionType, CollectionYear.
+Mass Create Standard Collections. It primarily works with attribute(s): CollectionSubType, CollectionType, CollectionYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: collectionLibrary.createCollectionYear, collectionLibrary.createCollectionSubType, collectionLibrary.createCollection.
 - Reads/writes attributes including: CollectionYear, CollectionSubType, CollectionType.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

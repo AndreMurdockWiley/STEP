@@ -13,25 +13,17 @@
 
 ### Functional description
 
-Status Derivation on Media Objects. It primarily works with attribute(s): DisplayDigitalMediaStatus, DisplayPrintMediaStatus, JournalAcceptingSubmission, JournalStatus.
+Status Derivation on Media Objects. It primarily works with attribute(s): DisplayDigitalMediaStatus, DisplayPrintMediaStatus, JournalAcceptingSubmission, JournalStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalAcceptingSubmission" == "Pre-public Launch", apply the corresponding branch logic.
-- If "JournalAcceptingSubmission" == "Pre-public Takeover", apply the corresponding branch logic.
-- If "JournalAcceptingSubmission" == "Retro Billing", apply the corresponding branch logic.
-- If "JournalAcceptingSubmission" == "Retro Billing", apply the corresponding branch logic.
-- If "JournalAcceptingSubmission" == "Retro Billing", apply the corresponding branch logic.
-- If "JournalAcceptingSubmission" == "Retro Billing", apply the corresponding branch logic.
-- If "DisplayDigitalMediaStatus" == "Current publication", apply the corresponding branch logic.
-- If "DisplayPrintMediaStatus" == "Current publication", apply the corresponding branch logic.
 - Reads/writes attributes including: DisplayDigitalMediaStatus, DisplayPrintMediaStatus, JournalAcceptingSubmission, JournalStatus.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

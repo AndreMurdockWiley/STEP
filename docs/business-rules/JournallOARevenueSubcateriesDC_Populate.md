@@ -8,7 +8,7 @@
 
 ### Functional description
 
-Populate OA Revenue Subcategories DC. It primarily works with attribute(s): JournalOASubcategories, JournalOASubcategoriesEndDate, JournalOASubcategoriesStartDate. If validation fails, the user sees an error message such as: "OA Revenue Subcategories Start Date must be populated on OASubcategory. Add the date to proceed.".
+Populate OA Revenue Subcategories DC. It primarily works with attribute(s): JournalOASubcategories, JournalOASubcategoriesEndDate, JournalOASubcategoriesStartDate. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -18,6 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
+- **Configured error**: N/A (Business Action).
 - **In-script message**: OA Revenue Subcategories Start Date must be populated on OASubcategory. Add the date to proceed.
 - **In-script message**: OA Revenue Subcategories End Date must be populated on previous OASubcategory. Add the date to proceed.
 

@@ -9,7 +9,7 @@
 
 ### Functional description
 
-Navigates user to the Journal Creation Baseline Workflow Task List screen after journal creation. It is triggered from: JournalCreationWFv2 (Journal_Baseline state).
+Navigates user to the Journal Creation Baseline Workflow Task List screen after journal creation. It is triggered from: JournalCreationWFv2 (Journal_Baseline state). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -19,7 +19,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

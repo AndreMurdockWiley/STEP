@@ -12,7 +12,7 @@
 
 ### Functional description
 
-BA_ValidateTextFields. It primarily works with attribute(s): CollectionCode, CollectionYear, IssueVolumeNumber, JournalBackfileContentISSN, JournalMarketingCopyHeadline, JournalMarketingCopySubjectArea, JournalMarketingCopyUSP1, JournalMarketingCopyUSP2, JournalMarketingCopyUSP3, JournalMarketingCopyUSP4, ProductDoi, ProductOclcReferenceNumber, ProductSAPMaterialNumber, ProductShortTitle, ProductTitle, ProductUrl, SAPExternalMaterialGroup. It is triggered from: Business action (triggered via Web UI button / workflow event / configured action). If validation fails, the user sees an error message such as: "Please correct the Fields: {list of attribute names with specific issues like 'has leading space', 'has trail space', 'has line break', 'has a space', 'Should have only Numbers and alphabets'}".
+BA_ValidateTextFields. It primarily works with attribute(s): CollectionCode, CollectionYear, IssueVolumeNumber, JournalBackfileContentISSN, JournalMarketingCopyHeadline, JournalMarketingCopySubjectArea, JournalMarketingCopyUSP1, JournalMarketingCopyUSP2, JournalMarketingCopyUSP3, JournalMarketingCopyUSP4, ProductDoi, ProductOclcReferenceNumber, ProductSAPMaterialNumber, ProductShortTitle, ProductTitle, ProductUrl, SAPExternalMaterialGroup. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,14 +22,14 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **Configured error**: Please correct the Fields: {list of attribute names with specific issues like 'has leading space', 'has trail space', 'has line break', 'has a space', 'Should have only Numbers and alphabets'}
+- **Configured error**: N/A (Business Action).
 - **In-script message**: <b>Please correct the Fields : </b>{errormessage}
 
 ### Usage / trigger
 
 This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
 
-- **Configuration**: Business action (triggered via Web UI button / workflow event / configured action)
+- **Configuration**: Business action (triggered via Web UI / workflow event)
   - **Task/Event**: —
 
 ### Dependencies / key functions

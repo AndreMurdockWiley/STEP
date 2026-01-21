@@ -12,19 +12,17 @@
 
 ### Functional description
 
-Collection Generate Name. It primarily works with attribute(s): CollectionType, CollectionYear.
+Collection Generate Name. It primarily works with attribute(s): CollectionType, CollectionYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CollectionType" == "NURS", apply the corresponding branch logic.
-- Calls: collectionLibrary.collectionTypeConverter, collectionLibrary.createCollectionYear, collectionLibrary.generateStandardCollectionAttributes, collectionLibrary.generateCommonCollectionAttributes, collectionLibrary.generateSpecificCollectionAttributes.
 - Reads/writes attributes including: CollectionType, CollectionYear.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

@@ -8,18 +8,17 @@
 
 ### Functional description
 
-Backfiles SAP Finance Attributes Generator. It primarily works with attribute(s): JournalGroupCode, ProductContentCategory, ProductFinanceDivision, ProductFinanceEntitlementPlatform, ProductFinancePublicationType, ProductMediumCode, ProductOneSourceTaxCode, ProductSAPMaterialNumber, SAPExternalMaterialGroup.
+Backfiles SAP Finance Attributes Generator. It primarily works with attribute(s): JournalGroupCode, ProductContentCategory, ProductFinanceDivision, ProductFinanceEntitlementPlatform, ProductFinancePublicationType, ProductMediumCode, ProductOneSourceTaxCode, ProductSAPMaterialNumber, SAPExternalMaterialGroup. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: otherProductsLibrary.sequentialMatNoIncrement.
 - Reads/writes attributes including: JournalGroupCode, ProductSAPMaterialNumber, ProductFinancePublicationType, ProductContentCategory, ProductFinanceDivision, ProductFinanceEntitlementPlatform, SAPExternalMaterialGroup, ProductOneSourceTaxCode, ProductMediumCode.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

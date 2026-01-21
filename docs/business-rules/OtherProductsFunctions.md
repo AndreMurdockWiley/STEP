@@ -12,18 +12,17 @@
 
 ### Functional description
 
-Other Products Functions. It primarily works with attribute(s): OPAndBackfileSystemMatNo.
+Other Products Functions. It primarily works with attribute(s): OPAndBackfileSystemMatNo. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Plugin: JavaScriptBusinessLibrary.
 - Reads/writes attributes including: OPAndBackfileSystemMatNo.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

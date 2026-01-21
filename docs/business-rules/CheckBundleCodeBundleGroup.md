@@ -18,7 +18,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-- **In-script message**: Value Pair of Bundle Code, Bundle Group, and Subscription Type is duplicated, please fix.
+- **Configured error**: Value Pair of Bundle Code, Bundle Group, and Subscription Type is duplicated, please fix.
 
 ### Usage / trigger
 

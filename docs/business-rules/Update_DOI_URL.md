@@ -12,18 +12,17 @@
 
 ### Functional description
 
-Update DOI URL. It primarily works with attribute(s): COPY_DOI, COPY_URL, ProductBundleCodeID, ProductDoi, ProductIsbn13, ProductUrl.
+Update DOI URL. It primarily works with attribute(s): COPY_DOI, COPY_URL, ProductBundleCodeID, ProductDoi, ProductIsbn13, ProductUrl. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductBundleCodeID" == "OLBK", apply the corresponding branch logic.
 - Reads/writes attributes including: ProductBundleCodeID, ProductDoi, ProductUrl, COPY_URL, COPY_DOI, ProductIsbn13.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

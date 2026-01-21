@@ -11,7 +11,7 @@
 
 ### Functional description
 
-Issue WF Issue Enrichment. It is triggered from: VolumeIssueCreationWF (On creation and state transitions).
+Issue WF Issue Enrichment. It is triggered from: VolumeIssueCreationWF (On creation and state transitions). If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

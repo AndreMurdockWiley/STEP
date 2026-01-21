@@ -18,8 +18,6 @@ PopulateOnlineOpenAlert. It primarily works with attribute(s): JournalOnlineOpen
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalOnlineOpen" == "y", apply the corresponding branch logic.
-- If "JournalOnlineOpen" == "n", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalOnlineOpen.
 
 ### Errors

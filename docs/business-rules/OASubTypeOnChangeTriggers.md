@@ -8,7 +8,7 @@
 
 ### Functional description
 
-OA Sub Type On Change Triggers. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, JournalLastPriceQuoteContractYear, JournalLastPubYear, JournalMediaCode, JournalMediaRebillingEffectEndDate, JournalOnlineOpen, JournalOpenAccess, JournalTransferredToOnlineOnly, JournalUrlOnlineOpenOrderFormLink, JournalUrlOpenAccessContent, JournalWISPERSStatus, PreviousJournalLastPubYear, PreviousLastPQContractYear, PreviousPublicationType, PreviousRenewalSubscriptionType, PreviousRevenueModel, ProductActivated, ProductBundleCode, ProductBundleGroup, ProductBundleSubscriptionType, ProductFinancePublicationType, ProductMediaType, ProductRenewalSubscriptionType, ProductRevenueModel, ProductStatus.
+OA Sub Type On Change Triggers. It primarily works with attribute(s): BundleGroup_BundleCode_DataContainer, JournalLastPriceQuoteContractYear, JournalLastPubYear, JournalMediaCode, JournalMediaRebillingEffectEndDate, JournalOnlineOpen, JournalOpenAccess, JournalTransferredToOnlineOnly, JournalUrlOnlineOpenOrderFormLink, JournalUrlOpenAccessContent, JournalWISPERSStatus, PreviousJournalLastPubYear, PreviousLastPQContractYear, PreviousPublicationType, PreviousRenewalSubscriptionType, PreviousRevenueModel, ProductActivated, ProductBundleCode, ProductBundleGroup, ProductBundleSubscriptionType, ProductFinancePublicationType, ProductMediaType, ProductRenewalSubscriptionType, ProductRevenueModel, ProductStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -27,7 +27,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

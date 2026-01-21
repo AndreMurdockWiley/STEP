@@ -12,19 +12,17 @@
 
 ### Functional description
 
-Auto Classification Journal History. It primarily works with attribute(s): JournalGroupCode, JournalHistoryAccessType, ProductRenewalSubscriptionType.
+Auto Classification Journal History. It primarily works with attribute(s): JournalGroupCode, JournalHistoryAccessType, ProductRenewalSubscriptionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductRenewalSubscriptionType" == "Calendar Year", apply the corresponding branch logic.
-- If "ProductRenewalSubscriptionType" == "Open Access", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalGroupCode, ProductRenewalSubscriptionType, JournalHistoryAccessType.
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

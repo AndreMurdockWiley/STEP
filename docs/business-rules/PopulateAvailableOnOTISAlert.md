@@ -18,8 +18,6 @@ PopulateAvailableOnOTISAlert. It primarily works with attribute(s): JournalAvail
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "JournalAvailableOnOtis" == "y", apply the corresponding branch logic.
-- If "JournalAvailableOnOtis" == "n", apply the corresponding branch logic.
 - Reads/writes attributes including: JournalAvailableOnOtis.
 
 ### Errors

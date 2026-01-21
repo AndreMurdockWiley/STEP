@@ -11,7 +11,7 @@
 
 ### Functional description
 
-Sets the Publishing Initiatives attributes values to default No in Journal creation workflow. It primarily works with attribute(s): JournalEditorialDataPolicy, JournalEditorialORCIdRequirement, JournalWileyEditingServices. It is triggered from: Journal Creation Workflow.
+Sets the Publishing Initiatives attributes values to default No in Journal creation workflow. It primarily works with attribute(s): JournalEditorialDataPolicy, JournalEditorialORCIdRequirement, JournalWileyEditingServices. It is triggered from: Journal Creation Workflow. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -21,7 +21,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 

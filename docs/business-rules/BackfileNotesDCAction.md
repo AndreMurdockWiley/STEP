@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Backfile Notes Data Container Action. It primarily works with attribute(s): BackfileNotes, BackfileNotesCreatedBy, BackfileNotesCreatedDate, BackfileNotesIsModified, BackfileNotesModifiedBy, BackfileNotesModifiedDate, BackfileNotesType, JournalNotesBackfileUUID.
+Backfile Notes Data Container Action. It primarily works with attribute(s): BackfileNotes, BackfileNotesCreatedBy, BackfileNotesCreatedDate, BackfileNotesIsModified, BackfileNotesModifiedBy, BackfileNotesModifiedDate, BackfileNotesType, JournalNotesBackfileUUID. If validation fails, the user sees an error message such as: "N/A (Business Action).".
 
 ### Functional logic
 
@@ -22,7 +22,7 @@ This section summarizes the configured functional logic captured in the rules in
 
 ### Errors
 
-—
+- **Configured error**: N/A (Business Action).
 
 ### Usage / trigger
 
