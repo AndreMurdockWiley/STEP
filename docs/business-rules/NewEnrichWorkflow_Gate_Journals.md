@@ -1,0 +1,45 @@
+## NewEnrichWorkflow_Gate_Journals
+
+- **Rule type**: Business Action
+- **Setup group**: JournalWorkflowGroup
+- **Business area**: JournalWorkflowGroup
+- **Data model object valid to**: Journal
+- **Product type(s) valid to**: Journal
+- **Version**: 1
+- **Status**: Active
+- **Source file(s)**: `JournalWorkflowGroup/NewEnrichWorkflow_Gate_Journals.js`
+
+### Functional description
+
+NewEnrichWorkflow_Gate_Journals. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Update_1). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+
+### Functional logic
+
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+
+- Plugin: BulkUpdateTriggerStateFlowEvent.
+- Parameter "currentStateID": State-2
+- Parameter "eventID": Update_1
+- Parameter "stateFlowID": JournalCreationWFV3Backup
+
+### Errors
+
+- **Configured error**: N/A (Business Action).
+
+### Usage / trigger
+
+This section documents where the rule is used or triggered in STEP. The items listed below describe the workflow/configuration location(s) where this rule runs.
+
+- **Configuration**: JournalCreationWFV3Backup
+  - **Task/Event**: State-2, Event: Update_1
+
+### Dependencies / key functions
+
+- **Dependencies**: None
+- **Key functions**: BulkUpdateTriggerStateFlowEvent
+
+### Traceability
+
+- **Source workbook**: `Stibo STEP Global Business Rules v1.3.xlsx`
+- **Sheet**: `Global Business Rules Template `
+- **Row(s) (0-based in data block)**: 37
