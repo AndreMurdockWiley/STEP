@@ -1,0 +1,1238 @@
+{
+  "xmlPath": "WebUI.xml",
+  "count": 103,
+  "records": [
+    {
+      "businessAction": "BA_ExportUserInventory",
+      "screenId": "main",
+      "screenType": "Main",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Export",
+      "restrict": "AdminUsers,QETestingUser,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "Actions/BA_ExportUserInventory.js"
+      ]
+    },
+    {
+      "businessAction": "BA_AddEditorialContactsToJournals",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Add Reference",
+      "restrict": "AdminUsers,PDMUsers,EditorialUsers,Stibo,Super user,QETestingUser,MarketingUsers",
+      "implementationFiles": [
+        "Actions/BA_AddEditorialContactsToJournals.js"
+      ]
+    },
+    {
+      "businessAction": "BA_AddJournalToJournalHistoryReference",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Add Journal History",
+      "restrict": "Messaging,Normal user,Read Only,AdminUsers,QETestingUser,Distribution(JPAT)Team,EditorialUsers,GlobalProductionServicesUsers,Integration,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,ReadOnly,ReadOnly/ReportUsers,Service Users,Stibo,Super user,MarketingUsers",
+      "implementationFiles": [
+        "JournalWorkflowGroup/BA_AddJournalToJournalHistoryReference.js"
+      ]
+    },
+    {
+      "businessAction": "BA_CreateJournalHistoryAndReference",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Create Journal History",
+      "restrict": "Messaging,Normal user,Read Only,AdminUsers,QETestingUser,Distribution(JPAT)Team,EditorialUsers,GlobalProductionServicesUsers,Integration,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,ReadOnly,ReadOnly/ReportUsers,Service Users,Stibo,Super user,MarketingUsers",
+      "implementationFiles": [
+        "JournalWorkflowGroup/BA_CreateJournalHistoryAndReference.js"
+      ]
+    },
+    {
+      "businessAction": "JournalHistoryApprove",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Save and Approve Journal History",
+      "restrict": "Messaging,Normal user,Read Only,AdminUsers,QETestingUser,Distribution(JPAT)Team,EditorialUsers,GlobalProductionServicesUsers,Integration,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,ReadOnly,ReadOnly/ReportUsers,Service Users,Stibo,Super user,MarketingUsers",
+      "implementationFiles": [
+        "JournalHistoryGroup/JournalHistoryApprove.js"
+      ]
+    },
+    {
+      "businessAction": "JournalHistorySend",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send Journal History",
+      "restrict": "AdminUsers,PDMUsers,Super user",
+      "implementationFiles": [
+        "JournalHistoryGroup/JournalHistorySend.js"
+      ]
+    },
+    {
+      "businessAction": "BA_RemoveLink",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Remove Reference",
+      "restrict": "AdminUsers,QETestingUser,PDME PubTeam,PDMUsers,Super user",
+      "implementationFiles": [
+        "Actions/BA_RemoveLink.js"
+      ]
+    },
+    {
+      "businessAction": "Send_Journal_Transition_Refs",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send Referenced Journal",
+      "restrict": "AdminUsers,QETestingUser,PDME PubTeam,PDMUsers,Super user",
+      "implementationFiles": [
+        "Actions/Send_Journal_Transition_Refs.js"
+      ]
+    },
+    {
+      "businessAction": "JournalSaveAction",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "AdvertisingUsers,ContentManagementUserGroup,AdminUsers,PDMUsers,ProductGovernancePricingUser,PDME PubTeam,Stibo,EditorialUsers,GlobalProductionServicesUsers,Super user,OpenAccess_ReportUsers,MarketingUsers",
+      "implementationFiles": [
+        "JournalWorkflowGroup/JournalSaveAction.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "JournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdvertisingUsers,ContentManagementUserGroup,AdminUsers,PDMUsers,ProductGovernancePricingUser,PDME PubTeam,Stibo,EditorialUsers,GlobalProductionServicesUsers,Super user,OpenAccess_ReportUsers,MarketingUsers",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "JournalMediaSaveAction",
+      "screenId": "PrintJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalMediaGroup/JournalMediaWorkflowGroup/JournalMediaSaveAction.js"
+      ]
+    },
+    {
+      "businessAction": "UpdatePrintISSNKey",
+      "screenId": "PrintJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Update ISSN",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "JournalMediaGroup/JournalMediaUpsertGroup/UpdatePrintISSNKey.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "PrintJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "JournalMediaSaveAction",
+      "screenId": "DigitalJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalMediaGroup/JournalMediaWorkflowGroup/JournalMediaSaveAction.js"
+      ]
+    },
+    {
+      "businessAction": "UpdateDigitalISSNKey",
+      "screenId": "DigitalJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Update ISSN",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "JournalMediaGroup/JournalMediaUpsertGroup/UpdateDigitalISSNKey.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "DigitalJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "BA_ExportCollections",
+      "screenId": "AdvancedSearchScreen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Export Collection Standard Report",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_ExportCollections.js"
+      ]
+    },
+    {
+      "businessAction": "AdHocIssueCreation",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Create Issues",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/AdHocIssueCreation.js"
+      ]
+    },
+    {
+      "businessAction": "AdHocIssueCreationWithCopyToOnline",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Create Issues",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/AdHocIssueCreationWithCopyToOnline.js"
+      ]
+    },
+    {
+      "businessAction": "IssueDelete",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Delete Issues",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesDeleteGroup/IssueDelete.js"
+      ]
+    },
+    {
+      "businessAction": "IssueDeleteBoth",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Delete Issues",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesDeleteGroup/IssueDeleteBoth.js"
+      ]
+    },
+    {
+      "businessAction": "IssueMergeCreation",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Merge Issues",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueMergeCreation.js"
+      ]
+    },
+    {
+      "businessAction": "IssueMergeCreationWithCopyToOnline",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Merge Issues",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueMergeCreationWithCopyToOnline.js"
+      ]
+    },
+    {
+      "businessAction": "IssueStatusMassUpdate",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Update Issue Status",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueStatusMassUpdate.js"
+      ]
+    },
+    {
+      "businessAction": "IssueStatusMassUpdateBoth",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Update Issue Status",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueStatusMassUpdateBoth.js"
+      ]
+    },
+    {
+      "businessAction": "IssueCopy",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Copy Issue",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueCopy.js"
+      ]
+    },
+    {
+      "businessAction": "ReSendIssuesToSap",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send to SAP",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesWorkFlowGroup/ReSendIssuesToSap.js"
+      ]
+    },
+    {
+      "businessAction": "IssuePubSequenceUpdate",
+      "screenId": "DisplayVolumeChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Update Publication Sequence",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssuePubSequenceUpdate.js"
+      ]
+    },
+    {
+      "businessAction": "AdHocVolumeCreation",
+      "screenId": "DisplayPubYearChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Create Volume",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "VolumesGroup/VolumesUpsertGroup/AdHocVolumeCreation.js"
+      ]
+    },
+    {
+      "businessAction": "VolumeDelete",
+      "screenId": "DisplayPubYearChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Delete Volumes",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "VolumesGroup/VolumesDeleteGroup/VolumeDelete.js"
+      ]
+    },
+    {
+      "businessAction": "VolumeCopyToOnline",
+      "screenId": "DisplayPubYearChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Copy to Online Volumes",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "VolumesGroup/VolumesUpsertGroup/VolumeCopyToOnline.js"
+      ]
+    },
+    {
+      "businessAction": "BackfileSaveButton",
+      "screenId": "BackfilesDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "BackfilesUpsertGroup/BackfileSaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "BackfilesDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "BackfilesSAPFinanceAttributesGenerator",
+      "screenId": "BackfilesDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Generate Attributes",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "BackfilesUpsertGroup/BackfilesSAPFinanceAttributesGenerator.js"
+      ]
+    },
+    {
+      "businessAction": "BA_AddJournalToJournalHistoryReference",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Add Journal",
+      "restrict": "Messaging,Normal user,Read Only,AdminUsers,QETestingUser,Distribution(JPAT)Team,EditorialUsers,GlobalProductionServicesUsers,Integration,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,ReadOnly,ReadOnly/ReportUsers,Service Users,Stibo,Super user,MarketingUsers",
+      "implementationFiles": [
+        "JournalWorkflowGroup/BA_AddJournalToJournalHistoryReference.js"
+      ]
+    },
+    {
+      "businessAction": "BA_RemoveLink",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Remove Reference",
+      "restrict": "AdminUsers,QETestingUser,PDME PubTeam,PDMUsers,Super user",
+      "implementationFiles": [
+        "Actions/BA_RemoveLink.js"
+      ]
+    },
+    {
+      "businessAction": "Send_Journal_Transition_Refs",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send Referenced History",
+      "restrict": "AdminUsers,QETestingUser,PDME PubTeam,PDMUsers,Super user",
+      "implementationFiles": [
+        "Actions/Send_Journal_Transition_Refs.js"
+      ]
+    },
+    {
+      "businessAction": "JournalHistorySaveButton",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "JournalHistoryGroup/JournalHistorySaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "JournalHistoryAttributeGenerationButton",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Generate Attributes",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalHistoryGroup/JournalHistoryAttributeGenerationButton.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "BA_InitiateSoftDelete",
+      "screenId": "JournalHistoryDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Initiate Soft Delete",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "Actions/BA_InitiateSoftDelete.js"
+      ]
+    },
+    {
+      "businessAction": "IssueAttributesOnSaveGeneration",
+      "screenId": "PrintIssueNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Generate Unique Attributes",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueAttributesOnSaveGeneration.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "PrintIssueNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "IssueAttributesOnSaveGeneration",
+      "screenId": "DigitalIssueNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Generate Unique Attributes",
+      "restrict": "AdminUsers,PDMUsers,Stibo,ProductGovernancePricingUser,Super user",
+      "implementationFiles": [
+        "IssuesGroup/IssuesUpsertGroup/IssueAttributesOnSaveGeneration.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "DigitalIssueNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdminUsers,PDMUsers,Stibo,ProductGovernancePricingUser,Super user",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "AdHocPublicationYearCreation",
+      "screenId": "JournalMediaChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Create Publication Year",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "PubYearGroup/PubYearUpsertGroup/AdHocPublicationYearCreation.js"
+      ]
+    },
+    {
+      "businessAction": "PublicationYearDelete",
+      "screenId": "JournalMediaChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Delete Publication Years",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "PubYearGroup/PublicationYearDelete.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateToPubYearCreationScreen",
+      "screenId": "JournalMediaChildrenScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Publication Year/Volumes/Issues Creation Process",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "PubYearGroup/PubYearNavegationGroup/NavigateToPubYearCreationScreen.js"
+      ]
+    },
+    {
+      "businessAction": "SendJournal",
+      "screenId": "Journals Search Screen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalWorkflowGroup/SendJournal.js"
+      ]
+    },
+    {
+      "businessAction": "Journal_WF_Save_Button",
+      "screenId": "InitiateJournalCreationScreen2",
+      "screenType": "InitiateItem",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalWorkflowGroup/Journal_WF_Save_Button.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateAwayFromPubYearCreation",
+      "screenId": "ManualPublicationYearCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Cancel",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearNavegationGroup/NavigateAwayFromPubYearCreation.js"
+      ]
+    },
+    {
+      "businessAction": "CreatePubYearVolumeButton",
+      "screenId": "ManualPublicationYearCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Next Step",
+      "restrict": "",
+      "implementationFiles": []
+    },
+    {
+      "businessAction": "CreateIssuesFromVolume",
+      "screenId": "ManualNoOfIssueCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Issues",
+      "restrict": "",
+      "implementationFiles": []
+    },
+    {
+      "businessAction": "AutomaticPubYearVolumesIssuesCreation",
+      "screenId": "MassCreatePubYearScreen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Auto Create Pub Year/Volumes/Issues",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearUpsertGroup/AutomaticPubYearVolumesIssuesCreation.js"
+      ]
+    },
+    {
+      "businessAction": "IssueDelete",
+      "screenId": "IssueWorkflowMediaTaskList",
+      "screenType": "TaskList",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Delete Issue(s)",
+      "restrict": "",
+      "implementationFiles": [
+        "IssuesGroup/IssuesDeleteGroup/IssueDelete.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateToPubYearOnWFCreationScreen",
+      "screenId": "JournalWorkflowReadyForPubYearTaskList",
+      "screenType": "TaskList",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Publication Year/Volumes/Issues Creation Process",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearWorkFlowGroup/NavigateToPubYearOnWFCreationScreen.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateAwayFromPubReannouncement",
+      "screenId": "ReannouncementPubYearScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Cancel",
+      "restrict": "",
+      "implementationFiles": [
+        "ReannouncementGroup/NavigateAwayFromPubReannouncement.js"
+      ]
+    },
+    {
+      "businessAction": "ReannounceFullPubYear",
+      "screenId": "ReannouncementPubYearScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Reannounce All",
+      "restrict": "",
+      "implementationFiles": [
+        "ReannouncementGroup/ReannounceFullPubYear.js"
+      ]
+    },
+    {
+      "businessAction": "ReannouncePubYearVolumes",
+      "screenId": "ReannouncementPubYearByVolumesSubScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Reannounce Selection",
+      "restrict": "",
+      "implementationFiles": [
+        "ReannouncementGroup/ReannouncePubYearVolumes.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateToReannouncementByIssuesScreen",
+      "screenId": "ReannouncementPubYearByVolumesSubScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Reannounce Specific Issues",
+      "restrict": "",
+      "implementationFiles": [
+        "ReannouncementGroup/NavigateToReannouncementByIssuesScreen.js"
+      ]
+    },
+    {
+      "businessAction": "ReannouncePubYearIssues",
+      "screenId": "ReannouncementPubYearByIssuesSubScreen",
+      "screenType": "Children",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Reannounce Selection",
+      "restrict": "",
+      "implementationFiles": [
+        "ReannouncementGroup/ReannouncePubYearIssues.js"
+      ]
+    },
+    {
+      "businessAction": "ReSendIssuesToSap",
+      "screenId": "JPCMSAdvancedSearchScreen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "IssuesGroup/IssuesWorkFlowGroup/ReSendIssuesToSap.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "MultiMediaPackageNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "Messaging,Normal user,Read Only,AdminUsers,Distribution(JPAT)Team,EditorialUsers,GlobalProductionServicesUsers,Integration,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,ReadOnly,ReadOnly/ReportUsers,Service Users,Stibo,Super user,MarketingUsers,SalesTeam",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateAwayFromPubYearCreation",
+      "screenId": "PublicationYearCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Cancel",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearNavegationGroup/NavigateAwayFromPubYearCreation.js"
+      ]
+    },
+    {
+      "businessAction": "PublicationYearCreationFinishButton",
+      "screenId": "PublicationYearCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Publication Year and Finish Process",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearNavegationGroup/PublicationYearCreationFinishButton.js"
+      ]
+    },
+    {
+      "businessAction": "PublicationYearCreationNextButton",
+      "screenId": "PublicationYearCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Publication Year and Continue with Volume Creation",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearNavegationGroup/PublicationYearCreationNextButton.js"
+      ]
+    },
+    {
+      "businessAction": "PubYearForCopyToOnlineCreationNextButton",
+      "screenId": "PublicationYearCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Publication Year and Continue with Volume Creation",
+      "restrict": "",
+      "implementationFiles": [
+        "PubYearGroup/PubYearNavegationGroup/PubYearForCopyToOnlineCreationNextButton.js"
+      ]
+    },
+    {
+      "businessAction": "MultiJournalWFSaveButton",
+      "screenId": "InitiateMJPackageCreationScreen",
+      "screenType": "InitiateItem",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "PackageGroup/MultiJournalWFSaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "CopyPackageNameToTitle",
+      "screenId": "MultiJournalNodeDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "PackageGroup/CopyPackageNameToTitle.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "MultiJournalNodeDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "Messaging,Normal user,Read Only,AdminUsers,Distribution(JPAT)Team,EditorialUsers,GlobalProductionServicesUsers,Integration,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,ReadOnly,ReadOnly/ReportUsers,Service Users,Stibo,Super user,MarketingUsers",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "CollectionInitiateSaveButton",
+      "screenId": "InitiateCollectionIntoWorkflow",
+      "screenType": "InitiateItem",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/CollectionInitiateSaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateAwayFromIssueCreationScreen",
+      "screenId": "IssuesCreationMainScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Cancel",
+      "restrict": "",
+      "implementationFiles": [
+        "IssuesGroup/IssuesNavegationGroup/NavigateAwayFromIssueCreationScreen.js"
+      ]
+    },
+    {
+      "businessAction": "IssueCreationFinishButton",
+      "screenId": "IssuesCreationMainScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Issues and Finish Process",
+      "restrict": "",
+      "implementationFiles": [
+        "IssuesGroup/IssuesNavegationGroup/IssueCreationFinishButton.js"
+      ]
+    },
+    {
+      "businessAction": "NavigateAwayFromVolumeCreationScreen",
+      "screenId": "VolumesCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Cancel",
+      "restrict": "",
+      "implementationFiles": [
+        "VolumesGroup/VolumesNavegationGroup/NavigateAwayFromVolumeCreationScreen.js"
+      ]
+    },
+    {
+      "businessAction": "VolumeCreationFinishButton",
+      "screenId": "VolumesCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Volumes and Finish Process",
+      "restrict": "",
+      "implementationFiles": [
+        "VolumesGroup/VolumesNavegationGroup/VolumeCreationFinishButton.js"
+      ]
+    },
+    {
+      "businessAction": "VolumeCreationNextButton",
+      "screenId": "VolumesCreationScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Create Volumes and Continue with Issue Creation",
+      "restrict": "",
+      "implementationFiles": [
+        "VolumesGroup/VolumesNavegationGroup/VolumeCreationNextButton.js"
+      ]
+    },
+    {
+      "businessAction": "CollectionSaveAction",
+      "screenId": "CollectionNodeDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/CollectionUpsertGroup/CollectionSaveAction.js"
+      ]
+    },
+    {
+      "businessAction": "CollectionValidFromPopulate",
+      "screenId": "CollectionNodeDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Populate Dates",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user,SalesTeam",
+      "implementationFiles": [
+        "CollectionGroup/CollectionValidFromPopulate.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "CollectionNodeDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user,SalesTeam",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "CollectionCopy",
+      "screenId": "CollectionNodeDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Copy Collection",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/CollectionUpsertGroup/CollectionCopy.js"
+      ]
+    },
+    {
+      "businessAction": "BA_Collection_Submit_From_Workflow",
+      "screenId": "CollectionWorkflowComponentsTaskList",
+      "screenType": "TaskList",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Submit",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/BA_Collection_Submit_From_Workflow.js"
+      ]
+    },
+    {
+      "businessAction": "MassCreateStandardCollections",
+      "screenId": "JournalCollectionsSearchScreen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Mass Create Standard Collections",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/CollectionUpsertGroup/MassCreateStandardCollections.js"
+      ]
+    },
+    {
+      "businessAction": "MassCreateStandardCollections",
+      "screenId": "MassCreateStandardCollections",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Mass Create ST Collections",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/CollectionUpsertGroup/MassCreateStandardCollections.js"
+      ]
+    },
+    {
+      "businessAction": "OtherProductsSaveButton",
+      "screenId": "OtherProductsNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "AdminUsers,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "OtherProducts/OtherProductsSaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "OtherProductsNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdminUsers,PDME PubTeam,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "OtherProductInitiateSaveButton",
+      "screenId": "InitiateOtherProductWFScreen",
+      "screenType": "InitiateItem",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Search",
+      "restrict": "",
+      "implementationFiles": [
+        "OtherProducts/OtherProductsNavegation/OtherProductInitiateSaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "BA_TriggerECJournals",
+      "screenId": "EditorialContactNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_TriggerECJournals.js"
+      ]
+    },
+    {
+      "businessAction": "BA_EditorialContactOnSave",
+      "screenId": "EditorialContactNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "EditorialSuperUsers, PDMUsers, Super user",
+      "implementationFiles": [
+        "Actions/BA_EditorialContactOnSave.js"
+      ]
+    },
+    {
+      "businessAction": "BA_ExportCollections",
+      "screenId": "CollectionSearch",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Export Collection Standard Report",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_ExportCollections.js"
+      ]
+    },
+    {
+      "businessAction": "SendJournal",
+      "screenId": "JournalsEditorialReportsSearchScreen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalWorkflowGroup/SendJournal.js"
+      ]
+    },
+    {
+      "businessAction": "SendJournal",
+      "screenId": "JournalsEditorialDataReportScreen",
+      "screenType": "AdvancedSearchScreen",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "",
+      "implementationFiles": [
+        "JournalWorkflowGroup/SendJournal.js"
+      ]
+    },
+    {
+      "businessAction": "CollectionInitiateSaveButton",
+      "screenId": "InitiateOtherProductCollection",
+      "screenType": "InitiateItem",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "",
+      "implementationFiles": [
+        "CollectionGroup/CollectionInitiateSaveButton.js"
+      ]
+    },
+    {
+      "businessAction": "OtherProductCollectionSaveAction",
+      "screenId": "OtherProductCollectionNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "OtherProductCollectionRules/OtherProductCollectionSaveAction.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "OtherProductCollectionNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "AdminUsers,PDMUsers,ProductGovernancePricingUser,Stibo,Super user",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "PartnerJournalSaveAction",
+      "screenId": "PartnerJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Save",
+      "restrict": "Super user,PDMUsers",
+      "implementationFiles": [
+        "PartnerJournalsGroup/PartnerJournalSaveAction.js"
+      ]
+    },
+    {
+      "businessAction": "Test_Trigger_Rule_Update_withMessage",
+      "screenId": "PartnerJournalNodeDetails",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Send",
+      "restrict": "Super user,PDMUsers",
+      "implementationFiles": [
+        "Integrations/Test_Trigger_Rule_Update_withMessage.js"
+      ]
+    },
+    {
+      "businessAction": "BA_ApproveRevivalButton",
+      "screenId": "JournalHistoryReviveDeleteWFScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Approve",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_ApproveRevivalButton.js"
+      ]
+    },
+    {
+      "businessAction": "BA_RejectRevivalButton",
+      "screenId": "JournalHistoryReviveDeleteWFScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Reject",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_RejectRevivalButton.js"
+      ]
+    },
+    {
+      "businessAction": "BA_AddJournalToJournalHistoryReference",
+      "screenId": "JournalHistoryReviveReferenceWFScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Add Journal",
+      "restrict": "AdminUsers,PDMUsers,Stibo,Super user",
+      "implementationFiles": [
+        "JournalWorkflowGroup/BA_AddJournalToJournalHistoryReference.js"
+      ]
+    },
+    {
+      "businessAction": "BA_RemoveLink",
+      "screenId": "JournalHistoryReviveReferenceWFScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindToolBar",
+      "componentId": "Actions",
+      "label": "Remove Reference",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_RemoveLink.js"
+      ]
+    },
+    {
+      "businessAction": "BA_ReviveSoftDelete",
+      "screenId": "JournalHistorySoftDeleteDetailsScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Revive Object",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_ReviveSoftDelete.js"
+      ]
+    },
+    {
+      "businessAction": "BA_ApproveSoftDeleteButton",
+      "screenId": "JournalHistorySoftDeleteWFScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Approve",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_ApproveSoftDeleteButton.js"
+      ]
+    },
+    {
+      "businessAction": "BA_RejectSoftDeleteButton",
+      "screenId": "JournalHistorySoftDeleteWFScreen",
+      "screenType": "NodeDetails",
+      "componentType": "BusinessActionWithWebUIBindButton",
+      "componentId": "Actions",
+      "label": "Reject",
+      "restrict": "",
+      "implementationFiles": [
+        "Actions/BA_RejectSoftDeleteButton.js"
+      ]
+    }
+  ]
+}

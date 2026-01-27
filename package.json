@@ -4,6 +4,7 @@
   "description": "Testing integration",
   "main": "index.js",
   "scripts": {
+    "analyze:webui-business-actions": "node scripts/analyzeWebUIBusinessActionCalls.mjs",
     "generate:rule-docs": "node scripts/generateBusinessRuleDocs.mjs",
     "inspect:rules-xlsx": "node scripts/inspectRulesWorkbook.mjs",
     "populate:rules-xlsx-business-focus": "node scripts/populateRulesWorkbookBusinessFocus.mjs",
