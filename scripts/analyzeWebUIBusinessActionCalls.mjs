@@ -28,6 +28,11 @@ function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
+function ensureCleanDir(dir) {
+  fs.rmSync(dir, { recursive: true, force: true });
+  fs.mkdirSync(dir, { recursive: true });
+}
+
 function walkFiles(rootDir) {
   const out = [];
   function walk(dir) {
@@ -63,6 +68,56 @@ function coalesce(...vals) {
   return '';
 }
 
+function uniqBy(arr, keyFn) {
+  const seen = new Set();
+  const out = [];
+  for (const x of arr) {
+    const k = keyFn(x);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(x);
+  }
+  return out;
+}
+
+function splitWorkflowDetails(raw) {
+  const parts = String(raw ?? '').split('#PARAMETER_SEPARATOR#');
+  const workflowId = (parts[0] ?? '').trim();
+  const stateOrTask = (parts[1] ?? '').trim();
+  return {
+    workflowId,
+    stateOrTask,
+    raw,
+  };
+}
+
+function inferBusinessPerspectiveFromName(workflowId) {
+  const id = String(workflowId ?? '');
+  const tokens = id
+    .replace(/_/g, ' ')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const has = (t) => tokens.includes(t);
+  const hints = [];
+
+  if (has('soft') && has('delete')) hints.push('soft-delete review/approval flow');
+  if (has('revive') || has('revival')) hints.push('revival (undo soft-delete) review/approval flow');
+  if (has('creation') || has('create')) hints.push('creation/initiation flow');
+  if (has('error') && (has('review') || has('rework'))) hints.push('error review/rework flow');
+  if (has('package')) hints.push('package lifecycle flow');
+  if (has('collection')) hints.push('collection lifecycle flow');
+  if (has('journal')) hints.push('journal lifecycle flow');
+  if (has('issue') || has('issues')) hints.push('issue lifecycle flow');
+  if (has('pub') || has('publication')) hints.push('publication-year/volume/issue preparation flow');
+  if (has('workflow')) hints.push('general workflow orchestration');
+
+  if (!hints.length) return '';
+  return `From naming alone, this appears to be a ${hints.join(', ')}.`;
+}
+
 const xmlPath = path.resolve(process.argv[2] ?? path.join(process.cwd(), 'WebUI.xml'));
 const sourceRoot = path.resolve(process.argv[3] ?? process.cwd());
 const outDir = path.resolve(process.argv[4] ?? path.join(process.cwd(), 'docs', 'webui-analysis'));
@@ -79,7 +134,11 @@ const tagRe = /<[^>]+>/g;
 // For components and screens, we retain a "params" bag, so we can reference
 // labels/titles associated with a BusinessAction even if the Label appears later.
 const stack = [];
+const allScreens = [];
+const allScreensById = new Map();
 const calls = [];
+const workflowRefs = [];
+const workflowMappings = [];
 
 function nearestElement(name) {
   for (let i = stack.length - 1; i >= 0; i--) {
@@ -96,6 +155,19 @@ function nearestScreen() {
   return nearestElement('screen');
 }
 
+function nearestComponentByType(type) {
+  for (let i = stack.length - 1; i >= 0; i--) {
+    const el = stack[i];
+    if (el.name !== 'component') continue;
+    if ((el.attrs?.type ?? '') === type) return el;
+  }
+  return null;
+}
+
+function nearestParamList() {
+  return nearestElement('parameter-list');
+}
+
 function handleParameter(attrs) {
   const id = attrs.id ?? '';
   const value = attrs.value ?? '';
@@ -103,10 +175,24 @@ function handleParameter(attrs) {
   // Attach parameters to the nearest component/screen for later context.
   const comp = nearestComponent();
   const scr = nearestScreen();
-  if (comp) {
-    comp.params[id] = value;
-  } else if (scr) {
-    scr.params[id] = value;
+  if (id) {
+    if (comp) {
+      comp.params[id] = value;
+    } else if (scr) {
+      scr.params[id] = value;
+    }
+  } else if (value) {
+    // Handle list-style parameters (no id, value only) like <parameter value="State-13"/>
+    const pl = nearestParamList();
+    const listId = pl?.attrs?.id ?? '';
+    if (listId) {
+      pl.values.push(value);
+      const target = comp ?? scr;
+      if (target) {
+        target.listValues[listId] = target.listValues[listId] ?? [];
+        target.listValues[listId].push(value);
+      }
+    }
   }
 
   if (id === 'BusinessAction') {
@@ -115,6 +201,34 @@ function handleParameter(attrs) {
       component: comp,
       screen: scr,
     });
+  }
+
+  if (id === 'Workflow') {
+    workflowRefs.push({
+      workflowId: value,
+      component: comp,
+      screen: scr,
+    });
+  }
+
+  if (id === 'WorkflowDetails') {
+    // ScreenMapping -> WorkflowCondition carries WorkflowDetails such as:
+    // WorkflowID#PARAMETER_SEPARATOR#State-13#PARAMETER_SEPARATOR#
+    const mappingComp = nearestComponentByType('ScreenMapping');
+    if (mappingComp) {
+      mappingComp.workflowDetails = mappingComp.workflowDetails ?? [];
+      mappingComp.workflowDetails.push(value);
+      const screenId = mappingComp.params?.Screen ?? '';
+      const parsed = splitWorkflowDetails(value);
+      if (parsed.workflowId) {
+        workflowMappings.push({
+          screenId,
+          workflowId: parsed.workflowId,
+          stateOrTask: parsed.stateOrTask,
+          raw: parsed.raw,
+        });
+      }
+    }
   }
 }
 
@@ -148,8 +262,16 @@ while ((match = tagRe.exec(xml))) {
     name,
     attrs,
     params: name === 'component' || name === 'screen' ? {} : null,
+    listValues: name === 'component' || name === 'screen' ? {} : null,
+    values: name === 'parameter-list' ? [] : null,
   };
   stack.push(elem);
+
+  if (name === 'screen') {
+    const sid = attrs.id ?? '';
+    allScreens.push(elem);
+    if (sid) allScreensById.set(sid, elem);
+  }
 
   if (selfClosing) {
     stack.pop();
@@ -205,7 +327,11 @@ for (const r of records) {
 }
 
 // Write outputs.
-ensureDir(outDir);
+ensureCleanDir(outDir);
+const workflowsDir = path.join(outDir, 'workflows');
+const screensDir = path.join(outDir, 'screens');
+ensureDir(workflowsDir);
+ensureDir(screensDir);
 
 const jsonOut = path.join(outDir, 'webui-business-action-calls.json');
 fs.writeFileSync(jsonOut, JSON.stringify({ xmlPath: path.relative(process.cwd(), xmlPath), count: records.length, records }, null, 2));
@@ -213,18 +339,6 @@ fs.writeFileSync(jsonOut, JSON.stringify({ xmlPath: path.relative(process.cwd(),
 function sortKeyScreen(k) {
   const [id] = k.split('||');
   return id.toLowerCase();
-}
-
-function uniqBy(arr, keyFn) {
-  const seen = new Set();
-  const out = [];
-  for (const x of arr) {
-    const k = keyFn(x);
-    if (seen.has(k)) continue;
-    seen.add(k);
-    out.push(x);
-  }
-  return out;
 }
 
 const md = [];
@@ -235,6 +349,13 @@ md.push('');
 md.push(`- **Total BusinessAction call-sites found**: ${records.length}`);
 md.push(`- **Unique BusinessActions**: ${byAction.size}`);
 md.push(`- **Screens containing BusinessActions**: ${byScreen.size}`);
+md.push(`- **Workflow mappings found (ScreenMapping/WorkflowCondition)**: ${workflowMappings.length}`);
+md.push(`- **Workflow references found (components with \`Workflow\` parameter)**: ${workflowRefs.length}`);
+md.push('');
+md.push('### Workflow sub-pages');
+md.push('');
+md.push(`- **Workflows index**: \`workflows/INDEX.md\``);
+md.push(`- **Screens index**: \`screens/INDEX.md\``);
 md.push('');
 md.push('### Calls grouped by screen');
 md.push('');
@@ -286,4 +407,242 @@ for (const ak of actionKeys) {
 const mdOut = path.join(outDir, 'webui-business-action-calls.md');
 fs.writeFileSync(mdOut, md.join('\n'), 'utf8');
 
-console.log(`Wrote:\n- ${path.relative(process.cwd(), mdOut)}\n- ${path.relative(process.cwd(), jsonOut)}`);
+// ---- Generate per-screen pages ----
+const screenIndex = [];
+screenIndex.push('## Web UI screens');
+screenIndex.push('');
+screenIndex.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
+screenIndex.push('');
+
+const workflowByScreen = new Map(); // screenId -> Set(workflowId)
+for (const m of workflowMappings) {
+  if (!m.screenId || !m.workflowId) continue;
+  const set = workflowByScreen.get(m.screenId) ?? new Set();
+  set.add(m.workflowId);
+  workflowByScreen.set(m.screenId, set);
+}
+for (const ref of workflowRefs) {
+  const sid = ref.screen?.attrs?.id ?? '';
+  if (!sid || !ref.workflowId) continue;
+  const set = workflowByScreen.get(sid) ?? new Set();
+  set.add(ref.workflowId);
+  workflowByScreen.set(sid, set);
+}
+
+const allScreenIds = uniqBy(
+  allScreens.map((s) => ({ id: s.attrs?.id ?? '', type: s.attrs?.type ?? '' })).filter((s) => s.id),
+  (s) => s.id
+).sort((a, b) => a.id.localeCompare(b.id));
+
+for (const s of allScreenIds) {
+  const screenId = s.id;
+  const screenType = s.type;
+  const sKey = `${screenId}||${screenType || ''}`;
+  const callsForScreen = byScreen.get(sKey) ?? [];
+  const workflows = [...(workflowByScreen.get(screenId) ?? new Set())].sort();
+
+  const fileName = `${safeFileName(screenId)}.md`;
+  const relLink = `./${fileName}`;
+
+  screenIndex.push(`- [\`${mdEscapeInline(screenId)}\`](${relLink})${screenType ? ` — ${mdEscapeInline(screenType)}` : ''}`);
+
+  const out = [];
+  out.push(`## ${mdEscapeInline(screenId)}`);
+  out.push('');
+  out.push(`- **Screen type**: ${mdEscapeInline(screenType || '—')}`);
+  out.push('');
+
+  out.push('### Workflows referenced');
+  out.push('');
+  if (workflows.length) {
+    for (const wf of workflows) out.push(`- \`${mdEscapeInline(wf)}\``);
+  } else {
+    out.push('—');
+  }
+  out.push('');
+
+  out.push('### Business actions on this screen');
+  out.push('');
+  if (callsForScreen.length) {
+    const uniqCalls = uniqBy(callsForScreen, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`).sort((a, b) =>
+      a.businessAction.localeCompare(b.businessAction)
+    );
+    for (const r of uniqCalls) {
+      const impl = r.implementationFiles.length ? ` — ${r.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
+      const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
+      const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
+      out.push(`- **\`${mdEscapeInline(r.businessAction)}\`**${comp}${label}${impl}`);
+    }
+  } else {
+    out.push('—');
+  }
+  out.push('');
+
+  out.push('### Functional / business perspective (starter)');
+  out.push('');
+  out.push(
+    'This screen exposes the actions and workflow controls needed to complete a specific step of the business process. The items above indicate what users can execute from this page; use these to describe why the page exists and what “done” looks like for the user.'
+  );
+  out.push('');
+  out.push('### Notes (fill in)');
+  out.push('');
+  out.push('- **Why this screen exists**:');
+  out.push('- **Who uses it**:');
+  out.push('- **Key decisions / validations**:');
+  out.push('- **Downstream impacts**:');
+  out.push('');
+
+  fs.writeFileSync(path.join(screensDir, fileName), out.join('\n'), 'utf8');
+}
+
+fs.writeFileSync(path.join(screensDir, 'INDEX.md'), screenIndex.join('\n'), 'utf8');
+
+// ---- Generate per-workflow pages ----
+const wfIndex = [];
+wfIndex.push('## Workflows referenced by Web UI');
+wfIndex.push('');
+wfIndex.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
+wfIndex.push('');
+
+const workflows = new Map(); // workflowId -> { mappings:[], refs:[], screens:Set }
+
+for (const m of workflowMappings) {
+  if (!m.workflowId) continue;
+  const rec = workflows.get(m.workflowId) ?? { mappings: [], refs: [], screens: new Set() };
+  rec.mappings.push(m);
+  if (m.screenId) rec.screens.add(m.screenId);
+  workflows.set(m.workflowId, rec);
+}
+
+for (const r of workflowRefs) {
+  if (!r.workflowId) continue;
+  const rec = workflows.get(r.workflowId) ?? { mappings: [], refs: [], screens: new Set() };
+  rec.refs.push(r);
+  const sid = r.screen?.attrs?.id ?? '';
+  if (sid) rec.screens.add(sid);
+  workflows.set(r.workflowId, rec);
+}
+
+const workflowIds = [...workflows.keys()].sort((a, b) => a.localeCompare(b));
+for (const wfId of workflowIds) {
+  const wf = workflows.get(wfId);
+  const screenIds = [...wf.screens].sort();
+
+  // Collect BusinessActions across all related screens.
+  const actionSet = new Set();
+  const screenToActions = new Map();
+  for (const sid of screenIds) {
+    // We don't always know the screen type here; search in byScreen keys.
+    const matches = [...byScreen.keys()].filter((k) => k.startsWith(`${sid}||`));
+    const actions = [];
+    for (const k of matches) {
+      for (const a of byScreen.get(k) ?? []) {
+        actions.push(a);
+        actionSet.add(a.businessAction);
+      }
+    }
+    if (actions.length) screenToActions.set(sid, uniqBy(actions, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`));
+  }
+
+  const fileName = `${safeFileName(wfId)}.md`;
+  const relLink = `./${fileName}`;
+  wfIndex.push(`- [\`${mdEscapeInline(wfId)}\`](${relLink}) — ${screenIds.length} screen(s), ${actionSet.size} action(s)`);
+
+  const out = [];
+  out.push(`## ${mdEscapeInline(wfId)}`);
+  out.push('');
+  out.push('### Overview');
+  out.push('');
+  out.push(`- **Screens involved (Web UI)**: ${screenIds.length}`);
+  out.push(`- **Business actions exposed (Web UI)**: ${actionSet.size}`);
+  out.push(`- **Workflow mappings (ScreenMapping/WorkflowCondition)**: ${wf.mappings.length}`);
+  out.push(`- **Workflow parameter references (components)**: ${wf.refs.length}`);
+  out.push('');
+
+  const namingHint = inferBusinessPerspectiveFromName(wfId);
+  if (namingHint) {
+    out.push(namingHint);
+    out.push('');
+  }
+
+  // States/tasks referenced (best-effort).
+  const states = new Set();
+  for (const m of wf.mappings) {
+    if (m.stateOrTask) states.add(m.stateOrTask);
+  }
+  for (const ref of wf.refs) {
+    const st = ref.component?.listValues?.States ?? [];
+    for (const s of st) states.add(s);
+  }
+
+  out.push('### States / tasks referenced (best-effort)');
+  out.push('');
+  if (states.size) {
+    for (const s of [...states].sort()) out.push(`- \`${mdEscapeInline(s)}\``);
+  } else {
+    out.push('—');
+  }
+  out.push('');
+
+  out.push('### Web UI screens and actions');
+  out.push('');
+  for (const sid of screenIds) {
+    const scrObj = allScreensById.get(sid);
+    const st = scrObj?.attrs?.type ?? '';
+    out.push(`#### \`${mdEscapeInline(sid)}\`${st ? ` (${mdEscapeInline(st)})` : ''}`);
+    out.push('');
+
+    const actions = screenToActions.get(sid) ?? [];
+    if (actions.length) {
+      actions.sort((a, b) => a.businessAction.localeCompare(b.businessAction));
+      for (const a of actions) {
+        const impl = a.implementationFiles.length ? ` — ${a.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
+        const label = a.label ? ` — ${mdEscapeInline(a.label)}` : '';
+        const comp = a.componentType ? ` (${mdEscapeInline(a.componentType)})` : '';
+        out.push(`- **\`${mdEscapeInline(a.businessAction)}\`**${comp}${label}${impl}`);
+      }
+    } else {
+      out.push('- No BusinessAction calls were detected on this screen.');
+    }
+    out.push('');
+  }
+
+  out.push('### Functional / business perspective (starter)');
+  out.push('');
+  out.push(
+    'Use this section to explain what the workflow accomplishes end-to-end from a business perspective (who initiates it, what gets validated, what approvals happen, what integrations fire, and what the success criteria are). The “Web UI screens and actions” section above shows what users can do in each step.'
+  );
+  out.push('');
+  out.push('### Notes (fill in)');
+  out.push('');
+  out.push('- **Why this workflow was built**:');
+  out.push('- **Primary users / roles**:');
+  out.push('- **Entry criteria**:');
+  out.push('- **Key validations / business rules**:');
+  out.push('- **Exit criteria / definition of done**:');
+  out.push('- **Downstream integrations / consumers**:');
+  out.push('');
+
+  fs.writeFileSync(path.join(workflowsDir, fileName), out.join('\n'), 'utf8');
+}
+
+fs.writeFileSync(path.join(workflowsDir, 'INDEX.md'), wfIndex.join('\n'), 'utf8');
+
+// Also write a small top-level index for convenience.
+const index = [];
+index.push('## Web UI analysis');
+index.push('');
+index.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
+index.push('');
+index.push('- **BusinessAction call map**: `webui-business-action-calls.md`');
+index.push('- **Workflows**: `workflows/INDEX.md`');
+index.push('- **Screens**: `screens/INDEX.md`');
+index.push('');
+fs.writeFileSync(path.join(outDir, 'INDEX.md'), index.join('\n'), 'utf8');
+
+console.log(
+  `Wrote:\n- ${path.relative(process.cwd(), mdOut)}\n- ${path.relative(process.cwd(), jsonOut)}\n- ${path.relative(
+    process.cwd(),
+    path.join(workflowsDir, 'INDEX.md')
+  )}\n- ${path.relative(process.cwd(), path.join(screensDir, 'INDEX.md'))}`
+);

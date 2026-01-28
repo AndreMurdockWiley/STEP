@@ -5,6 +5,13 @@ Source: `WebUI.xml`
 - **Total BusinessAction call-sites found**: 103
 - **Unique BusinessActions**: 76
 - **Screens containing BusinessActions**: 47
+- **Workflow mappings found (ScreenMapping/WorkflowCondition)**: 24
+- **Workflow references found (components with `Workflow` parameter)**: 9
+
+### Workflow sub-pages
+
+- **Workflows index**: `workflows/INDEX.md`
+- **Screens index**: `screens/INDEX.md`
 
 ### Calls grouped by screen
 
