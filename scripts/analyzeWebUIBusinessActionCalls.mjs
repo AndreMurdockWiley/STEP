@@ -327,93 +327,14 @@ for (const r of records) {
 }
 
 // Write outputs.
-ensureCleanDir(outDir);
-const workflowsDir = path.join(outDir, 'workflows');
-const screensDir = path.join(outDir, 'screens');
-ensureDir(workflowsDir);
-ensureDir(screensDir);
-
-const jsonOut = path.join(outDir, 'webui-business-action-calls.json');
-fs.writeFileSync(jsonOut, JSON.stringify({ xmlPath: path.relative(process.cwd(), xmlPath), count: records.length, records }, null, 2));
+ensureDir(outDir);
 
 function sortKeyScreen(k) {
   const [id] = k.split('||');
   return id.toLowerCase();
 }
 
-const md = [];
-md.push('## Web UI \u2192 Business Action call map');
-md.push('');
-md.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
-md.push('');
-md.push(`- **Total BusinessAction call-sites found**: ${records.length}`);
-md.push(`- **Unique BusinessActions**: ${byAction.size}`);
-md.push(`- **Screens containing BusinessActions**: ${byScreen.size}`);
-md.push(`- **Workflow mappings found (ScreenMapping/WorkflowCondition)**: ${workflowMappings.length}`);
-md.push(`- **Workflow references found (components with \`Workflow\` parameter)**: ${workflowRefs.length}`);
-md.push('');
-md.push('### Workflow sub-pages');
-md.push('');
-md.push(`- **Workflows index**: \`workflows/INDEX.md\``);
-md.push(`- **Screens index**: \`screens/INDEX.md\``);
-md.push('');
-md.push('### Calls grouped by screen');
-md.push('');
-
-const screenKeys = [...byScreen.keys()].sort((a, b) => sortKeyScreen(a).localeCompare(sortKeyScreen(b)));
-for (const sk of screenKeys) {
-  const [screenId, screenType] = sk.split('||');
-  const list = byScreen.get(sk) ?? [];
-  const screenTitle = `${screenId}${screenType ? ` (${screenType})` : ''}`;
-  md.push(`#### \`${mdEscapeInline(screenTitle)}\``);
-  md.push('');
-
-  const uniqCalls = uniqBy(list, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`);
-  uniqCalls.sort((a, b) => a.businessAction.localeCompare(b.businessAction));
-
-  for (const r of uniqCalls) {
-    const impl = r.implementationFiles.length ? ` — ${r.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
-    const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
-    const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
-    md.push(`- **\`${mdEscapeInline(r.businessAction)}\`**${comp}${label}${impl}`);
-  }
-  md.push('');
-}
-
-md.push('### Calls grouped by BusinessAction');
-md.push('');
-
-const actionKeys = [...byAction.keys()].sort((a, b) => a.localeCompare(b));
-for (const ak of actionKeys) {
-  const list = byAction.get(ak) ?? [];
-  const impl = (ruleFiles.get(ak) ?? []).map((p) => path.relative(sourceRoot, p)).sort();
-  md.push(`#### \`${mdEscapeInline(ak)}\``);
-  md.push('');
-  md.push(`- **Implementation file(s)**: ${impl.length ? impl.map((p) => `\`${mdEscapeInline(p)}\``).join(', ') : '— (no matching .js/.mjs file found in repo)'}`);
-  md.push('');
-
-  const uniqPlaces = uniqBy(list, (r) => `${r.screenId}||${r.screenType}||${r.componentType}||${r.componentId}||${r.label}`);
-  uniqPlaces.sort((a, b) => (a.screenId || '').localeCompare(b.screenId || ''));
-
-  for (const r of uniqPlaces) {
-    const screen = `${r.screenId || '(no-screen)'}${r.screenType ? ` (${r.screenType})` : ''}`;
-    const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
-    const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
-    md.push(`- **Screen**: \`${mdEscapeInline(screen)}\`${comp}${label}`);
-  }
-  md.push('');
-}
-
-const mdOut = path.join(outDir, 'webui-business-action-calls.md');
-fs.writeFileSync(mdOut, md.join('\n'), 'utf8');
-
-// ---- Generate per-screen pages ----
-const screenIndex = [];
-screenIndex.push('## Web UI screens');
-screenIndex.push('');
-screenIndex.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
-screenIndex.push('');
-
+// Build workflow-by-screen index.
 const workflowByScreen = new Map(); // screenId -> Set(workflowId)
 for (const m of workflowMappings) {
   if (!m.screenId || !m.workflowId) continue;
@@ -429,83 +350,8 @@ for (const ref of workflowRefs) {
   workflowByScreen.set(sid, set);
 }
 
-const allScreenIds = uniqBy(
-  allScreens.map((s) => ({ id: s.attrs?.id ?? '', type: s.attrs?.type ?? '' })).filter((s) => s.id),
-  (s) => s.id
-).sort((a, b) => a.id.localeCompare(b.id));
-
-for (const s of allScreenIds) {
-  const screenId = s.id;
-  const screenType = s.type;
-  const sKey = `${screenId}||${screenType || ''}`;
-  const callsForScreen = byScreen.get(sKey) ?? [];
-  const workflows = [...(workflowByScreen.get(screenId) ?? new Set())].sort();
-
-  const fileName = `${safeFileName(screenId)}.md`;
-  const relLink = `./${fileName}`;
-
-  screenIndex.push(`- [\`${mdEscapeInline(screenId)}\`](${relLink})${screenType ? ` — ${mdEscapeInline(screenType)}` : ''}`);
-
-  const out = [];
-  out.push(`## ${mdEscapeInline(screenId)}`);
-  out.push('');
-  out.push(`- **Screen type**: ${mdEscapeInline(screenType || '—')}`);
-  out.push('');
-
-  out.push('### Workflows referenced');
-  out.push('');
-  if (workflows.length) {
-    for (const wf of workflows) out.push(`- \`${mdEscapeInline(wf)}\``);
-  } else {
-    out.push('—');
-  }
-  out.push('');
-
-  out.push('### Business actions on this screen');
-  out.push('');
-  if (callsForScreen.length) {
-    const uniqCalls = uniqBy(callsForScreen, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`).sort((a, b) =>
-      a.businessAction.localeCompare(b.businessAction)
-    );
-    for (const r of uniqCalls) {
-      const impl = r.implementationFiles.length ? ` — ${r.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
-      const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
-      const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
-      out.push(`- **\`${mdEscapeInline(r.businessAction)}\`**${comp}${label}${impl}`);
-    }
-  } else {
-    out.push('—');
-  }
-  out.push('');
-
-  out.push('### Functional / business perspective (starter)');
-  out.push('');
-  out.push(
-    'This screen exposes the actions and workflow controls needed to complete a specific step of the business process. The items above indicate what users can execute from this page; use these to describe why the page exists and what “done” looks like for the user.'
-  );
-  out.push('');
-  out.push('### Notes (fill in)');
-  out.push('');
-  out.push('- **Why this screen exists**:');
-  out.push('- **Who uses it**:');
-  out.push('- **Key decisions / validations**:');
-  out.push('- **Downstream impacts**:');
-  out.push('');
-
-  fs.writeFileSync(path.join(screensDir, fileName), out.join('\n'), 'utf8');
-}
-
-fs.writeFileSync(path.join(screensDir, 'INDEX.md'), screenIndex.join('\n'), 'utf8');
-
-// ---- Generate per-workflow pages ----
-const wfIndex = [];
-wfIndex.push('## Workflows referenced by Web UI');
-wfIndex.push('');
-wfIndex.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
-wfIndex.push('');
-
+// Build workflows model.
 const workflows = new Map(); // workflowId -> { mappings:[], refs:[], screens:Set }
-
 for (const m of workflowMappings) {
   if (!m.workflowId) continue;
   const rec = workflows.get(m.workflowId) ?? { mappings: [], refs: [], screens: new Set() };
@@ -513,7 +359,6 @@ for (const m of workflowMappings) {
   if (m.screenId) rec.screens.add(m.screenId);
   workflows.set(m.workflowId, rec);
 }
-
 for (const r of workflowRefs) {
   if (!r.workflowId) continue;
   const rec = workflows.get(r.workflowId) ?? { mappings: [], refs: [], screens: new Set() };
@@ -523,126 +368,230 @@ for (const r of workflowRefs) {
   workflows.set(r.workflowId, rec);
 }
 
+// ---- Single consolidated markdown report ----
+const report = [];
+report.push('## STEP Web UI analysis (single-file report)');
+report.push('');
+report.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
+report.push('');
+report.push('### Summary');
+report.push('');
+report.push(`- **Total BusinessAction call-sites found**: ${records.length}`);
+report.push(`- **Unique BusinessActions**: ${byAction.size}`);
+report.push(`- **Screens containing BusinessActions**: ${byScreen.size}`);
+report.push(`- **Workflow mappings found (ScreenMapping/WorkflowCondition)**: ${workflowMappings.length}`);
+report.push(`- **Workflow references found (components with \`Workflow\` parameter)**: ${workflowRefs.length}`);
+report.push('');
+
+report.push('### Table of contents');
+report.push('');
+report.push('- [Workflows](#workflows)');
+report.push('- [Screens](#screens)');
+report.push('- [BusinessAction calls by screen](#businessaction-calls-by-screen)');
+report.push('- [BusinessAction calls by BusinessAction](#businessaction-calls-by-businessaction)');
+report.push('');
+
+// Workflows section.
+report.push('### Workflows');
+report.push('');
 const workflowIds = [...workflows.keys()].sort((a, b) => a.localeCompare(b));
-for (const wfId of workflowIds) {
-  const wf = workflows.get(wfId);
-  const screenIds = [...wf.screens].sort();
+if (!workflowIds.length) {
+  report.push('—');
+  report.push('');
+} else {
+  for (const wfId of workflowIds) {
+    const wf = workflows.get(wfId);
+    const screenIds = [...wf.screens].sort();
 
-  // Collect BusinessActions across all related screens.
-  const actionSet = new Set();
-  const screenToActions = new Map();
-  for (const sid of screenIds) {
-    // We don't always know the screen type here; search in byScreen keys.
-    const matches = [...byScreen.keys()].filter((k) => k.startsWith(`${sid}||`));
-    const actions = [];
-    for (const k of matches) {
-      for (const a of byScreen.get(k) ?? []) {
-        actions.push(a);
-        actionSet.add(a.businessAction);
+    // Collect BusinessActions across all related screens.
+    const actionSet = new Set();
+    const screenToActions = new Map();
+    for (const sid of screenIds) {
+      const matches = [...byScreen.keys()].filter((k) => k.startsWith(`${sid}||`));
+      const actions = [];
+      for (const k of matches) {
+        for (const a of byScreen.get(k) ?? []) {
+          actions.push(a);
+          actionSet.add(a.businessAction);
+        }
       }
+      if (actions.length) screenToActions.set(sid, uniqBy(actions, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`));
     }
-    if (actions.length) screenToActions.set(sid, uniqBy(actions, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`));
-  }
 
-  const fileName = `${safeFileName(wfId)}.md`;
-  const relLink = `./${fileName}`;
-  wfIndex.push(`- [\`${mdEscapeInline(wfId)}\`](${relLink}) — ${screenIds.length} screen(s), ${actionSet.size} action(s)`);
+    // States/tasks referenced (best-effort).
+    const states = new Set();
+    for (const m of wf.mappings) {
+      if (m.stateOrTask) states.add(m.stateOrTask);
+    }
+    for (const ref of wf.refs) {
+      const st = ref.component?.listValues?.States ?? [];
+      for (const s of st) states.add(s);
+    }
 
-  const out = [];
-  out.push(`## ${mdEscapeInline(wfId)}`);
-  out.push('');
-  out.push('### Overview');
-  out.push('');
-  out.push(`- **Screens involved (Web UI)**: ${screenIds.length}`);
-  out.push(`- **Business actions exposed (Web UI)**: ${actionSet.size}`);
-  out.push(`- **Workflow mappings (ScreenMapping/WorkflowCondition)**: ${wf.mappings.length}`);
-  out.push(`- **Workflow parameter references (components)**: ${wf.refs.length}`);
-  out.push('');
+    report.push(`#### \`${mdEscapeInline(wfId)}\``);
+    report.push('');
+    report.push(`- **Screens involved (Web UI)**: ${screenIds.length}`);
+    report.push(`- **Business actions exposed (Web UI)**: ${actionSet.size}`);
+    report.push(`- **Workflow mappings (ScreenMapping/WorkflowCondition)**: ${wf.mappings.length}`);
+    report.push(`- **Workflow parameter references (components)**: ${wf.refs.length}`);
+    report.push('');
 
-  const namingHint = inferBusinessPerspectiveFromName(wfId);
-  if (namingHint) {
-    out.push(namingHint);
-    out.push('');
-  }
+    const namingHint = inferBusinessPerspectiveFromName(wfId);
+    if (namingHint) {
+      report.push(namingHint);
+      report.push('');
+    }
 
-  // States/tasks referenced (best-effort).
-  const states = new Set();
-  for (const m of wf.mappings) {
-    if (m.stateOrTask) states.add(m.stateOrTask);
-  }
-  for (const ref of wf.refs) {
-    const st = ref.component?.listValues?.States ?? [];
-    for (const s of st) states.add(s);
-  }
-
-  out.push('### States / tasks referenced (best-effort)');
-  out.push('');
-  if (states.size) {
-    for (const s of [...states].sort()) out.push(`- \`${mdEscapeInline(s)}\``);
-  } else {
-    out.push('—');
-  }
-  out.push('');
-
-  out.push('### Web UI screens and actions');
-  out.push('');
-  for (const sid of screenIds) {
-    const scrObj = allScreensById.get(sid);
-    const st = scrObj?.attrs?.type ?? '';
-    out.push(`#### \`${mdEscapeInline(sid)}\`${st ? ` (${mdEscapeInline(st)})` : ''}`);
-    out.push('');
-
-    const actions = screenToActions.get(sid) ?? [];
-    if (actions.length) {
-      actions.sort((a, b) => a.businessAction.localeCompare(b.businessAction));
-      for (const a of actions) {
-        const impl = a.implementationFiles.length ? ` — ${a.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
-        const label = a.label ? ` — ${mdEscapeInline(a.label)}` : '';
-        const comp = a.componentType ? ` (${mdEscapeInline(a.componentType)})` : '';
-        out.push(`- **\`${mdEscapeInline(a.businessAction)}\`**${comp}${label}${impl}`);
-      }
+    report.push('**States / tasks referenced (best-effort)**');
+    report.push('');
+    if (states.size) {
+      for (const s of [...states].sort()) report.push(`- \`${mdEscapeInline(s)}\``);
     } else {
-      out.push('- No BusinessAction calls were detected on this screen.');
+      report.push('—');
     }
-    out.push('');
+    report.push('');
+
+    report.push('**Web UI screens and actions**');
+    report.push('');
+    for (const sid of screenIds) {
+      const scrObj = allScreensById.get(sid);
+      const st = scrObj?.attrs?.type ?? '';
+      report.push(`- **Screen**: \`${mdEscapeInline(sid)}\`${st ? ` (${mdEscapeInline(st)})` : ''}`);
+
+      const actions = screenToActions.get(sid) ?? [];
+      if (actions.length) {
+        actions.sort((a, b) => a.businessAction.localeCompare(b.businessAction));
+        for (const a of actions) {
+          const impl = a.implementationFiles.length ? ` — ${a.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
+          const label = a.label ? ` — ${mdEscapeInline(a.label)}` : '';
+          const comp = a.componentType ? ` (${mdEscapeInline(a.componentType)})` : '';
+          report.push(`  - **\`${mdEscapeInline(a.businessAction)}\`**${comp}${label}${impl}`);
+        }
+      } else {
+        report.push('  - No BusinessAction calls were detected on this screen.');
+      }
+    }
+    report.push('');
+
+    report.push('**Functional / business perspective (starter)**');
+    report.push('');
+    report.push(
+      'Use this section to explain what the workflow accomplishes end-to-end from a business perspective (who initiates it, what gets validated, what approvals happen, what integrations fire, and what the success criteria are). The “Web UI screens and actions” list above shows what users can do in each step.'
+    );
+    report.push('');
+    report.push('**Notes (fill in)**');
+    report.push('');
+    report.push('- **Why this workflow was built**:');
+    report.push('- **Primary users / roles**:');
+    report.push('- **Entry criteria**:');
+    report.push('- **Key validations / business rules**:');
+    report.push('- **Exit criteria / definition of done**:');
+    report.push('- **Downstream integrations / consumers**:');
+    report.push('');
   }
-
-  out.push('### Functional / business perspective (starter)');
-  out.push('');
-  out.push(
-    'Use this section to explain what the workflow accomplishes end-to-end from a business perspective (who initiates it, what gets validated, what approvals happen, what integrations fire, and what the success criteria are). The “Web UI screens and actions” section above shows what users can do in each step.'
-  );
-  out.push('');
-  out.push('### Notes (fill in)');
-  out.push('');
-  out.push('- **Why this workflow was built**:');
-  out.push('- **Primary users / roles**:');
-  out.push('- **Entry criteria**:');
-  out.push('- **Key validations / business rules**:');
-  out.push('- **Exit criteria / definition of done**:');
-  out.push('- **Downstream integrations / consumers**:');
-  out.push('');
-
-  fs.writeFileSync(path.join(workflowsDir, fileName), out.join('\n'), 'utf8');
 }
 
-fs.writeFileSync(path.join(workflowsDir, 'INDEX.md'), wfIndex.join('\n'), 'utf8');
+// Screens section.
+report.push('### Screens');
+report.push('');
+const allScreenIds = uniqBy(
+  allScreens.map((s) => ({ id: s.attrs?.id ?? '', type: s.attrs?.type ?? '' })).filter((s) => s.id),
+  (s) => s.id
+).sort((a, b) => a.id.localeCompare(b.id));
 
-// Also write a small top-level index for convenience.
-const index = [];
-index.push('## Web UI analysis');
-index.push('');
-index.push(`Source: \`${mdEscapeInline(path.relative(process.cwd(), xmlPath))}\``);
-index.push('');
-index.push('- **BusinessAction call map**: `webui-business-action-calls.md`');
-index.push('- **Workflows**: `workflows/INDEX.md`');
-index.push('- **Screens**: `screens/INDEX.md`');
-index.push('');
-fs.writeFileSync(path.join(outDir, 'INDEX.md'), index.join('\n'), 'utf8');
+for (const s of allScreenIds) {
+  const screenId = s.id;
+  const screenType = s.type;
+  const callsForScreen = [...byScreen.entries()]
+    .filter(([k]) => k.startsWith(`${screenId}||`))
+    .flatMap(([, v]) => v ?? []);
+  const workflowsForScreen = [...(workflowByScreen.get(screenId) ?? new Set())].sort();
 
-console.log(
-  `Wrote:\n- ${path.relative(process.cwd(), mdOut)}\n- ${path.relative(process.cwd(), jsonOut)}\n- ${path.relative(
-    process.cwd(),
-    path.join(workflowsDir, 'INDEX.md')
-  )}\n- ${path.relative(process.cwd(), path.join(screensDir, 'INDEX.md'))}`
-);
+  report.push(`#### \`${mdEscapeInline(screenId)}\``);
+  report.push('');
+  report.push(`- **Screen type**: ${mdEscapeInline(screenType || '—')}`);
+  report.push(`- **Workflows referenced**: ${workflowsForScreen.length ? workflowsForScreen.map((w) => `\`${mdEscapeInline(w)}\``).join(', ') : '—'}`);
+  report.push('');
+
+  report.push('**Business actions on this screen**');
+  report.push('');
+  if (callsForScreen.length) {
+    const uniqCalls = uniqBy(callsForScreen, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`).sort((a, b) =>
+      a.businessAction.localeCompare(b.businessAction)
+    );
+    for (const r of uniqCalls) {
+      const impl = r.implementationFiles.length ? ` — ${r.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
+      const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
+      const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
+      report.push(`- **\`${mdEscapeInline(r.businessAction)}\`**${comp}${label}${impl}`);
+    }
+  } else {
+    report.push('—');
+  }
+  report.push('');
+
+  report.push('**Functional / business perspective (starter)**');
+  report.push('');
+  report.push(
+    'This screen exposes the actions and workflow controls needed to complete a specific step of the business process. The items above indicate what users can execute from this page; use these to describe why the page exists and what “done” looks like for the user.'
+  );
+  report.push('');
+  report.push('**Notes (fill in)**');
+  report.push('');
+  report.push('- **Why this screen exists**:');
+  report.push('- **Who uses it**:');
+  report.push('- **Key decisions / validations**:');
+  report.push('- **Downstream impacts**:');
+  report.push('');
+}
+
+// BusinessAction calls by screen section.
+report.push('### BusinessAction calls by screen');
+report.push('');
+const screenKeys = [...byScreen.keys()].sort((a, b) => sortKeyScreen(a).localeCompare(sortKeyScreen(b)));
+for (const sk of screenKeys) {
+  const [screenId, screenType] = sk.split('||');
+  const list = byScreen.get(sk) ?? [];
+  const screenTitle = `${screenId}${screenType ? ` (${screenType})` : ''}`;
+  report.push(`#### \`${mdEscapeInline(screenTitle)}\``);
+  report.push('');
+
+  const uniqCalls = uniqBy(list, (r) => `${r.businessAction}||${r.componentType}||${r.componentId}||${r.label}`);
+  uniqCalls.sort((a, b) => a.businessAction.localeCompare(b.businessAction));
+
+  for (const r of uniqCalls) {
+    const impl = r.implementationFiles.length ? ` — ${r.implementationFiles.map((p) => `\`${mdEscapeInline(p)}\``).join(', ')}` : '';
+    const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
+    const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
+    report.push(`- **\`${mdEscapeInline(r.businessAction)}\`**${comp}${label}${impl}`);
+  }
+  report.push('');
+}
+
+// BusinessAction calls by action section.
+report.push('### BusinessAction calls by BusinessAction');
+report.push('');
+const actionKeys = [...byAction.keys()].sort((a, b) => a.localeCompare(b));
+for (const ak of actionKeys) {
+  const list = byAction.get(ak) ?? [];
+  const impl = (ruleFiles.get(ak) ?? []).map((p) => path.relative(sourceRoot, p)).sort();
+  report.push(`#### \`${mdEscapeInline(ak)}\``);
+  report.push('');
+  report.push(`- **Implementation file(s)**: ${impl.length ? impl.map((p) => `\`${mdEscapeInline(p)}\``).join(', ') : '— (no matching .js/.mjs file found in repo)'}`);
+
+  const uniqPlaces = uniqBy(list, (r) => `${r.screenId}||${r.screenType}||${r.componentType}||${r.componentId}||${r.label}`);
+  uniqPlaces.sort((a, b) => (a.screenId || '').localeCompare(b.screenId || ''));
+
+  for (const r of uniqPlaces) {
+    const screen = `${r.screenId || '(no-screen)'}${r.screenType ? ` (${r.screenType})` : ''}`;
+    const label = r.label ? ` — ${mdEscapeInline(r.label)}` : '';
+    const comp = r.componentType ? ` (${mdEscapeInline(r.componentType)})` : '';
+    report.push(`- **Screen**: \`${mdEscapeInline(screen)}\`${comp}${label}`);
+  }
+  report.push('');
+}
+
+const mdOut = path.join(outDir, 'webui-analysis.md');
+fs.writeFileSync(mdOut, report.join('\n'), 'utf8');
+
+console.log(`Wrote:\n- ${path.relative(process.cwd(), mdOut)}`);
