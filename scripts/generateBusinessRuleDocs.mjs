@@ -20,6 +20,15 @@ function ensureSentence(s) {
   return `${t}.`;
 }
 
+function isMeaningfulErrorMessage(s) {
+  const t = normalizeCell(s);
+  if (!t) return false;
+  // Common placeholders from inventory workbooks.
+  if (t === '—' || t === '-' || /^n\/a\b/i.test(t)) return false;
+  if (/^n\/a\s*\(.*\)\.?$/i.test(t)) return false;
+  return true;
+}
+
 function summarizeUsageForParagraph(usage) {
   if (!usage?.length) return '';
   const u = usage[0];
@@ -49,7 +58,10 @@ function buildFunctionalDescriptionParagraph({ ruleId, functionalDescription, at
     sentences.push(ensureSentence(`It is triggered from: ${usageSummary}`));
   }
 
-  const err = normalizeCell(errorMessage) || (extractedErrors?.length ? extractedErrors[0] : '');
+  const errorCandidates = [];
+  if (normalizeCell(errorMessage)) errorCandidates.push(normalizeCell(errorMessage));
+  if (extractedErrors?.length) errorCandidates.push(...extractedErrors);
+  const err = errorCandidates.find(isMeaningfulErrorMessage) || '';
   if (err) {
     sentences.push(ensureSentence(`If validation fails, the user sees an error message such as: "${err}"`));
   }
@@ -256,6 +268,13 @@ function synthesizeFunctionalDescription({ ruleId, jsText, workbookDescription }
   const { ruleDefinition, pluginDefinition } = extractStepExportJson(jsText);
   if (ruleDefinition?.description) return normalizeCell(ruleDefinition.description);
 
+  // Special-case: simple approval actions.
+  // Example: exports.operation0 = function (NODE) { NODE.approve(); }
+  if (/\b[A-Za-z_$][A-Za-z0-9_$]*\.approve\(\s*\)\s*;?/.test(jsText)) {
+    const objectNoun = /package/i.test(ruleId) ? 'package' : 'object';
+    return `Approves the current ${objectNoun} in STEP (commits changes to the Approved state).`;
+  }
+
   const wfIds = [...jsText.matchAll(/getWorkflowInstanceByID\(\s*["']([^"']+)["']\s*\)/g)].map((m) => m[1]);
   const taskIds = [...jsText.matchAll(/getTaskByID\(\s*["']([^"']+)["']\s*\)/g)].map((m) => m[1]);
   const eventIds = [...jsText.matchAll(/triggerByID\(\s*["']([^"']+)["']\s*,/g)].map((m) => m[1]);
@@ -300,6 +319,11 @@ function synthesizeFunctionalLogic({ definition, jsText }) {
   const { pluginDefinition } = extractStepExportJson(jsText);
 
   const bullets = [];
+  const approveCalls = [...jsText.matchAll(/\b([A-Za-z_$][A-Za-z0-9_$]*)\.approve\(\s*\)/g)];
+  if (approveCalls.length) {
+    const hasNode = approveCalls.some((m) => m[1] === 'NODE');
+    bullets.push(hasNode ? 'Approve the current object (`NODE`).' : 'Approve the current object.');
+  }
   const wfIds = [...jsText.matchAll(/getWorkflowInstanceByID\(\s*["']([^"']+)["']\s*\)/g)].map((m) => m[1]);
   const taskIds = [...jsText.matchAll(/getTaskByID\(\s*["']([^"']+)["']\s*\)/g)].map((m) => m[1]);
   const eventIds = [...jsText.matchAll(/triggerByID\(\s*["']([^"']+)["']\s*,/g)].map((m) => m[1]);
