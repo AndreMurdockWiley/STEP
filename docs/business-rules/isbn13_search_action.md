@@ -12,7 +12,7 @@
 
 ### Functional description
 
-Calls an external integration endpoint (configured via a STEP Gateway binding) to **search/enrich an OtherProducts record by `ProductIsbn13`**. The action submits the product’s ISBN-13 to the endpoint (`requestType=ISBN13_SEARCH`, `application=STIBO`) and then uses the JSON response to populate STEP attributes and relationships, including:
+Calls an external integration endpoint (via a configured STEP Gateway binding) to **search/enrich an OtherProducts record using `ProductIsbn13`**. The action submits the product’s ISBN-13 to the endpoint (`requestType=ISBN13_SEARCH`, `application=STIBO`) and applies the returned `NJData` payload to enrich the product and its related metadata.
 
 - Updating the product’s **title/name** (`ProductFullTitle` and the node name).
 - Deriving **process-related codes** from returned status + PPC code (`ProductPrimaryProcessCode`, `ProductProcessStatusCode`).
@@ -20,12 +20,15 @@ Calls an external integration endpoint (configured via a STEP Gateway binding) t
 - Creating/adding **Bundle** rows in `BundleGroup_BundleCode_DataContainer` (bundle code/group/subscription type).
 - Linking the product to **Subject** classifications (and updating subject attributes) when subject codes are returned.
 
-The action does not define a custom user-facing validation message; errors surface only if the gateway call/JSON parsing fails or if STEP rejects an attempted attribute write (e.g., invalid LOV ID).
+This action is configured with a precondition that checks `ProductIsbn` equals an empty string; in practice it is intended for cases where the ISBN-10 (or alternate ISBN field) is not populated and enrichment should be driven by ISBN-13.
+
+The action does not define a custom user-facing error message. Failures typically surface only if the gateway call/JSON parsing fails, if lookup mapping returns `N/A`, or if STEP rejects an attempted attribute write (for example, an invalid LOV ID).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
+- Precondition: runs only when `ProductIsbn` equals `""` (blank).
 - Reads `ProductIsbn13` from the current product and performs a **GET** request through the configured Gateway with query parameters `requestType=ISBN13_SEARCH`, `application=STIBO`, and `ISBN13=<ProductIsbn13>`.
 - Parses the JSON response and iterates over the returned `NJData` payload, skipping a predefined list of response keys that should not be mapped into STEP.
 - For response field **`PPCCode`**:
