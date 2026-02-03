@@ -12,13 +12,24 @@
 
 ### Functional description
 
-WALS Journal Data Extract. It primarily works with attribute(s): JournalWalsParticipation, JournalWalsParticipationStartDate, LicenseTemplate, template_LicenseSubType, template_licenseType, template_name, template_use. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Processes an inbound WALS journal message received via a STEP Integration Endpoint and synchronizes WALS participation details on the target Journal. The rule identifies the Journal using `data.isPartOf.masterId`, updates the Journal-level WALS participation flag and start date, and then replaces the Journal’s `LicenseTemplate` data container rows with the set of license templates provided in the message.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalWalsParticipation, JournalWalsParticipationStartDate, template_licenseType, template_LicenseSubType, template_use, template_name.
+- Parses the inbound JSON payload and reads the target Journal identifier from `data.isPartOf.masterId`.
+- Retrieves the Journal product by that ID; if the Journal is not found, no updates are made (the rule only logs processing information).
+- Updates **Journal Wals Participation** (`JournalWalsParticipation`):
+  - If `data.walsParticipation` is `true`, sets the attribute to `Yes`.
+  - If `data.walsParticipation` is `false`, sets the attribute to `No`.
+  - If `data.walsParticipation` is missing/null, clears the existing attribute value (if present).
+- Updates **Journal Wals Participation Start Date** (`JournalWalsParticipationStartDate`):
+  - If `data.walsParticipationStartDate` is provided, normalizes it to `YYYY-MM-DD` and sets the attribute.
+  - If the date is missing/null, clears the existing attribute value (if present).
+- Rebuilds the **License Template** data container (`LicenseTemplate`) as a full refresh:
+  - Deletes all existing `LicenseTemplate` rows on the Journal.
+  - For each entry in `data.licenseTemplates`, creates a new `LicenseTemplate` row and maps `template.licenseType`, `template.licenseSubType`, `template.use`, and `template.name` into `template_licenseType`, `template_LicenseSubType`, `template_use`, and `template_name`.
 
 ### Errors
 
