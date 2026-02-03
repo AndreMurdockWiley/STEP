@@ -80,7 +80,7 @@ Generated from `Stibo STEP Global Business Rules v1.3.xlsx`.
 - [`BC_TrueForSoftDelete`](BC_TrueForSoftDelete.md) — Validates that "SoftDelete" = "Yes".
 - [`BC_ValidateTextFields`](BC_ValidateTextFields.md) — BC_ValidateTextFields.
 - [`BC_ValidateTextFieldsMassUploads`](BC_ValidateTextFieldsMassUploads.md) — BC Validate Text Fields in Mass Update
-- [`bcFilterOnEditorial`](bcFilterOnEditorial.md) — bcFilterOnEditorial.
+- [`bcFilterOnEditorial`](bcFilterOnEditorial.md) — Filters editorial contacts eligible for outbound integrations
 - [`bcFilterOnLov_OneSource`](bcFilterOnLov_OneSource.md) — bcFilterOnLov_OneSource.
 - [`bcFilterOnSociety`](bcFilterOnSociety.md) — bcFilterOnSociety.
 - [`BF_TargetSearchFuncForEditorialContacts`](BF_TargetSearchFuncForEditorialContacts.md) — Target Search Function for Editorial Contact Objects

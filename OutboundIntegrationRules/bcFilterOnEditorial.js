@@ -10,7 +10,7 @@
   "type" : "BusinessCondition",
   "setupGroups" : [ "Outbound_Integration_Rules" ],
   "name" : "bcFilterOnEditorial",
-  "description" : null,
+  "description" : "Filters EditorialContact records for outbound integrations: returns true only when email, first name, and last name are not null and the contact is not under excluded parent editorial role nodes.",
   "scope" : "Global",
   "validObjectTypes" : [ "EditorialContact" ],
   "allObjectTypesValid" : true,

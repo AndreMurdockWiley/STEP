@@ -8,13 +8,43 @@
 
 ### Functional description
 
-bcFilterOnEditorial. It primarily works with attribute(s): EditorialContactEmail, EditorialContactFirstName, EditorialContactLastName. It is triggered from: Integration rule (configured in STEP Integration Endpoints).
+Determines whether an `EditorialContact` record is eligible to be included in outbound integrations. The condition returns **true** only for editorial contacts that have the minimum required contact details populated (email, first name, last name) and that are **not** associated to certain excluded parent editorial role nodes (e.g., managing/editorial leadership and other internal roles).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: EditorialContactEmail, EditorialContactFirstName, EditorialContactLastName.
+- **Reads** `EditorialContactEmail`, `EditorialContactFirstName`, `EditorialContactLastName` from the current `EditorialContact`.
+- **Reads** the parent node ID (`node.getParent().getID()`) to identify the editorial role/category the contact is under.
+- **Returns false** when any of the three required attributes is `null`.
+- **Returns false** when the parent node ID is one of the explicitly excluded IDs:
+  - `JournalAssociateManagingEditor`
+  - `JournalOperationsAssistant`
+  - `JournalManagingEditor`
+  - `JournalCATContact`
+  - `JournalMarketingPortfolioLead`
+  - `JournalEditorialSeniorEditorialDirector`
+  - `JournalEditorInChief`
+  - `JournalInternalAdvertisingContact`
+  - `JournalEditorialPublisher`
+  - `JournalEditorialPublishingDirector`
+  - `JournalCompEditorialEvaluationTeamLead`
+  - `JournalPartnerPublishingDirector`
+  - `JournalPartnerPublishingManager`
+  - `JournalPartnerSolutionsDirector`
+  - `JournalPeerReviewPerformanceDirector`
+  - `JournalPeerReviewPerformanceLead`
+  - `JournalPeerReviewPerformanceManager`
+  - `JournalPublishingDevelopmentDirector`
+  - `JournalPublishingDevelopmentManager`
+  - `JournalPublishingVP`
+  - `JournalStrategicContentAcquisitionLead`
+  - `JournalStratContentAcquisitionManager`
+- **Returns true** otherwise.
+- **Notes/limitations**:
+  - The rule checks only for `null` values; empty strings (e.g., `""`) are treated as populated and will pass the condition.
+  - The rule does not validate email format.
+  - The rule does not write any attributes; it only logs values for troubleshooting.
 
 ### Errors
 
