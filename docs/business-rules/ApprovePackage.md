@@ -10,13 +10,15 @@
 
 ### Functional description
 
-Approve Package. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Approves the current Package object in STEP (i.e., commits the object’s changes from the working workspace to the Approved state) when the user runs this Business Action. This rule does not add any package-specific validation or data updates; it relies on STEP’s standard approval behavior.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+When executed, the action approves the current object:
 
-- No further functional logic details were extracted.
+- Take the bound `NODE` (the object the action is run on)
+- Call `NODE.approve()`
+- If STEP blocks approval (e.g., due to standard validation/permission/workflow constraints), STEP raises the error; this rule does not intercept or transform errors.
 
 ### Errors
 
