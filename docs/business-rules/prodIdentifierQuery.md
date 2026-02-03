@@ -6,23 +6,27 @@
 
 ### Functional description
 
-prodIdentifierQuery. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+`prodIdentifierQuery` is a global STEP **Business Function** intended to support querying/deriving a product identifier based on inputs provided by the caller.
+
+**Current implementation note**: the exported source file (`Functions/prodIdentifierQuery.js`) contains only STEP rule metadata and **no executable function logic**, so invoking this function (as currently delivered) performs no validation, has no side effects, and does not return a computed result.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+As implemented in `Functions/prodIdentifierQuery.js`:
 
-- No further functional logic details were extracted.
+- The rule is defined in STEP with id/name `prodIdentifierQuery` and type `BusinessFunction` (global scope).
+- No parameters, branching, lookups, or calculations are implemented in the exported JavaScript.
+- Outcome: the function provides **no runtime behavior** beyond its existence as a callable rule in STEP.
 
 ### Errors
 
-- **Configured error**: N/A (Business Action).
+- **Configured error**: None in source. (The inventory placeholder “N/A (Business Action)” does not apply to this function as implemented.)
 
 ### Usage / trigger
 
 Usage information was not provided in the inventory workbook for this rule. A trigger location could not be inferred automatically; review STEP configuration for the source file(s): Functions/prodIdentifierQuery.js.
 
-- No usage/trigger details were extracted.
+- No usage/trigger references were found in this repository.
 
 ### Dependencies / key functions
 
