@@ -10,17 +10,21 @@
 
 ### Functional description
 
-Workflow_Test_Message. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "TITLE / HEADLINE / BODY".
+Workflow_Test_Message is a **user-invoked test business action** used to confirm that a Business Action is correctly wired in STEP (Web UI / workflow configuration) and that user messaging renders as expected.
+
+When executed, it displays a Web UI alert dialog to the user with a configured **Title**, **Headline**, and **Body** text (`TITLE / HEADLINE / BODY`). This rule performs **no validation**, **no branching**, and **no data updates**.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+At runtime, STEP binds the current object as `NODE` (not used) and the Web UI context as `UI`, then executes a single UI call:
 
-- No further functional logic details were extracted.
+- Always call `UI.showAlert("TITLE", "HEADLINE", "BODY")`
+- No reads/writes to `NODE`
+- No conditions or validation checks; the alert is always shown when the action is triggered
 
 ### Errors
 
-- **Configured error**: TITLE / HEADLINE / BODY
+- **Configured alert text**: TITLE / HEADLINE / BODY
 
 ### Usage / trigger
 
