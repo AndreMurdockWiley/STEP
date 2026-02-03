@@ -8,17 +8,21 @@
 
 ### Functional description
 
-bcFilterOnSociety. It primarily works with attribute(s): OrganizationName, OrganizationUrl, SocietyAcronym. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "help me please".
+`bcFilterOnSociety` is a lightweight outbound-integration **filter condition** for Organization records. It is used by STEP Integration Endpoints to determine whether an `OrganizationType` / `Organizations` node is eligible to be included in an outbound message. The condition passes only when the Organization has the minimum Society-identifying fields populated (currently `SocietyAcronym` and `OrganizationName`). Records that do not meet this requirement evaluate to **false** and are therefore excluded/filtered out by the integration configuration (no end-user validation message is configured by this rule).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: SocietyAcronym, OrganizationName, OrganizationUrl.
+- Reads `SocietyAcronym` and `OrganizationName` from the current node.
+- If either value is `null`, returns `false` (fails the condition).
+- If both values are present, writes informational log entries and returns `true` (passes the condition).
+- Does not write any attributes.
+- Note: although `OrganizationUrl` and `SocietyCodeRef` appear in the inventory/binds, the current script does not evaluate `OrganizationUrl` and does not use `SocietyCodeRef` (the URL-related logic is commented out).
 
 ### Errors
 
-- **Configured error**: help me please
+—
 
 ### Usage / trigger
 
