@@ -270,7 +270,7 @@ Generated from `Stibo STEP Global Business Rules v1.3.xlsx`.
 - [`OtherProductsFunctions`](OtherProductsFunctions.md) — Other Products Functions.
 - [`OtherProductsSaveButton`](OtherProductsSaveButton.md) — Other Products Save Button.
 - [`PackageWFSAPCreateTransition`](PackageWFSAPCreateTransition.md) — MJ Package WF SAP Create Transition
-- [`parentLastUpdateddate`](parentLastUpdateddate.md) — parentLastUpdateddate.
+- [`parentLastUpdateddate`](parentLastUpdateddate.md) — Synchronizes LastUpdatedNew between Journal and its media children for outbound integrations, and stamps Status/StatusMessage for downstream sends
 - [`PartnerJournalSaveAction`](PartnerJournalSaveAction.md) — This business action is triggered, when save button is clicked on web ui for partner products
 - [`Polulate_Journal Maturity`](Polulate_Journal%20Maturity.md) — Polulate Journal Maturity.
 - [`Populate_HandlingEditorNameDisplay`](Populate_HandlingEditorNameDisplay.md) — Populate Handling Editor Name Display.

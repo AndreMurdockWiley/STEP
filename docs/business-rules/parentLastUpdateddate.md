@@ -8,13 +8,23 @@
 
 ### Functional description
 
-parentLastUpdateddate. It primarily works with attribute(s): ID, LastUpdatedNew, Status, StatusMessage. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Synchronizes the outbound “last updated” timestamp across a Journal hierarchy so integration payloads are consistent. When the rule runs as part of an Integration Endpoint, it copies `LastUpdatedNew` between a `Journal` and its `JournalPrintMedia` / `JournalDigitalMedia` children (depending on which object is being exported) and then stamps the integration outcome fields (`Status`, `StatusMessage`) to indicate the object is ready to be sent downstream.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ID, LastUpdatedNew, Status, StatusMessage.
+- Determines the current object type.
+- If the object is `JournalPrintMedia` or `JournalDigitalMedia`:
+  - Reads the parent Journal’s `LastUpdatedNew` value.
+  - Overwrites the media object’s `LastUpdatedNew` with the parent’s value.
+  - Sets `Status` = `Success`.
+  - Sets `StatusMessage` = `Send to Downstream System`.
+- If the object is `Journal`:
+  - Reads the Journal’s `LastUpdatedNew` value.
+  - Iterates all children and sets each child’s `LastUpdatedNew` to match the Journal.
+  - For each child, sets `Status` = `Success` and `StatusMessage` = `Send to Downstream System`.
+- For any other object type, no attributes are updated (the rule only logs).
 
 ### Errors
 
