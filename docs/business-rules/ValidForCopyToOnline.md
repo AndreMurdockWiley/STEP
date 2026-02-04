@@ -8,13 +8,24 @@
 
 ### Functional description
 
-Valid For Copy To Online. It primarily works with attribute(s): JournalMediaCode, ProductMediaType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object is **eligible for “Copy To Online”** based on the journal’s media configuration.
+
+This condition is intended to be used as a gate/validation in STEP so that “Copy To Online” is only available when:
+
+- The **owning Journal** is configured for **both** media types (`ProductMediaType = "Both"`), and
+- The current node represents the **print** side (`JournalMediaCode = "Print"`).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductMediaType, JournalMediaCode.
+- Resolves the owning **Journal** for the current node by walking up the hierarchy based on object type:
+  - `JournalDigitalMedia` / `JournalPrintMedia` → parent is Journal
+  - `JournalDigitalPublicationYear` / `JournalPrintPublicationYear` → grandparent is Journal
+  - `JournalDigitalVolumes` / `JournalPrintVolumes` → great-grandparent is Journal
+- Reads `ProductMediaType` from the Journal and `JournalMediaCode` from the current node.
+- Returns **true** only when `ProductMediaType == "Both"` **and** `JournalMediaCode == "Print"`; otherwise returns **false**.
+- Does not write/update any attributes.
 
 ### Errors
 
