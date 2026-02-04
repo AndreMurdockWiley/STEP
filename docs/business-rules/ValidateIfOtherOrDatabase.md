@@ -8,15 +8,16 @@
 
 ### Functional description
 
-Validate If Other or Database. It primarily works with attribute(s): CollectionType. It is triggered from: Business condition (validation configured in STEP).
+Validates that the current object represents a collection that is classified as either an **Other Database** collection or a **Database Model Collections** collection. This condition is typically used in STEP as a business condition to gate validations/actions so they only run for those two collection types.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CollectionType" == "Other Database", continue; otherwise error.
-- If "CollectionType" == "Database Model Collections", continue; otherwise error.
-- Reads/writes attributes including: CollectionType.
+- Read `CollectionType` from the current object.
+- Return **true** when `CollectionType` is **either** `"Other Database"` **or** `"Database Model Collections"`.
+- Return **false** for any other value (the business condition fails).
+- Reads attributes: `CollectionType` (no attributes are written/updated).
 
 ### Errors
 
