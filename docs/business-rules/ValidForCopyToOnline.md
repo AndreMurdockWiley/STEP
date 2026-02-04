@@ -8,13 +8,21 @@
 
 ### Functional description
 
-Valid For Copy To Online. It primarily works with attribute(s): JournalMediaCode, ProductMediaType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current journal-related record is **eligible for “Copy to Online” processing**. The condition is intended to be true only when the **journal supports both Print and Online** (i.e., it is a dual-format journal) and the **current object represents the Print side**. This allows workflow/STEP validations to gate “copy-to-online” actions so they only run in scenarios where copying from Print to Online is meaningful and permitted.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductMediaType, JournalMediaCode.
+- Resolves the owning **Journal** node based on the current object type:
+  - For `JournalDigitalMedia` / `JournalPrintMedia`: uses the direct parent as the Journal.
+  - For `JournalDigitalPublicationYear` / `JournalPrintPublicationYear`: uses the grandparent as the Journal.
+  - For `JournalDigitalVolumes` / `JournalPrintVolumes`: uses the great-grandparent as the Journal.
+- Reads **`ProductMediaType`** from the resolved Journal and **`JournalMediaCode`** from the current object.
+- Returns **true** only when:
+  - `ProductMediaType` = `Both` (journal is both print and online), **and**
+  - `JournalMediaCode` = `Print` (current node is the print representation).
+- Returns **false** for all other combinations.
 
 ### Errors
 
