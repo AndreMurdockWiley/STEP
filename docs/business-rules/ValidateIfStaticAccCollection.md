@@ -8,15 +8,19 @@
 
 ### Functional description
 
-Validate If Static Access Collection. It primarily works with attribute(s): CollectionCategory, OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+Validates that an Other Product collection classified as **Static** is also categorized as an **Access** collection. This prevents misclassification by enforcing the required pairing between `OtherProductCollectionType` and `CollectionCategory` when the validation is executed in STEP.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "OtherProductCollectionType" == "Static", continue; otherwise error.
-- If "CollectionCategory" == "Access", continue; otherwise error.
-- Reads/writes attributes including: OtherProductCollectionType, CollectionCategory.
+- Check `OtherProductCollectionType`.
+  - If the value is **Static**, validation continues.
+  - Otherwise, the rule fails validation (error).
+- Check `CollectionCategory`.
+  - If the value is **Access**, validation continues.
+  - Otherwise, the rule fails validation (error).
+- Attributes evaluated by this validation include: `OtherProductCollectionType`, `CollectionCategory`.
 
 ### Errors
 
