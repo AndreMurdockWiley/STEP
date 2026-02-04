@@ -8,17 +8,19 @@
 
 ### Functional description
 
-Validate If NOT Cochrane Library And Static Access Collection. It primarily works with attribute(s): CollectionCategory, OtherProductCollectionSubType, OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current collection should be treated as **neither** a Cochrane Library collection **nor** a Static Access collection. This business condition evaluates `OtherProductCollectionSubType`, `OtherProductCollectionType`, and `CollectionCategory`, and returns a boolean result that can be used in STEP configuration (for example, to include/exclude UI tab pages or reference types).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "OtherProductCollectionSubType" == "Evidence Medicine", continue; otherwise error.
-- If "OtherProductCollectionType" == "Dynamic", continue; otherwise error.
-- If "OtherProductCollectionType" == "Static", continue; otherwise error.
-- If "CollectionCategory" == "Access", continue; otherwise error.
-- Reads/writes attributes including: OtherProductCollectionSubType, OtherProductCollectionType, CollectionCategory.
+- The condition returns **false** (i.e., it is *excluded* from “NOT Cochrane Library and NOT Static Access”) when either of the following is true:
+  - `OtherProductCollectionSubType` is **Evidence Medicine** (treated as Cochrane Library), **OR**
+  - `OtherProductCollectionType` is **Dynamic** (treated as Cochrane Library).
+- The condition also returns **false** when the collection is a Static Access collection:
+  - `OtherProductCollectionType` is **Static** **AND** `CollectionCategory` is **Access**.
+- If none of the above cases match, the condition returns **true** (the collection is neither Cochrane Library nor Static Access).
+- Reads attributes: `OtherProductCollectionSubType`, `OtherProductCollectionType`, `CollectionCategory` (no attribute updates).
 
 ### Errors
 
