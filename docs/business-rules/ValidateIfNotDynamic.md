@@ -8,13 +8,15 @@
 
 ### Functional description
 
-Validate If Not Dynamic. It primarily works with attribute(s): OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+Ensures the current object is **not** marked as a *Dynamic* other product collection. This business condition evaluates the `OtherProductCollectionType` attribute and returns **true (passes)** for any value other than `"Dynamic"` (including blank), and **false (fails)** only when the value is exactly `"Dynamic"`. It is triggered from: Business condition (validation configured in STEP).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: OtherProductCollectionType.
+- Reads `OtherProductCollectionType` from the current object.
+- If `OtherProductCollectionType` is not equal to `"Dynamic"`, the condition **passes** (returns `true`).
+- If `OtherProductCollectionType` is equal to `"Dynamic"`, the condition **fails** (returns `false`).
 
 ### Errors
 
