@@ -8,13 +8,16 @@
 
 ### Functional description
 
-Validate If SAP Material Number. It primarily works with attribute(s): IssueSAPMaterialNumber. It is triggered from: Business condition (validation configured in STEP).
+Determines whether an Issue record currently **does not have** an SAP Material Number populated. This business condition is used by STEP validation configuration to detect when `IssueSAPMaterialNumber` is missing/blank on the current object.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: IssueSAPMaterialNumber.
+- Reads `IssueSAPMaterialNumber` from the current object (no attributes are written).
+- If `IssueSAPMaterialNumber` is **null** or an **empty string**, the condition returns **true** (interpreted as “SAP Material Number is not provided”).
+- If `IssueSAPMaterialNumber` contains any value, the condition returns **false** (interpreted as “SAP Material Number is provided”).
+- The script does **not** validate SAP Material Number format (e.g., length, numeric-only, leading zeros); any messaging/error behavior is handled by the STEP validation configuration that consumes this condition.
 
 ### Errors
 
