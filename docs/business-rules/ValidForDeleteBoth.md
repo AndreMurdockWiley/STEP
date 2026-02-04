@@ -8,13 +8,17 @@
 
 ### Functional description
 
-Valid For Delete Both. It primarily works with attribute(s): ProductMediaType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object belongs to a Journal that is configured as **“Both”** (i.e., the Journal supports both media types). This condition is typically used to gate validations/actions that are only applicable when the owning Journal’s `ProductMediaType` is set to **Both**.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductMediaType.
+- Navigates from the current node up the hierarchy (three parent levels) to obtain the owning **Journal** node.
+- Reads the Journal attribute `ProductMediaType`.
+- Returns **true** when `ProductMediaType` equals **"Both"**.
+- Returns **false** for any other value (including blank / not set).
+- Does not write any attributes.
 
 ### Errors
 
