@@ -8,15 +8,17 @@
 
 ### Functional description
 
-Validate If Journal Special Product. It primarily works with attribute(s): OtherProductCollectionSubType, OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object qualifies as a **Journal special product** based on its collection classification. The condition evaluates the attributes `OtherProductCollectionType` and `OtherProductCollectionSubType` and is intended to be used by STEP validations/workflow configuration that require the object to represent a Dynamic Journal collection.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "OtherProductCollectionType" == "Dynamic", continue; otherwise error.
-- If "OtherProductCollectionSubType" == "Journal", continue; otherwise error.
-- Reads/writes attributes including: OtherProductCollectionType, OtherProductCollectionSubType.
+- Read `OtherProductCollectionType` and `OtherProductCollectionSubType` from the current object.
+- Return **true** only when both of the following are true:
+  - `OtherProductCollectionType` == `"Dynamic"`
+  - `OtherProductCollectionSubType` == `"Journal"`
+- Otherwise return **false** (any user-facing error message is handled by the STEP validation/configuration that invokes this condition).
 
 ### Errors
 
