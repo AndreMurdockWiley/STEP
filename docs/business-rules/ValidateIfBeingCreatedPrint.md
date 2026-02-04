@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Validate If Being Created - Print. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object should be treated as **print-capable** during creation/validation flows. The condition evaluates the object’s `ProductMediaType` value and is intended for use in STEP configuration as a boolean gate (e.g., to apply validations only when print content is relevant).
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The rule reads the `ProductMediaType` attribute from the current object and returns a boolean:
 
-- No further functional logic details were extracted.
+- If `ProductMediaType` is **not set** (null/empty): return **false**
+- If `ProductMediaType` equals **`Print`** or **`Both`**: return **true**
+- Otherwise: return **false**
 
 ### Errors
 
