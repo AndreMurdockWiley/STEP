@@ -5,20 +5,29 @@
 - **Business area**: JournalMediaUpsertGroup
 - **Data model object valid to**: JournalPrintMedia
 - **Product type(s) valid to**: JournalPrintMedia
-- **Attribute ID(s)**: JournalTrueStatus, ProductMediaType
+- **Attribute ID(s)**: ProductIssn, JournalTrueStatus, ProductMediaType
 - **Attribute name(s)**: Product ISSN, Journal True Status, Product Media Type
 - **Status**: Active
 - **Source file(s)**: `JournalMediaGroup/JournalMediaUpsertGroup/UpdatePrintISSNKey.js`
 
 ### Functional description
 
-Update Print ISSN Key. It primarily works with attribute(s): JournalTrueStatus, ProductMediaType. If validation fails, the user sees an error message such as: "Authentication error message returned from genericFunctions.issnAuthentication".
+Ensures the **Print ISSN key** on a `JournalPrintMedia` record is set to a valid ISSN when the user enters/updates **Product ISSN**.
+
+If the journal is not flagged as **Journal True Status = No**, the rule authenticates the entered ISSN using `genericFunctions.issnAuthentication`. When authentication succeeds (or is skipped for **Journal True Status = No**), the rule writes the ISSN to the `ProductIssn` **key attribute** and then runs `JournalHistoryISSNUpdate` to keep ISSN history aligned. If authentication fails, the rule prevents completion and shows the authentication message as an error.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalTrueStatus, ProductMediaType.
+- Reads `JournalTrueStatus` (and reads `ProductMediaType`, though it does not currently influence the decision).
+- Uses the validated **new Product ISSN** value (`ProductIssn` / "New ISSN" context parameter).
+- If `JournalTrueStatus` is not `No`, calls `genericFunctions.issnAuthentication(newISSN)`; otherwise treats the ISSN as authenticated.
+- If authenticated:
+  - Updates the `ProductIssn` **key** via `genericFunctions.setValueToKeyAttribute(...)`.
+  - Executes the follow-on business action `JournalHistoryISSNUpdate` for the same object.
+- If authentication fails:
+  - Adds the returned authentication message to Data Issues and stops processing.
 
 ### Errors
 
