@@ -8,16 +8,16 @@
 
 ### Functional description
 
-Validate If NOT Other or Database. It primarily works with attribute(s): CollectionType. It is triggered from: Business condition (validation configured in STEP).
+Validate If NOT Other or Database. This business condition is used to determine whether the current object’s `CollectionType` is an allowed value for the configured STEP validation. In other words, it evaluates **true** when `CollectionType` is **not** one of the excluded collection types (Other Database, Database Model Collections, Backfile Collection). It is triggered from: Business condition (validation configured in STEP).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CollectionType" == "Other Database", continue; otherwise error.
-- If "CollectionType" == "Database Model Collections", continue; otherwise error.
-- If "CollectionType" == "Backfile Collection", continue; otherwise error.
-- Reads/writes attributes including: CollectionType.
+- Read `CollectionType` from the current object.
+- If `CollectionType` is **any** of the following values, the condition **fails** (returns `false`): "Other Database", "Database Model Collections", "Backfile Collection".
+- Otherwise (including when `CollectionType` is blank/unset), the condition **passes** (returns `true`).
+- Reads attributes including: CollectionType.
 
 ### Errors
 
