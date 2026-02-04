@@ -8,14 +8,15 @@
 
 ### Functional description
 
-Validate If Database. It primarily works with attribute(s): CollectionType. It is triggered from: Business condition (validation configured in STEP).
+Ensures the current object is treated as a **Database Model Collection** by verifying its `CollectionType` value. This rule is used as a **business condition** in STEP to gate validations/steps so they only apply when the object’s collection type is explicitly set to *Database Model Collections*.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CollectionType" == "Database Model Collections", continue; otherwise error.
-- Reads/writes attributes including: CollectionType.
+- Read `CollectionType` from the current object.
+- If `CollectionType` is exactly `"Database Model Collections"`, the condition evaluates to **true**.
+- Otherwise, the condition evaluates to **false** (the associated STEP validation/configuration determines the user-facing outcome/message).
 
 ### Errors
 
