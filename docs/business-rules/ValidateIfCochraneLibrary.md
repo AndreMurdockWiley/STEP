@@ -8,14 +8,15 @@
 
 ### Functional description
 
-Validate If Cochrane Library. It primarily works with attribute(s): OtherProductCollectionSubType, OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+Validates that an Other Product Collection qualifies to be treated as a Cochrane Library collection for workflow/validation purposes. A collection is considered valid by this condition only when its subtype indicates Cochrane Library content ("Evidence Medicine") and it is not configured as a dynamic collection type.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "OtherProductCollectionSubType" == "Evidence Medicine", continue; otherwise error.
-- Reads/writes attributes including: OtherProductCollectionSubType, OtherProductCollectionType.
+- Read `OtherProductCollectionSubType` and `OtherProductCollectionType`.
+- **Pass (returns `true`)** when `OtherProductCollectionSubType` = `"Evidence Medicine"` **and** `OtherProductCollectionType` ≠ `"Dynamic"`.
+- **Fail (returns `false`)** for all other combinations (this is then handled by the configured STEP validation).
 
 ### Errors
 
