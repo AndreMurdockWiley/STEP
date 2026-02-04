@@ -8,14 +8,15 @@
 
 ### Functional description
 
-Validate If Open Access. It primarily works with attribute(s): ProductRenewalSubscriptionType. It is triggered from: Business condition (validation configured in STEP).
+Ensures the current object is treated as **Open Access** by verifying that the **Product renewal subscription type** has been set to **Open Access**. This rule is used as a STEP business condition (typically in validation), so a non-matching value causes the condition to fail and prevents the configured step/validation from proceeding.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "ProductRenewalSubscriptionType" == "Open Access", continue; otherwise error.
-- Reads/writes attributes including: ProductRenewalSubscriptionType.
+- Read `ProductRenewalSubscriptionType` from the current object.
+- Return **true** only when the value is exactly `"Open Access"`.
+- Otherwise return **false** (the calling STEP configuration interprets this as a failed condition/validation).
 
 ### Errors
 
