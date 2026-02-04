@@ -7,13 +7,14 @@
 
 ### Functional description
 
-Validate If Being Created. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the rule is being evaluated in an “object creation” context (i.e., not running from within a workflow task). This condition is typically used in STEP validations to branch logic so certain checks only run during initial creation (or are skipped when the object is already in a workflow).
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The condition is based solely on the presence of a current workflow context:
 
-- No further functional logic details were extracted.
+- If a `WORKFLOW` context is available (the rule is running inside a workflow), **return `false`**.
+- If no `WORKFLOW` context is available, **return `true`** (treat as “being created” / evaluated outside workflow).
 
 ### Errors
 
