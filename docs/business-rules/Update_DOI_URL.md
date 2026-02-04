@@ -12,13 +12,25 @@
 
 ### Functional description
 
-Update DOI URL. It primarily works with attribute(s): COPY_DOI, COPY_URL, ProductBundleCodeID, ProductDoi, ProductIsbn13, ProductUrl. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Maintains the **Product DOI** and **Product URL** for Other Products that carry the bundle code **`OLBK`**. For qualifying products, the rule can generate a default DOI/URL from **Product ISBN13** (when no DOI exists) and keeps `COPY_DOI` / `COPY_URL` in sync as “last applied” values so the rule can detect and respect later manual changes. For non-`OLBK` products, the rule clears DOI/URL values to avoid populating book DOI links where they do not apply.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductBundleCodeID, ProductDoi, ProductUrl, COPY_URL, COPY_DOI, ProductIsbn13.
+- Checks the `BundleGroup_BundleCode_DataContainer` data containers for a `ProductBundleCodeID` value of **`OLBK`**.
+- If **no** `OLBK` bundle code is found:
+  - Sets `ProductDoi`, `ProductUrl`, `COPY_DOI`, and `COPY_URL` to **null**.
+- If an `OLBK` bundle code **is** found:
+  - Reads `ProductDoi`, `ProductUrl`, `COPY_DOI`, `COPY_URL`.
+  - If `ProductDoi` is **null**:
+    - Builds a default DOI from ISBN13: `10.1002/<ProductIsbn13>`.
+    - Builds a default URL from the DOI: `https://www.onlinelibrary.wiley.com/doi/book/<DOI>`.
+    - Writes `ProductDoi`/`ProductUrl` and copies the same values into `COPY_DOI`/`COPY_URL`.
+  - If `ProductDoi` is **not** null:
+    - If `COPY_DOI` differs from `ProductDoi`, treats the DOI as updated and sets `ProductUrl` to the standard Wiley “book DOI” URL for that DOI, then updates `COPY_DOI`.
+    - If `COPY_URL` differs from `ProductUrl`, treats the URL as manually overridden and preserves the current `ProductUrl` value while updating `COPY_URL`.
+    - Otherwise (URL unchanged but DOI changed), recomputes the standard URL from the DOI and updates `COPY_URL` accordingly.
 
 ### Errors
 
