@@ -8,14 +8,16 @@
 
 ### Functional description
 
-Validate If Backfile. It primarily works with attribute(s): CollectionType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object should be treated as a **Backfile collection** for validation and workflow gating. The condition evaluates the object's `CollectionType` and only passes when the type is explicitly set to **Backfile Collection**. This rule is typically used in STEP configurations to ensure backfile-only actions/validations are applied to the correct collection type.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "CollectionType" == "Backfile Collection", continue; otherwise error.
-- Reads/writes attributes including: CollectionType.
+- Read `CollectionType` from the current object.
+- Return **true** when `CollectionType` equals `"Backfile Collection"`.
+- Otherwise return **false** (the surrounding STEP configuration determines the validation message/behavior when the condition fails).
+- Reads attributes: `CollectionType` (no attributes are written).
 
 ### Errors
 
