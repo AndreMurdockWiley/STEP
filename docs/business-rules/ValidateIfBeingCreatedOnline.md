@@ -7,13 +7,17 @@
 
 ### Functional description
 
-Validate If Being Created - Online. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object should be treated as being created for an **online (digital)** product variant.
+
+This business condition is used in STEP configuration to **gate online-specific UI/validation behavior** (for example, only showing or enabling “digital” components when the object’s media type indicates it is Online-capable).
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The condition evaluates the `ProductMediaType` attribute on the current object and returns a boolean.
 
-- No further functional logic details were extracted.
+- If `ProductMediaType` is **blank / not set**: **return false**
+- If `ProductMediaType` is exactly **`Online`** or **`Both`**: **return true**
+- For any other value (for example **`Print`**): **return false**
 
 ### Errors
 
