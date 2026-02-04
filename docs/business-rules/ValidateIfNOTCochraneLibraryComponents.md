@@ -8,15 +8,16 @@
 
 ### Functional description
 
-Validate If NOT Cochrane Library - components. It primarily works with attribute(s): OtherProductCollectionSubType, OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object should be treated as **NOT** a “Cochrane Library - components” collection, based on the values of `OtherProductCollectionSubType` and `OtherProductCollectionType`. This rule is used as a boolean business condition in STEP to gate/qualify downstream validations or workflow behavior.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- If "OtherProductCollectionSubType" == "Evidence Medicine", continue; otherwise error.
-- If "OtherProductCollectionType" == "Dynamic", continue; otherwise error.
-- Reads/writes attributes including: OtherProductCollectionSubType, OtherProductCollectionType.
+- Read `OtherProductCollectionSubType` and `OtherProductCollectionType` from the current object.
+- If `OtherProductCollectionSubType` is **"Evidence Medicine"** **OR** `OtherProductCollectionType` is **"Dynamic"**, the condition evaluates to **false** (i.e., the object is treated as a Cochrane Library component and therefore does **not** meet the “NOT Cochrane Library - components” condition).
+- Otherwise, the condition evaluates to **true** (i.e., `OtherProductCollectionSubType` is **not** "Evidence Medicine" **AND** `OtherProductCollectionType` is **not** "Dynamic").
+- **Reads attributes**: `OtherProductCollectionSubType`, `OtherProductCollectionType` (no attribute writes).
 
 ### Errors
 
