@@ -8,13 +8,16 @@
 
 ### Functional description
 
-Validate If JournalGroupCode Description Missing. It primarily works with attribute(s): EntityJournalGroupCodeDescription. It is triggered from: Business condition (validation configured in STEP).
+Ensures a Journal Group Code **Description** is populated on the current `EntityRoot`. The condition evaluates the `EntityJournalGroupCodeDescription` attribute and returns **false** (validation fails) when the attribute has **no value** (`null`), and **true** when a value is present. This runs as a STEP business condition configured for validation.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: EntityJournalGroupCodeDescription.
+- Reads `EntityJournalGroupCodeDescription` from the current object (`NODE`).
+- If the value is `null`, the business condition returns `false` (indicating the description is missing).
+- If the value is not `null`, the business condition returns `true`.
+- Note: the script only checks for `null`; an empty string is treated as present and will pass.
 
 ### Errors
 
