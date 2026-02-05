@@ -7,13 +7,21 @@
 
 ### Functional description
 
-JSON_Node_Handler. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+JSON_Node_Handler builds outbound payloads for STEP integration events. When triggered by an Integration Endpoint, it inspects the event and node, logs the event context, and—when the node is a Product—assembles a structured JSON message describing the product, its values, children, and key references for downstream processing. It emits either update or delete messages to the integration pipeline.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+This rule operates as a node handler for outbound business processing:
 
-- No further functional logic details were extracted.
+- Capture the event type (if provided) and log whether an event ID is available.
+- Retrieve the current node and proceed only if it is a Product.
+- For delete events:
+  - Emit a minimal delete payload containing the STEP object ID.
+- For non-delete events:
+  - Build a base JSON object from the node (via Integrations_Utility_Library).
+  - Populate attribute values (`values`) and child objects (`children`).
+  - Add outbound references (`references`) and classification references for `ProductToSubjectHierarchyLink`.
+  - Emit the assembled JSON as an update message.
 
 ### Errors
 
