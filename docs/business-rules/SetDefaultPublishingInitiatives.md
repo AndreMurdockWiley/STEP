@@ -11,13 +11,16 @@
 
 ### Functional description
 
-Sets the Publishing Initiatives attributes values to default No in Journal creation workflow. It primarily works with attribute(s): JournalEditorialDataPolicy, JournalEditorialORCIdRequirement, JournalWileyEditingServices. It is triggered from: Journal Creation Workflow. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+During Journal creation, this action initializes Publishing Initiatives fields to their default workflow starting values. It clears the initiative flags to "No" for the core set of publishing‑initiative attributes, and then sets the three editorial policy/service fields to their required defaults (Wiley Editing Services, Editorial Data Policy, and Editorial ORCID requirement).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalWileyEditingServices, JournalEditorialDataPolicy, JournalEditorialORCIdRequirement.
+- Sets the following initiative attributes to LOV value "N" (No): JournalOpenScienceBadges, JournalRegisteredReports, JournalAcceptsPreprints, JournalIsOnAuthorea, JournalIsOnPublons, JournalCRediT, JournalEmbeddedRichMedia, JournalFreeFormat, JournalCMEForReviewers, JournalTransparentPeerReview, JournalAcceptedArticles, JournalImageScreening.
+- Sets JournalWileyEditingServices to LOV value "Y" (Yes).
+- Sets JournalEditorialDataPolicy to LOV value "ENC" (Encouraged).
+- Sets JournalEditorialORCIdRequirement to LOV value "NREQ" (Not required).
 
 ### Errors
 
