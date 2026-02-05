@@ -13,13 +13,21 @@
 
 ### Functional description
 
-Status Derivation on Media Objects. It primarily works with attribute(s): DisplayDigitalMediaStatus, DisplayPrintMediaStatus, JournalAcceptingSubmission, JournalStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Derives the parent Journal's Journal Status from the Journal Accepting Submission value and the display status values on the related media. When the rule runs on a JournalPrintMedia or JournalDigitalMedia (or the Journal itself), it looks up the parent Journal and updates Journal Status based on the configured precedence across Display Digital Media Status, Display Print Media Status, and Journal Accepting Submission. No user-facing error is configured.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: DisplayDigitalMediaStatus, DisplayPrintMediaStatus, JournalAcceptingSubmission, JournalStatus.
+- Looks up the parent Journal of the current object and reads: Journal Accepting Submission, Display Digital Media Status, and Display Print Media Status.
+- Sets Journal Status to "Not yet published" when Journal Accepting Submission is "Pre-public Launch" or "Pre-public Takeover".
+- When Journal Accepting Submission is "Retro Billing", sets Journal Status based on media status values in this order:
+  - "Sold/InterCo Transfr" when Display Digital Media Status is "To be sold/Transfrd".
+  - "Ceased" when Display Digital Media Status is "To Be Ceased".
+  - "Sold/InterCo Transfr" when Display Print Media Status is "To be sold/Transfrd".
+  - "Ceased" when Display Print Media Status is "To Be Ceased".
+- Otherwise, sets Journal Status to "Current publication" if either media display status equals "Current publication".
+- If no special cases match, copies the first non-empty media display status in this order: Display Digital Media Status, then Display Print Media Status.
 
 ### Errors
 
