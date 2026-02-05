@@ -7,13 +7,19 @@
 
 ### Functional description
 
-ReSend Issues To Sap. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+User-initiated action that resends selected Issue objects to SAP integration feeds. For each selected Issue, the rule checks the ProductActivated status; activated Issues are approved, republished to the standard and Kafka outbound endpoints, and their Group Issue classification is created or updated. Issues that are not activated are skipped. The UI presents an acknowledgement listing both the resent and skipped Issues.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- No further functional logic details were extracted.
+- Iterates over the current UI selection of Issue objects.
+- If ProductActivated == "Activated":
+  - Approves the Issue.
+  - Republish the Issue to Issues_Data_Extract and Issues_Data_Extract_Kafka.
+  - Calls link.createAndUpdateGroupIssues to create/update Group Issue classification and publish to group issue endpoints.
+- Otherwise, records the Issue as not resent.
+- Displays a UI acknowledgement summarizing Issues resent and not resent.
 
 ### Errors
 
