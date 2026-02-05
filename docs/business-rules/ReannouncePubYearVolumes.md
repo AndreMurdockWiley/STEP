@@ -12,13 +12,24 @@
 
 ### Functional description
 
-Reannounce Pub Year Volumes. It primarily works with attribute(s): PHPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Moves selected digital volumes to a new publication year. The user supplies the target
+publication year (PHPublicationYear), the rule creates that year under the existing
+publication-year parent, approves it, and re-parents each selected volume to the new year.
+If the original publication year is left with no volumes, the empty year is deleted and the
+user is notified and redirected to the newly created year.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Calls: pubLibrary.createYear.
+- Iterates over the UI selection (each selected JournalDigitalVolumes node).
+- Captures the current publication year (parent) and its parent container.
+- Creates the target publication year using the provided PHPublicationYear and
+  `pubLibrary.createYear`, then approves the new year.
+- Re-parents the selected volume to the new year and approves the volume.
+- Shows an acknowledgement message for the reannouncement.
+- If the original publication year now has no children, deletes and approves the empty year,
+  shows a message indicating the deletion, and navigates to the new year screen.
 
 ### Errors
 
