@@ -11,13 +11,13 @@
 
 ### Functional description
 
-Test Trigger Rule Create. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Business action used by STEP integration endpoints to initiate a test create flow. When triggered, it delegates to the shared Approve_And_Send_Object library to approve the current object and trigger the outbound integration, then logs the result. The implementation is explicitly marked as a first-time create (not an update) call.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Accepts the current object, logger, and manager binds.
+- Calls `myFunc.approveAndTriggerObj(node, manager, log, "true")` to run the create-path approval/trigger logic in the dependency library.
+- Logs an info message prefixed with `TEST RUN TRIGGER:` followed by the returned status/result from the library call.
 
 ### Errors
 
