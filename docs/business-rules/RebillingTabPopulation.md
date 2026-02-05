@@ -8,13 +8,14 @@
 
 ### Functional description
 
-Rebilling Tab Population. It primarily works with attribute(s): ProductActivated, ProductRenewalSubscriptionType. It is triggered from: Business condition (validation configured in STEP).
+Notifies users to review the Rebilling tab when an activated product's parent subscription type is set to Open Access. It evaluates the current product's activation state together with the parent product's renewal subscription type during the business condition validation.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductRenewalSubscriptionType, ProductActivated.
+- Reads ProductRenewalSubscriptionType from the parent product and ProductActivated from the current product.
+- If the subscription type equals "Open Access" and the product is "Activated", shows an acknowledgment alert prompting review of the Rebilling tab and returns true.
 
 ### Errors
 
