@@ -8,13 +8,17 @@
 
 ### Functional description
 
-StatusandStatusMessage. It primarily works with attribute(s): LastUpdatedNew, Status, StatusMessage. It is triggered from: Integration rule (configured in STEP Integration Endpoints).
+Sets a standardized success status for eligible integration objects and ensures a last-updated timestamp is populated. When the rule runs for Backfiles, OtherProducts, or MultiJournal, it marks the record as ready to send downstream and initializes LastUpdatedNew if it is empty.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: Status, StatusMessage, LastUpdatedNew.
+- Checks the current object's type; only Backfiles, OtherProducts, and MultiJournal qualify.
+- Sets Status to "Success" and StatusMessage to "Send to Downstream System" for qualifying objects.
+- Builds a current timestamp in "yyyy-MM-dd HH:mm:ss" format.
+- If LastUpdatedNew is blank, writes the timestamp to LastUpdatedNew.
+- Returns true for qualifying objects; returns false otherwise.
 
 ### Errors
 
