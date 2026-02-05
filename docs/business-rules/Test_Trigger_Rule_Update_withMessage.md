@@ -10,14 +10,14 @@
 
 ### Functional description
 
-Test Trigger Rule UpdateV2. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Invoked by the Integration rule configured in STEP Integration Endpoints, this action acts as a lightweight trigger wrapper for the integration flow. It hands off processing to a referenced business action and surfaces any configured business-action error message (for example, "N/A (Business Action)") when validation fails.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Plugin: ReferenceOtherBABusinessAction.
-- Parameter "ReferencedBA": Feed_Trigger_Action
+- Uses the ReferenceOtherBABusinessAction plugin to delegate execution.
+- References the business action Feed_Trigger_Action via the "ReferencedBA" parameter.
 
 ### Errors
 
