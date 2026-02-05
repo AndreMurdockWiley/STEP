@@ -12,13 +12,18 @@
 
 ### Functional description
 
-Update Digital ISSN Key. It primarily works with attribute(s): JournalTrueStatus, ProductMediaType. If validation fails, the user sees an error message such as: "ISSN authentication failed (returned from authentication function)".
+Validates and applies a proposed Product ISSN (digital ISSN) update for a JournalDigitalMedia record. The rule uses Journal True Status to determine whether ISSN authentication must run: active journals (JournalTrueStatus not "No") require authentication, while inactive journals bypass it. When validation succeeds (or is skipped), it writes the new ISSN to the Product ISSN key and triggers the JournalHistoryISSNUpdate action to keep ISSN history aligned. If validation fails, the authentication error is returned to the user.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalTrueStatus, ProductMediaType.
+- Reads JournalTrueStatus (and retrieves ProductMediaType, though it is not used in the current logic).
+- Uses the validated context parameter "New ISSN" from ProductIssn as the candidate value.
+- If JournalTrueStatus is not "No", calls issnAuthentication on the new ISSN; otherwise treats the value as valid.
+- When valid, sets ProductIssn as the key attribute to the new ISSN value.
+- Executes the JournalHistoryISSNUpdate business action after the key update.
+- When invalid, adds the returned authentication error to the data issues list and stops processing.
 
 ### Errors
 
