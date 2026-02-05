@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Return State. It is triggered from: Business condition (validation configured in STEP).
+Determines whether the current object is in an activated state by checking the "ProductActivated" attribute for the value "Activated". It is triggered from: Business condition (validation configured in STEP).
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- No further functional logic details were extracted.
+- Read "ProductActivated" from the current object.
+- Return true when "ProductActivated" = "Activated"; otherwise return false.
+- Reads attributes including: ProductActivated.
 
 ### Errors
 
