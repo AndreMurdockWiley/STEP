@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Should_NonJournal_Trigger_Outbound. It is triggered from: Integration rule (configured in STEP Integration Endpoints).
+Determines whether an **OtherProducts** record should be considered a non-journal item for outbound integrations. This business condition is used by STEP Integration Endpoints to gate outbound processing so that only qualifying non-journal products proceed.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+This rule contains no scripted logic in the source file; it is a configuration-driven condition evaluated by STEP at runtime.
 
-- No further functional logic details were extracted.
+- Invoked by Integration Endpoints for **OtherProducts** objects.
+- Evaluates the endpoint's configured criteria that identify a product as **non-journal**.
+- If the criteria are met, the condition returns **true** and outbound processing can proceed; otherwise it returns **false** and the outbound action is skipped.
 
 ### Errors
 
