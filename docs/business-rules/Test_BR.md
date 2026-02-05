@@ -10,13 +10,13 @@
 
 ### Functional description
 
-Test_BR. It is triggered from: VolumeIssueCreationWF (Remove and Delete). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Removes the current issue object from the VolumeIssueCreationWF workflow and deletes it. If the delete operation creates a delete node, the rule approves that delete node to complete the removal. This action is used by the VolumeIssueCreationWF "Remove and Delete" task.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Remove the current object from the `VolumeIssueCreationWF` workflow.
+- Call `delete()` on the object and log the returned delete node.
+- If a delete node is returned, call `approve()` on it.
 
 ### Errors
 
