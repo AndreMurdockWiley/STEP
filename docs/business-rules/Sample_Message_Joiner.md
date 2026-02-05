@@ -7,13 +7,27 @@
 
 ### Functional description
 
-JSON_Message_Joiner. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Builds a single outbound JSON payload for integrations by joining the
+individual message fragments received from the integration endpoint. It
+collects update and delete messages, removes duplicates, and emits a
+compact JSON object under `products.updates` and `products.deletes` that
+downstream systems can consume.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The rule joins messages provided by the STEP integration joiner contracts
+and formats them into a single JSON payload.
 
-- No further functional logic details were extracted.
+- Start the output with `{"products":{"updates":[`.
+- Iterate through all messages in the `updates` group from the joiner
+  source.
+  - Track a per-group list of message hashes.
+  - Append each message string only once (skip duplicates with the same
+    hash), inserting commas between messages.
+- Append `],"deletes":[`.
+- Repeat the same de-duplication and append logic for the `deletes`
+  group.
+- Close the payload with `]}}`.
 
 ### Errors
 
