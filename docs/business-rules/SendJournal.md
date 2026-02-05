@@ -12,13 +12,18 @@
 
 ### Functional description
 
-ResendJournalFromSearch. It primarily works with attribute(s): ProductActivated. It is triggered from: Journal_Data_Extract_Kafka (OutBound Integration Endpoint). If validation fails, the user sees an error message such as: "Shows alert with successfully resent journals and journals not resent due to inactive status".
+ResendJournalFromSearch lets a user resend selected journals to SAP from the UI. For each selected journal it checks the Product Activated attribute, approves the journal, and republishes it to the configured outbound integration endpoints. At the end, it shows a single acknowledgement alert summarizing which journals were resent and which were skipped because they are not active.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+1. Read the current UI selection (journals chosen in the search results).
+2. For each selected journal:
+   - If Product Activated is "Activated", approve the journal and republish it to:
+     - Journal_Data_Extract_Kafka
+     - Journal_Data_Extract
+     - Journal_Data_Extract_Kafka_Testing
+   - Otherwise, add the journal to the "not resent" list.
+3. Display an acknowledgement alert listing journals resent successfully and journals not resent due to inactive status.
 
 ### Errors
 
