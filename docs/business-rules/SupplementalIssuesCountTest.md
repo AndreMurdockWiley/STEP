@@ -7,12 +7,15 @@
 
 ### Functional description
 
-Supplemental Issues Count Test. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Determines whether the current issue should be counted as a supplemental issue by checking its Issue Type. The function returns an integer flag that can be summed or otherwise used downstream to calculate supplemental-issue counts.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
+- Reads the IssueType attribute from the current node.
+- Compares IssueType to the "SU" (Supplement) value using an exact match.
+- Returns an integer indicator for counting (1 when IssueType is SU, otherwise 0).
 - Plugin: JavaScriptBusinessFunctionWithBinds.
 
 ### Errors
