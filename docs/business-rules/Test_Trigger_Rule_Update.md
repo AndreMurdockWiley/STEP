@@ -11,13 +11,12 @@
 
 ### Functional description
 
-Test Trigger Rule Update. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Runs as an integration-triggered business action to approve the current object and fire the integration update via the shared Approve_And_Send_Object helper. The rule is primarily used to test that the integration endpoint can invoke business actions and to record the outcome in the log.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+1. Invoke `approveAndTriggerObj(node, manager, log)` from the Approve_And_Send_Object library.
+2. Log the returned result with the prefix `TEST RUN TRIGGER:`. The helper returns `"true"` when the object is processed as a first-time create, and `"false"` when it is processed as an update.
 
 ### Errors
 
