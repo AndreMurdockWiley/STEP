@@ -11,13 +11,14 @@
 
 ### Functional description
 
-Remove_DataContainer. It primarily works with attribute(s): JournalMarketingInitiativesDataContainer. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Removes the JournalMarketingInitiativesDataContainer from the current object when the business action is invoked, clearing any marketing-initiative data stored in that container. It is triggered from: Business action (triggered via Web UI / workflow event). No user-facing validation message is configured.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The rule performs a simple, unconditional delete of the marketing initiatives data container:
 
-- No further functional logic details were extracted.
+- Retrieve the data container by type ID `JournalMarketingInitiativesDataContainer` from the current object.
+- Call `deleteLocal()` on that container to remove it from the object.
 
 ### Errors
 
