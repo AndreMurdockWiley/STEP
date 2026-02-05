@@ -7,13 +7,20 @@
 
 ### Functional description
 
-ReSend Issues To Sap. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Resends selected Issue records to SAP by re-approving eligible items and republishing them to the outbound integration feeds. Only Issues with `ProductActivated = Activated` are resent; inactive Issues are skipped and reported back to the user. The action also refreshes Group Issue Classification data (for standard, merge, and supplement Issues) as part of the resend.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Read the current UI selection of Issue nodes.
+- Initialize two lists: resent and not resent.
+- For each selected Issue:
+  - If `ProductActivated = Activated`:
+    - Approve the Issue.
+    - Republish the Issue to the Issues_Data_Extract and Issues_Data_Extract_Kafka endpoints.
+    - Create or update the Group Issue Classification object (for standard, merge, and supplement Issues) and send it to the Group_Issues_Data_Extract and Group_Issues_Data_Extract_Kafka endpoints.
+    - Add the Issue name to the resent list.
+  - Otherwise, add the Issue name to the not resent list.
+- Show an acknowledgement alert that lists which Issues were resent and which were skipped because they are not active.
 
 ### Errors
 
