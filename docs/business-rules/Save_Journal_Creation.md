@@ -10,13 +10,12 @@
 
 ### Functional description
 
-Save Journal Creation. If validation fails, the user sees an error message such as: "INFO: Journal Successfully Created!".
+Confirms the journal creation action to the user and then returns them to the Journal Creation screen. The rule displays a success notification and redirects the UI back to the initiation screen for the newly created journal object.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Show an informational alert in the UI with the message: "Journal Successfully Created!".
+- Navigate the user to the `InitateJournalCreationScreen`, passing the current journal object as the context for the screen.
 
 ### Errors
 
