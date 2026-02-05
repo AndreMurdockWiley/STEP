@@ -7,14 +7,14 @@
 
 ### Functional description
 
-Send OP Collection To Header Enrichment. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Dispatches header-level enrichment for Other Product Collections by invoking the shared business actions that populate key header attributes. Specifically, it copies the collection name into the title and assigns the pricing model. This rule itself contains no validations; any errors shown to users originate from the referenced business actions.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Plugin: ReferenceOtherBABusinessAction.
-- Parameter "ReferencedBA": OtherProductCollectionSetPricingModel
+- Invokes the referenced business action `CopyOtherProductCollectionNameToTitle` to copy the collection name into the title attribute.
+- Invokes the referenced business action `OtherProductCollectionSetPricingModel` to set the pricing model for the collection header.
 
 ### Errors
 
