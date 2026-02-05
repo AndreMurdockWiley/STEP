@@ -11,13 +11,16 @@
 
 ### Functional description
 
-Send Journal Transition Refs. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Runs as a Web UI business action to send journal transition references for the currently selected items. For each selected Journal or JournalHistoryProducts node, it delegates processing to the downstream action `Test_Trigger_Rule_Journal_Refs_Send`. Any non-eligible object types in the selection are ignored.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Retrieves the current selection from the Web UI context.
+- Iterates through each selected node.
+- Checks the node's object type:
+  - If the type is **JournalHistoryProducts**, execute `Test_Trigger_Rule_Journal_Refs_Send` for that node.
+  - If the type is **Journal**, execute `Test_Trigger_Rule_Journal_Refs_Send` for that node.
+- No additional validation, branching, or error handling is performed in this rule.
 
 ### Errors
 
