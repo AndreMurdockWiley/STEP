@@ -8,13 +8,29 @@
 
 ### Functional description
 
-SetValueForJournalReconReport. It primarily works with attribute(s): ID, LastUpdatedNew. It is triggered from: Integration rule (configured in STEP Integration Endpoints).
+Ensures Journal and Journal Media records are prepared for the reconciliation
+extract by backfilling missing identifiers and initializing the reconciliation
+timestamp. For JournalPrintMedia and JournalDigitalMedia, it copies the parent
+Journal ID when the media ID is empty, and sets `LastUpdatedNew` to the current
+timestamp when not already populated. For Journal objects, it sets a missing ID
+to the object's own ID and initializes `LastUpdatedNew` if empty. The rule
+returns false for other object types.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+This section summarizes the configured functional logic captured in the rules
+inventory. The bullet points below are a concise, human-readable summary of the
+rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ID, LastUpdatedNew.
+- Check the object type and only proceed for Journal, JournalPrintMedia, or
+  JournalDigitalMedia; return false for any other type.
+- For JournalPrintMedia or JournalDigitalMedia, set `ID` to the parent Journal
+  ID when the media ID is empty, then format the current date as
+  `yyyy-MM-dd HH:mm:ss` and write it to `LastUpdatedNew` only when the attribute
+  is null.
+- For Journal, set `ID` to the object's own ID when missing, then set
+  `LastUpdatedNew` to the formatted current timestamp only when the attribute is
+  null.
 
 ### Errors
 
