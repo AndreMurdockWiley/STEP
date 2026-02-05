@@ -10,13 +10,18 @@
 
 ### Functional description
 
-Test_Gateway_Integration. It is triggered from: Integration rule (configured in STEP Integration Endpoints). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Tests the configured gateway integration endpoint by issuing a sample HTTP GET request to `Test_Janis_Gateway`. The rule is invoked from an Integration rule configured in STEP Integration Endpoints, and it logs the raw response for validation/troubleshooting.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Obtain a GET request handle from the gateway binding (`myGateway.get()`).
+- Set the API token request header (`apitoken`) with a fixed token value.
+- Add query parameters for the request:
+  - `requestType = ISBN13_SEARCH`
+  - `application = STIBO`
+  - `ISBN13 = 9781119384335`
+- Invoke the request and capture the response.
+- Log the response content; no parsing or mapping back to STEP is performed in this rule.
 
 ### Errors
 
