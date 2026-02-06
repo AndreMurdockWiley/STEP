@@ -12,13 +12,21 @@
 
 ### Functional description
 
-Publication Year Delete. It primarily works with attribute(s): C_IssueDeletedDate, C_IssueState, C_LastUpdated, C_MessageStatus, IssueState. It is triggered from: Group_Issues_Data_Extract. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Validates and processes deletion of selected Publication Year records. The action blocks deletion when the Publication Year fails the delete check (for example, when a contained volume has an issue with JPCMS and Original Publication Date populated). When deletion is allowed, it cascades through volumes and issues, updating linked classification issue records (message status, deleted date, last updated) and publishing required updates to outbound integrations before removing the Publication Year hierarchy.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: IssueState, C_IssueState, C_MessageStatus, C_IssueDeletedDate, C_LastUpdated.
+- For each selected Publication Year, run the delete eligibility check (pubYearDeleteCheck).
+- If the Publication Year is not eligible, collect its name and show a UI alert listing the blocked Publication Year(s) and the reason.
+- If eligible, traverse child volumes and issues:
+  - For each issue, locate the linked classification issue record and evaluate the issue state (Draft, Enriched, Sent to SAP).
+  - Clear classification attributes for the relevant print/digital attribute group.
+  - Set C_MessageStatus to DELETE or UPDATE based on the issue state and the presence of related issue variants.
+  - Stamp C_IssueDeletedDate and C_LastUpdated when appropriate, approve the classification record, and republish to Group_Issues_Data_Extract and Group_Issues_Data_Extract_Kafka when required.
+  - Prevent deletion when the related issue has been sent to SAP and notify the user.
+- Delete the issue product record, then delete the containing volume, and finally delete the Publication Year.
 
 ### Errors
 
