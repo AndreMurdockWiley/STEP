@@ -12,17 +12,20 @@
 
 ### Functional description
 
-Populate MM Package Journal Ref Attributes. It primarily works with attribute(s): JournalMMPackageID, ProductActivated, ProductOwnershipStatus, ProductProfitCenter, SAPProfitCenter, SocietyPrimaryAffiliated. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Populate multimedia package journal reference attributes for journals that support both media types. The rule uses the package's JournalMMPackageID to find the multimedia product, derives the SAP profit center from the package's cost center link, and copies ownership and activation values from the parent journal. It also mirrors owner or part-owner society group references from the journal onto the multimedia package, skipping references that already exist.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Validate: "ProductMediaType" = "Both".
-- If "SocietyPrimaryAffiliated" == "Primary", continue; otherwise error.
-- If "SocietyPrimaryAffiliated" == "Owner", continue; otherwise error.
-- If "SocietyPrimaryAffiliated" == "Part-owner", continue; otherwise error.
-- Reads/writes attributes including: SAPProfitCenter, JournalMMPackageID, ProductProfitCenter, ProductOwnershipStatus, ProductActivated, SocietyPrimaryAffiliated, ProductMediaType.
+- Precondition: ProductMediaType = "Both".
+- Get the parent journal of the current package and the first ProductToCostCenterReferenceLink; read SAPProfitCenter from the linked classification.
+- Resolve the multimedia product using JournalMMPackageID.
+- Set ProductProfitCenter on the multimedia product using JournalSAPProfitCenter_LOV with the SAPProfitCenter id.
+- Copy ProductOwnershipStatus from the journal to the multimedia product.
+- Set ProductActivated on the multimedia product to "Activated".
+- For each journal ProductToSocietyGroupReferenceLink, if SocietyPrimaryAffiliated is "Owner" or "Part-owner", create the same reference on the multimedia product; ignore duplicates.
+- Reads/writes attributes including: JournalMMPackageID, ProductMediaType, SAPProfitCenter, ProductProfitCenter, ProductOwnershipStatus, ProductActivated, SocietyPrimaryAffiliated.
 
 ### Errors
 
