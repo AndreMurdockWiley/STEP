@@ -11,13 +11,17 @@
 
 ### Functional description
 
-Product Joiner. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Aggregates outbound product messages into a single JSON payload for downstream processing. This business action is invoked from the Web UI or workflow event and joins messages from the "upsert" and "delete" groups into one "products" object, removing duplicate message entries before output.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+- Initializes the output with `{"products":{"upsert":[`.
+- For each message in the `upsert` group:
+  - Retrieves the next message string from the joiner source.
+  - Deduplicates by message string hash; only the first occurrence is appended.
+  - Appends messages as-is, comma-separated.
+- Appends `],"delete":[` and repeats the same join/deduplication logic for the `delete` group.
+- Closes the JSON payload with `]}}`.
 
 ### Errors
 
