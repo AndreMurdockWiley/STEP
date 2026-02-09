@@ -8,13 +8,18 @@
 
 ### Functional description
 
-Publication Year Creation/Finish Button. It primarily works with attribute(s): JournalMediaCode, JournalPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Creates a new Publication Year for the current journal media record using the entered JournalPublicationYear value, then confirms success to the user and directs them to the appropriate publication-year screen (print or digital) for the newly created year. This action reads the JournalMediaCode to establish media context.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalPublicationYear, JournalMediaCode.
+- Read JournalPublicationYear (and JournalMediaCode for context) from the current journal media node.
+- Create the Publication Year object via `PublicationYearFunctions.createYear` using the current node and the year value.
+- Display an acknowledgement alert: “Year successfully created!” with the year number.
+- Navigate to the relevant Publication Year screen based on media type:
+  - `PrintPublicationYearScreen` for `JournalPrintMedia`
+  - `DigitalPublicationYearScreen` for `JournalDigitalMedia`
 
 ### Errors
 
