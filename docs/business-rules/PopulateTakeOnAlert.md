@@ -8,13 +8,16 @@
 
 ### Functional description
 
-PopulateTakeOnAlert. It primarily works with attribute(s): JournalTakeOn. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Normalizes the JournalTakeOn value on a Journal record by enforcing uppercase Y/N entries. If a value is provided that is not Y or N, the rule warns the user while leaving the value unchanged; blank values are allowed without warning.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalTakeOn.
+- Reads JournalTakeOn from the current Journal.
+- If the value is Y/y, overwrites it with uppercase "Y".
+- If the value is N/n, overwrites it with uppercase "N".
+- If the value is present but not Y or N, shows a warning alert that the value must be Y, N, or blank.
 
 ### Errors
 
