@@ -8,13 +8,17 @@
 
 ### Functional description
 
-Pub Year For Copy To Online Creation/Next Button. It primarily works with attribute(s): CopyToOnline, JournalMediaCode, JournalPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Creates a new Publication Year record from the current node and then continues the workflow to the Volume Creation screen. The action sets the CopyToOnline flag on the new year and, when the year is for a Print journal and eligible for copy-to-online, it performs the copy-to-online operation. The user receives an acknowledgement message that the year was created and the process is continuing.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalPublicationYear, JournalMediaCode, CopyToOnline.
+- Reads the current node's **JournalPublicationYear** and **JournalMediaCode**, and the parent Journal.
+- Creates the new year via `pubLibrary.createYear`.
+- Sets **CopyToOnline** on the new year from the validated input parameter.
+- If **CopyToOnline** is `"Y"`, the media code is `"Print"`, and the parent journal passes `journalCopyToOnlineValidity`, calls `pubLibrary.yearCopyToOnline` for the new year.
+- Shows an acknowledgement alert ("Year <year> has been created. Continuing Process with Volume Creation.") and navigates to **VolumesCreationScreen** with the new year.
 
 ### Errors
 
