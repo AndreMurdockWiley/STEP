@@ -8,13 +8,14 @@
 
 ### Functional description
 
-Publication Year Creation/Next Button. It primarily works with attribute(s): JournalMediaCode, JournalPublicationYear. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Creates a new Publication Year from the current record and then advances the UI to the next step in the workflow. The action uses the value in **JournalPublicationYear** (and reads **JournalMediaCode** for context) to create the year via the publication-year library, confirms success with an acknowledgement message, and navigates the user to the Volumes Creation screen for the newly created year.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalPublicationYear, JournalMediaCode.
+- Read **JournalPublicationYear** (and **JournalMediaCode** for context) from the current node.
+- Call the publication-year library to create the new year record based on the current node and year value.
+- Show an acknowledgement message: "Year {year} has been created. Continuing Process with Volume Creation."
+- Navigate the UI to **VolumesCreationScreen**, passing the newly created year object as the target.
 
 ### Errors
 
