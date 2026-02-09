@@ -12,13 +12,17 @@
 
 ### Functional description
 
-PopulateOnlineOpenAlert. It primarily works with attribute(s): JournalOnlineOpen. If validation fails, the user sees an error message such as: "WARNING: Online Open should be either 'Y' or 'N' or 'Blank'".
+Validates and normalizes the Journal Online Open attribute for journal media records. When the field is populated, the rule standardizes accepted values (Y/N) to uppercase and warns the user if any other non-blank value is entered.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalOnlineOpen.
+- Reads JournalOnlineOpen from the current journal media object.
+- If the value is blank, no action is taken.
+- If the value is "y" or "Y", updates JournalOnlineOpen to "Y".
+- If the value is "n" or "N", updates JournalOnlineOpen to "N".
+- For any other non-blank value, leaves the value as-is and shows a warning alert.
 
 ### Errors
 
