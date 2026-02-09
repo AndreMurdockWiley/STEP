@@ -11,16 +11,16 @@
 
 ### Functional description
 
-Populate PrimaryPortfolio Creation. It primarily works with attribute(s): JournalPrimaryPortfolio. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Sets a default Journal Primary Portfolio value during journal creation/upsert so new records start in a known classification state. This action writes the literal text "Not Classified" into the JournalPrimaryPortfolio attribute and does not perform validation or user-facing messaging.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
 - Plugin: SetAttributeValueBusinessAction.
-- Reads/writes attributes including: JournalPrimaryPortfolio.
-- Parameter "TextValue": Not Classified
-- Parameter "ToAttribute": JournalPrimaryPortfolio
+- Writes a static value; no source attribute or workflow variable is used.
+- Parameter "TextValue": "Not Classified".
+- Parameter "ToAttribute": JournalPrimaryPortfolio (Journal Primary Portfolio).
 
 ### Errors
 
