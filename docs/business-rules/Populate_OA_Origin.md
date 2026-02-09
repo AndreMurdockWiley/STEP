@@ -8,13 +8,16 @@
 
 ### Functional description
 
-Populate_OA_Origin. It primarily works with attribute(s): JournalEEOContentFlipDate, JournalOAOrigin, ProductRevenueModel. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Populate_OA_Origin derives the journal's OA origin based on the revenue model and the presence of an EEO content flip date. When a journal is OA, it labels the origin as either "Flipped" (if a flip date exists) or "Born Gold" (if no flip date exists). When the journal is not OA, it clears any previously set OA origin.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductRevenueModel, JournalEEOContentFlipDate, JournalOAOrigin.
+- Reads ProductRevenueModel and JournalEEOContentFlipDate.
+- If ProductRevenueModel is "OA" and JournalEEOContentFlipDate is populated, set JournalOAOrigin to "Flipped".
+- If ProductRevenueModel is "OA" and JournalEEOContentFlipDate is blank, set JournalOAOrigin to "Born Gold".
+- If ProductRevenueModel is not "OA", clear JournalOAOrigin (set to null).
 
 ### Errors
 
