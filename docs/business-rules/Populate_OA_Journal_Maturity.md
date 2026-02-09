@@ -8,13 +8,17 @@
 
 ### Functional description
 
-Populate OA Journal Maturity. It primarily works with attribute(s): JournalEEOContentFlipDate, JournalLaunchYear, JournalOAJournalMaturity, ProductRevenueModel. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Calculate and maintain the OA Journal Maturity value for journals. When the revenue model is OA, the rule derives the start year for Gold OA (from the EEO Content Flip Date when available, otherwise from the Launch Year) and classifies the journal as New, Established, or Mature based on how many years have elapsed to the current year. If the revenue model is not OA, the maturity value is cleared. The rule only runs when either a Launch Year or an EEO Content Flip Date is present.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalLaunchYear, JournalEEOContentFlipDate, ProductRevenueModel, JournalOAJournalMaturity.
+- Preconditions: only evaluates when at least one of JournalLaunchYear or JournalEEOContentFlipDate is populated.
+- Read ProductRevenueModel; if the value is not "OA", clear JournalOAJournalMaturity and stop.
+- Determine the Gold OA start year: use the year portion of JournalEEOContentFlipDate when present; otherwise use JournalLaunchYear.
+- Compute the number of years between the current year and the Gold OA start year.
+- Set JournalOAJournalMaturity based on the age: New (< 3 years), Established (3-8 years), Mature (> 8 years).
 
 ### Errors
 
