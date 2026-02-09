@@ -12,13 +12,18 @@
 
 ### Functional description
 
-Populate Online Submission URL. It primarily works with attribute(s): JournalEditorialSubmissionSystem, JournalGroupCode, JournalREXSiteName, JournalSubmissionUrlValue, PrevSubmissionSys_PIM. If validation fails, the user sees an error message such as: "Submission URL has been created using Journal Group Code because REX Site Name was Null. To update Submission URL please add a REX Site Name".
+Populate the Journal Submission URL when the editorial submission system is set to "Research Exchange Submission". The rule builds the URL using the base `https://submission.wiley.com/journal/`, preferring the Journal REX Site Name when present and falling back to the Journal Group Code when it is not. If the fallback is used and the previous submission system was not Research Exchange, the user is warned to supply a REX Site Name. The rule also updates the Previous Submission System PIM attribute to the current editorial submission system each time it runs.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalREXSiteName, JournalEditorialSubmissionSystem, JournalSubmissionUrlValue, PrevSubmissionSys_PIM, JournalGroupCode.
+- Read Journal Editorial Submission System, Journal REX Site Name, Journal Group Code, and Previous Submission System PIM.
+- If Journal Editorial Submission System equals "Research Exchange Submission":
+  - If Journal REX Site Name is present, set Journal Submission URL Value to `https://submission.wiley.com/journal/` + REX Site Name.
+  - Otherwise set Journal Submission URL Value to `https://submission.wiley.com/journal/` + Journal Group Code.
+  - When the fallback is used and Previous Submission System PIM is not "Research Exchange Submission", show the configured warning.
+- Set Previous Submission System PIM to the current Journal Editorial Submission System.
 
 ### Errors
 
