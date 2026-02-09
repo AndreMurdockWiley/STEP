@@ -12,13 +12,15 @@
 
 ### Functional description
 
-Populate Prev Submission System. It primarily works with attribute(s): JournalEditorialSubmissionSystem, PrevSubmissionSys_PIM. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+When this business action runs, it snapshots the current **Journal Editorial Submission System** value into **Prev Submission Sys PIM** on the same Journal record. This provides a stored "previous" submission system value for reference or downstream processing. The action performs no validation or conditional checks and will overwrite any existing Prev Submission Sys PIM value with whatever is currently in Journal Editorial Submission System (including blank).
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalEditorialSubmissionSystem, PrevSubmissionSys_PIM.
+- Reads **JournalEditorialSubmissionSystem** into a local variable.
+- Reads **PrevSubmissionSys_PIM** (value is not used further).
+- Writes **PrevSubmissionSys_PIM** to the current **JournalEditorialSubmissionSystem** value, overwriting any prior value.
 
 ### Errors
 
