@@ -8,13 +8,16 @@
 
 ### Functional description
 
-PopulateOptInAlert. It primarily works with attribute(s): JournalOptIn. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Normalizes and validates the JournalOptIn attribute for journal media objects. When a value is supplied, it standardizes the value to uppercase "Y" or "N"; if a non-blank value is anything else, the rule warns the user. Blank is allowed and does not trigger a warning.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalOptIn.
+- Reads JournalOptIn on the current JournalPrintMedia or JournalDigitalMedia node.
+- If the value is "y" or "Y", sets JournalOptIn to "Y".
+- If the value is "n" or "N", sets JournalOptIn to "N".
+- If the value is non-blank and not Y/N, shows a warning alert: "Opt-In should be either 'Y' or 'N' or 'Blank'".
 
 ### Errors
 
