@@ -8,13 +8,17 @@
 
 ### Functional description
 
-Populate Override As FrontFile Alert. It primarily works with attribute(s): JournalHistoryOverrideasFrontfile. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Normalizes the "Override as Frontfile" flag on Journal History products to a consistent Y/N value and provides immediate user feedback. When the action runs, it validates the entered value (case-insensitive) and standardizes it to uppercase when valid. If the value is invalid, the user is warned; otherwise, the user receives a confirmation that the journal history was saved.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalHistoryOverrideasFrontfile.
+- Reads the JournalHistoryOverrideasFrontfile attribute from the current JournalHistoryProducts record.
+- If the value is provided, validates it against Y/y or N/n:
+  - Y/y is normalized to "Y".
+  - N/n is normalized to "N".
+  - Any other value is treated as invalid.
+- If the value is blank or valid, shows an acknowledgment alert: "Journal History Saved!".
+- If the value is invalid, shows a warning alert: "Override as Frontfile should be either 'Y' or 'N' or 'Blank'".
 
 ### Errors
 
