@@ -10,13 +10,14 @@
 
 ### Functional description
 
-Used to Delete and Approve the Deletion of the current Node. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Hard-deletes the current node (used for data conversion cleanup) and approves the deletion. It is triggered from: Business action (triggered via Web UI / workflow event). This action performs no validation or user-facing error handling.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+This section summarizes the functional logic based on the exported STEP rule configuration and script inspection. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- No further functional logic details were extracted.
+- Hard-delete the current node.
+- Approve the deletion immediately after the delete call.
 
 ### Errors
 
