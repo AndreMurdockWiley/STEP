@@ -8,13 +8,19 @@
 
 ### Functional description
 
-Polulate Journal Maturity. It primarily works with attribute(s): JournalLaunchYear, JournalMaturity. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Automatically classifies a journal's maturity based on how many years have passed since its launch year.  
+When `JournalLaunchYear` is available, the rule calculates journal age using the current calendar year and writes the derived category to `JournalMaturity`.  
+This is a Business Action (not a validation rule), so no user-facing error message is configured.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalLaunchYear, JournalMaturity.
+- **Precondition check**: The rule runs only when `JournalLaunchYear` has a value (not null/blank). If no launch year is present, the action is skipped.
+- **Age calculation**: `Journal age = current year - JournalLaunchYear`.
+- **Maturity mapping**:
+  - If journal age is **less than 3 years** → set `JournalMaturity` to **`New`**
+  - If journal age is **3 to 8 years (inclusive)** → set `JournalMaturity` to **`Established`**
+  - If journal age is **greater than 8 years** → set `JournalMaturity` to **`Mature`**
+- **Attribute impact**: Reads `JournalLaunchYear` and updates `JournalMaturity` on the current object.
 
 ### Errors
 
