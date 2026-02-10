@@ -13,13 +13,15 @@
 
 ### Functional description
 
-Populate Journal Media Product Identifier. It primarily works with attribute(s): JournalMediaProductIdentifier. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Automatically populates the **Journal Media Product Identifier** with the current Journal Media object's STEP ID.  
+This keeps the business identifier aligned to the system record ID for both **JournalPrintMedia** and **JournalDigitalMedia**, ensuring a consistent identifier is available for downstream integrations and matching.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalMediaProductIdentifier.
+- Reads the current node context and resolves its ID (`ID` bind).
+- Accesses the `JournalMediaProductIdentifier` attribute on the current Journal Media record.
+- Sets `JournalMediaProductIdentifier` to the node ID value (overwriting any existing value).
+- Executes as a business action with no conditional branching or validation checks.
 
 ### Errors
 
