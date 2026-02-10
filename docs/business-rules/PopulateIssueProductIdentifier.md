@@ -12,13 +12,17 @@
 
 ### Functional description
 
-Populate Issue Product Identifier. It primarily works with attribute(s): IssueProductIdentifier. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Ensures each Journal Issue record has an internal issue-level product identifier by copying the current issue object's STEP ID into **Issue Product Identifier**.  
+This creates a consistent system-generated identifier for both **JournalDigitalIssues** and **JournalPrintIssues**, supporting downstream integrations and matching processes that rely on a stable issue key.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: IssueProductIdentifier.
+- Reads the current issue object's ID (`ID` bind).
+- Accesses **IssueProductIdentifier** on the current node.
+- Writes/overwrites **IssueProductIdentifier** with the current object ID using `setSimpleValue(ID)`.
+- Applies the same behavior for both valid object types: **JournalDigitalIssues** and **JournalPrintIssues**.
 
 ### Errors
 
