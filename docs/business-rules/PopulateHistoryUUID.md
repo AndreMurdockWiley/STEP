@@ -13,13 +13,23 @@
 
 ### Functional description
 
-Populate History UUID in Backfile DC. It primarily works with attribute(s): BackfileAutopopulateHistoryUUID, BackfileDCHistoryUUID, JournalBackfileContentISSN, JournalBackfileContentJournalGroupCode, JournalGroupCode, JournalHistoryISSNOnline, JournalHistoryISSNPrint. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action populates **Backfile DC History UUID** for each Backfile content data container record when **Backfile Autopopulate History UUID** is set to **Yes**.  
+For eligible records, the rule uses the Backfile row's **Journal Group Code** and **ISSN** to search Journal History products. When exactly one Journal History product matches, the rule writes that product ID into **Backfile DC History UUID**.  
+If the match is ambiguous (multiple results) or no matching Journal History product is found, the rule clears **Backfile DC History UUID** to avoid storing an incorrect reference. After processing, the rule resets **Backfile Autopopulate History UUID** to **No** so the action only runs again when explicitly requested.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalBackfileContentJournalGroupCode, JournalBackfileContentISSN, BackfileDCHistoryUUID, BackfileAutopopulateHistoryUUID.
+- Iterates through all `JournalBackfileContentDataContainer` entries on the current Backfiles record.
+- Reads `JournalBackfileContentJournalGroupCode`, `JournalBackfileContentISSN`, `BackfileDCHistoryUUID`, and `BackfileAutopopulateHistoryUUID` from each container row.
+- Processes only rows where `BackfileAutopopulateHistoryUUID = "Yes"`.
+- Queries `JournalHistoryProducts` where:
+  - `JournalGroupCode` equals `JournalBackfileContentJournalGroupCode`, and
+  - `JournalHistoryISSNPrint` equals the Backfile ISSN **or** `JournalHistoryISSNOnline` equals the Backfile ISSN.
+- If exactly one Journal History product is found, sets `BackfileDCHistoryUUID` to that product ID.
+- If zero or multiple products are found, sets `BackfileDCHistoryUUID` to `null`.
+- Sets `BackfileAutopopulateHistoryUUID` to `"No"` after processing each row.
 
 ### Errors
 
