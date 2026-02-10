@@ -12,13 +12,20 @@
 
 ### Functional description
 
-PopulateIssueRunDate. It primarily works with attribute(s): IssueRunDate, IssueStatus, ProductOriginalPublicationDate. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+`PopulateIssueRunDate` standardizes issue records by deriving operational issue values from the publication date. When the action runs, it copies **Product Original Publication Date** to **Issue Run Date**, sets **Issue Status** to LOV value **`P`**, and then approves the issue record.
+
+From a business perspective, this rule keeps issue scheduling/status data synchronized with the original publication milestone so downstream issue handling starts from a consistent state. This is a data-population action (not a validation rule) and does not define user-facing error messaging.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule executes a direct, unconditional update sequence on the current Issue node:
 
-- Reads/writes attributes including: ProductOriginalPublicationDate, IssueRunDate, IssueStatus.
+1. Read **`ProductOriginalPublicationDate`** from the current issue.
+2. Write that same value into **`IssueRunDate`**.
+3. Set **`IssueStatus`** to LOV ID **`P`**.
+4. Approve the issue (`node.approve()`), persisting the updates.
+
+There are no conditional branches, validations, or explicit exception messages in this script; values are applied as-is.
 
 ### Errors
 
