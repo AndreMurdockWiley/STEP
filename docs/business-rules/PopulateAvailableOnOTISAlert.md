@@ -12,13 +12,20 @@
 
 ### Functional description
 
-PopulateAvailableOnOTISAlert. It primarily works with attribute(s): JournalAvailableOnOtis. If validation fails, the user sees an error message such as: "WARNING: Available On OTIS should be either 'Y' or 'N' or 'Blank'".
+This business action validates and standardizes the **Journal Available On OTIS** value (`JournalAvailableOnOtis`) during UI save processing for journal media records. It accepts **Y**, **N**, or blank. Lowercase user input (`y`/`n`) is automatically normalized to uppercase (`Y`/`N`) so data is stored consistently. If a non-blank value other than Y/N is entered, the rule shows a warning message to guide the user.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule executes against the current journal media object and applies the following logic:
 
-- Reads/writes attributes including: JournalAvailableOnOtis.
+- Reads `JournalAvailableOnOtis` from the current object.
+- If the value is `y` or `Y`, writes back `Y`.
+- If the value is `n` or `N`, writes back `N`.
+- If the value is blank/null, leaves the attribute unchanged (blank is allowed).
+- If the value is non-blank and not one of the accepted Y/N values, flags it as invalid.
+- Shows a UI alert:
+  - **WARNING**: `Available On OTIS should be either 'Y' or 'N' or 'Blank'` (invalid non-blank value).
+  - **ACKNOWLEDGMENT**: `Saved!` (valid value or blank).
 
 ### Errors
 
