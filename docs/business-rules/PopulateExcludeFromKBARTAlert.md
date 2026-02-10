@@ -8,13 +8,16 @@
 
 ### Functional description
 
-Populate Exclude From KBART Alert. It primarily works with attribute(s): JournalHistoryExcludefromKbart. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action standardizes and validates the **Exclude from KBART** indicator on Journal History records (`JournalHistoryExcludefromKbart`). It ensures that valid user input is stored consistently as uppercase `Y` or `N`, while allowing the field to remain blank when no selection is intended. If a user enters any non-blank value other than `Y`/`N`, the rule raises a warning in the UI so the value can be corrected.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalHistoryExcludefromKbart.
+- Reads `JournalHistoryExcludefromKbart` from the current `JournalHistoryProducts` object.
+- If the value is `y` or `Y`, writes back `Y`.
+- If the value is `n` or `N`, writes back `N`.
+- If the value is blank, no update is made and no warning is shown.
+- If the value is any other non-blank input, the rule displays a warning: **"Exclude from KBART should be either 'Y' or 'N' or 'Blank'"**.
+- The rule uses STEP UI context (`UI.showAlert`) and does not define a blocking error/exception path.
 
 ### Errors
 
