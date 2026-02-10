@@ -12,13 +12,28 @@
 
 ### Functional description
 
-PopulateFreeJournalAlert. It primarily works with attribute(s): JournalFreeJournal. If validation fails, the user sees an error message such as: "WARNING: Free Journal should be either 'Y' or 'N' or 'Blank'".
+`PopulateFreeJournalAlert` validates and normalizes the **Journal Free Journal** flag (`JournalFreeJournal`) on Journal records.  
+The rule supports three business-valid states for this field:
+
+- `Y` (Yes)
+- `N` (No)
+- Blank (not populated)
+
+To improve data consistency, lowercase inputs (`y`/`n`) are automatically converted to uppercase (`Y`/`N`).  
+If a user enters any other non-blank value, the rule displays a warning message: **"Free Journal should be either 'Y' or 'N' or 'Blank'"**.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule executes the following logic against `JournalFreeJournal`:
 
-- Reads/writes attributes including: JournalFreeJournal.
+- Reads the current value of `JournalFreeJournal`.
+- If the value is blank/null, no update is made and no warning is shown.
+- If the value is `y` or `Y`, the rule writes back `Y`.
+- If the value is `n` or `N`, the rule writes back `N`.
+- If the value is any other non-blank text, the rule flags it as invalid and shows a UI warning:
+  - `WARNING: Free Journal should be either 'Y' or 'N' or 'Blank'`
+
+This behavior standardizes valid user input while notifying users when the value is outside the allowed set.
 
 ### Errors
 
