@@ -12,13 +12,28 @@
 
 ### Functional description
 
-Populate Last Published by Wiley. It primarily works with attribute(s): JournalLastPubYear, LastPublishedbyWiley, ProductStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action derives and updates the journal-level **Last Published by Wiley** value based on sibling media records under the same parent journal. It evaluates each media record's **Product Status** and **Journal Last Pub Year**, then writes the resulting year (or blank) to **Last Published by Wiley** on the journal.
+
+In business terms, the rule captures the most relevant "last year published by Wiley" from active/eligible media formats so downstream users and processes can reference a single consolidated value at journal level.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductStatus, JournalLastPubYear, LastPublishedbyWiley.
+- Starts from the current media child (print or digital), then reads its parent journal and sibling media records.
+- Identifies sibling records of type **JournalDigitalMedia** and **JournalPrintMedia**.
+- Reads, for each identified media sibling:
+  - **ProductStatus**
+  - **JournalLastPubYear**
+- Treats a media record as eligible only when **ProductStatus** is one of: `S`, `C`, `M`, or `A`.
+- Applies derivation rules:
+  - If both digital and print exist **and both are eligible**:
+    - Use digital **JournalLastPubYear** when present.
+    - Otherwise use print **JournalLastPubYear**.
+  - If only digital exists and is eligible, use digital **JournalLastPubYear**.
+  - If only print exists and is eligible, use print **JournalLastPubYear**.
+  - If both exist but one/both are not eligible, derive no year (`null`).
+- Writes the derived result to parent journal attribute **LastPublishedbyWiley**.
 
 ### Errors
 
