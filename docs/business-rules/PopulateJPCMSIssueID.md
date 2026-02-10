@@ -12,13 +12,17 @@
 
 ### Functional description
 
-PopulateJPCMSIssueID. It primarily works with attribute(s): IDLIssueDOI, IssueDoi, IssueFromIssueNumber, IssueJpcmsId, IssueVolumeNumber, JournalGroupCode, JournalTrueStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action populates issue-level identifiers for non-true journals to support consistent downstream publishing and integration processing. When the issue belongs to a journal with **Journal True Status = "No"**, the rule builds a standardized **Issue JPCMS ID** from Journal Group Code, Volume Number, and Issue Number, and also copies **IDL Issue DOI** into **Issue DOI** so both DOI fields stay aligned.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalTrueStatus, JournalGroupCode, IssueVolumeNumber, IssueFromIssueNumber, IssueJpcmsId, IDLIssueDOI, IssueDoi.
+- Reads **JournalTrueStatus**.
+- If **JournalTrueStatus = "No"**:
+  - Reads **JournalGroupCode**, **IssueVolumeNumber**, and **IssueFromIssueNumber**.
+  - Sets **IssueJpcmsId** using the format:  
+    `JournalGroupCode + "." + IssueVolumeNumber + ":" + IssueFromIssueNumber + ".ISS"`.
+  - Reads **IDLIssueDOI** and writes the same value to **IssueDoi**.
+- If **JournalTrueStatus** is not `"No"`, no updates are made by this rule.
 
 ### Errors
 
