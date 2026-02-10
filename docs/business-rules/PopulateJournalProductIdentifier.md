@@ -12,13 +12,16 @@
 
 ### Functional description
 
-Populate Journal Product Identifier. It primarily works with attribute(s): JournalProductID. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action standardizes the journal identifier by populating **Journal Product ID** (`JournalProductID`) with the current journal object's STEP ID. This keeps the journal's product identifier aligned with its master record identity for downstream matching, integration, and reference use.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalProductID.
+- Retrieves the current object's ID from the `ID` bind.
+- Reads the current `JournalProductID` value (the value is not used in subsequent logic).
+- Unconditionally sets `JournalProductID` to the current object ID using `setSimpleValue(...)`.
+- No conditional checks, validation gates, or user-facing error messages are implemented in the script.
 
 ### Errors
 
