@@ -8,14 +8,17 @@
 
 ### Functional description
 
-Validate If Special Product. It primarily works with attribute(s): OtherProductCollectionType. It is triggered from: Business condition (validation configured in STEP).
+`ValidateIfSpecialProduct` determines whether the current record should be treated as a **Special Product** by evaluating `OtherProductCollectionType`.  
+The condition is used as a reusable gate in STEP configurations (including outbound event filtering and Web UI conditions) so that Special Product-specific behavior only runs for qualifying records.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule evaluates a single attribute on the current node and returns a boolean result:
 
-- If "OtherProductCollectionType" == "Dynamic", continue; otherwise error.
-- Reads/writes attributes including: OtherProductCollectionType.
+- Read `OtherProductCollectionType` from the current object.
+- If the value is exactly `Dynamic`, return `true` (condition passes).
+- For any other value (including blank/null), return `false` (condition does not pass).
+- Attribute access: reads `OtherProductCollectionType`; does not write any attributes.
 
 ### Errors
 
