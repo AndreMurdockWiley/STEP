@@ -7,14 +7,27 @@
 
 ### Functional description
 
-Other Product Collection Save Action. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+`OtherProductCollectionSaveAction` is the Save-time orchestration action for **OtherProductCollectionOffering** records.  
+When a user saves an Other Product Collection, this action coordinates three downstream business actions to:
+
+1. validate text and URL field quality,
+2. place/reclassify the collection under the correct archive/classification parent based on collection type, subtype, and status,
+3. record which collection components were added or removed (Main vs. Approved) for downstream tracking.
+
+If a validation check fails in a referenced action, the save is blocked and the user receives the corresponding validation message.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+This action does not contain custom JavaScript logic of its own; it delegates processing through `ReferenceOtherBABusinessAction` plugins executed in sequence:
 
-- Plugin: ReferenceOtherBABusinessAction.
-- Parameter "ReferencedBA": BA_LinkModifiedCollectionComponents
+- **ReferencedBA: `BA_ValidateTextFields`**  
+  Validates editable text/URL fields (for example, leading/trailing spaces, line breaks, and invalid formatting). On failure, it throws a user-facing validation message and stops the save flow.
+- **ReferencedBA: `BA_AutoClassOtherProdCollectionToArchive`**  
+  Reclassifies the collection to the correct parent/archive node according to collection type, subtype, and collection status values.
+- **ReferencedBA: `BA_LinkModifiedCollectionComponents`**  
+  Compares collection components between Main and Approved workspaces, clears prior delta links, and writes references that identify added and removed components.
+
+Net effect: the Save action behaves as a controlled pipeline that enforces data quality, maintains correct classification, and preserves component-change traceability.
 
 ### Errors
 
