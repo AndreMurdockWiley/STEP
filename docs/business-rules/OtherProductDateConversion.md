@@ -12,13 +12,22 @@
 
 ### Functional description
 
-Other Product Date Conversion. It primarily works with attribute(s): ProductContentEndDate, ProductContentStartDate, ProductPublicationDate. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Other Product Date Conversion standardizes legacy IDL/Janis date values into STEP date attributes for Other Product records. When this business action is triggered (Web UI or workflow event), it reads source date values from the IDL date attribute group, converts supported compact date formats into `yyyy-MM-dd`, and updates the corresponding STEP attributes: `ProductPublicationDate`, `ProductContentStartDate`, and `ProductContentEndDate`. No dedicated business validation message is configured for this action.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductPublicationDate, ProductContentStartDate, ProductContentEndDate.
+- Reads date attributes from attribute group `AG_IDL_DATE` on the current object.
+- For each non-null source value, converts compact legacy formats to ISO date format:
+  - Length `6` (example: `970101`) is treated as `yyMMdd` and expanded to `19yy-MM-dd`.
+  - Other supported compact values (example: `1000101`) are treated as a 21st-century pattern and expanded to `20yy-MM-dd`.
+- Parses and normalizes the converted value with `SimpleDateFormat("yyyy-MM-dd")`.
+- Writes the normalized value to STEP target attributes using this mapping:
+  - `IDLProductPublicationDate` -> `ProductPublicationDate`
+  - `IDLProductContentStartDate` -> `ProductContentStartDate`
+  - `IDLProductContentEndDate` -> `ProductContentEndDate`
+- Values from unmapped attributes in `AG_IDL_DATE` are ignored for target writes.
 
 ### Errors
 
