@@ -8,13 +8,17 @@
 
 ### Functional description
 
-Other Product Collection Set Status. It primarily works with attribute(s): CollectionStatus, OtherProductCollectionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action standardizes status for Other Product Collection records by setting **CollectionStatus** to **Active** whenever the rule runs.  
+The rule also reads **OtherProductCollectionType** as context, but in the current implementation that value does not change the outcome.  
+No validation or user-facing error handling is performed by this rule.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: OtherProductCollectionType, CollectionStatus.
+- Reads the current value of **OtherProductCollectionType** from the object.
+- Sets **CollectionStatus** to the fixed value **"Active"**.
+- Applies the same behavior for all valid object types (global scope); no conditional branching is implemented.
 
 ### Errors
 
