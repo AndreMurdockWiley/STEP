@@ -12,13 +12,24 @@
 
 ### Functional description
 
-OP SAP Finance Attributes Generator. It primarily works with attribute(s): ProductBundleCodeID, ProductBundleGroupID, ProductContentCategory, ProductFinanceDivision, ProductOneSourceTaxCode, ProductSAPMaterialNumber, SAPExternalMaterialGroup. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Generates and populates SAP-facing finance attributes for eligible MultiMedia journal products during upsert processing.  
+The rule uses bundle group and bundle code inputs to determine the correct OneSource tax code, assigns a new SAP material number from a managed sequential counter, and stamps standard finance defaults (content category, finance division, external material group) so outbound finance data is complete and consistent.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ProductBundleGroupID, ProductBundleCodeID, ProductSAPMaterialNumber, ProductContentCategory, ProductFinanceDivision, SAPExternalMaterialGroup, ProductOneSourceTaxCode.
+- Reads `BundleGroup_BundleCode_DataContainer` rows and retrieves `ProductBundleGroupID` and `ProductBundleCodeID`.
+- For bundle groups `TP` or `RP`, derives `ProductOneSourceTaxCode` using bundle code mapping:
+  - `ENOW` -> `eJournal`
+  - `SNOW` -> `sFreight_Dom`
+  - Any other code -> `eBooks`
+- Generates `ProductSAPMaterialNumber` via `sequentialMatNoIncrement()` using product `ProductSequentialMatNo` as the sequence source.
+- Sets finance defaults on the current product:
+  - `ProductContentCategory` = `Publishing Content`
+  - `ProductFinanceDivision` = `Research`
+  - `SAPExternalMaterialGroup` = `NONJ`
+- Writes the derived value to `ProductOneSourceTaxCode` (remains blank when no qualifying `TP`/`RP` bundle row is found).
 
 ### Errors
 
