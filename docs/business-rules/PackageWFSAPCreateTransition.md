@@ -10,14 +10,20 @@
 
 ### Functional description
 
-MJ Package WF SAP Create Transition. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+MJ Package WF SAP Create Transition is an orchestration business action used during the SAP Create workflow transition for MultiJournal package records. Its purpose is to prepare a newly created package for downstream processing by coordinating standard initialization actions (title population, creation attribute setup, and sequential material number handling).
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule is implemented as a chained orchestration using `ReferenceOtherBABusinessAction` and executes the following referenced business actions in sequence:
 
-- Plugin: ReferenceOtherBABusinessAction.
-- Parameter "ReferencedBA": MJSequentialMatNoIncrement
+1. `CopyPackageNameToTitle`  
+   Copies the package name into the title field to align display and naming conventions.
+2. `MJSetCreationAtributes`  
+   Applies creation-time package attributes required for the initial state.
+3. `MJSequentialMatNoIncrement`  
+   Assigns or increments the sequential material number used for SAP/package tracking.
+
+The transition rule itself contains no standalone validation branch; any data checks or failures are handled by the referenced actions.
 
 ### Errors
 
