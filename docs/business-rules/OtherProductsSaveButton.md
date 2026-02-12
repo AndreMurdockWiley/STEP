@@ -7,14 +7,18 @@
 
 ### Functional description
 
-Other Products Save Button. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Runs the **Other Products Save Button** action for `OtherProducts` records.  
+When a user saves, this rule orchestrates key save-time processes by invoking referenced business actions for field validation, automatic classification, and DOI URL refresh, so the record is validated and enriched before save completion.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule is implemented as an orchestration wrapper using the `ReferenceOtherBABusinessAction` plugin, with each step invoking a referenced business action:
 
-- Plugin: ReferenceOtherBABusinessAction.
-- Parameter "ReferencedBA": WebUI_Update_DOI_URL
+1. Calls `BA_ValidateTextFields` to validate required/format-sensitive text fields during save.
+2. Calls `AutoClassificationOtherProducts` to apply automatic classification logic for the product.
+3. Calls `WebUI_Update_DOI_URL` to update DOI URL data used by the Web UI.
+
+In practice, this save-button rule coordinates these operations in sequence and relies on the referenced actions for detailed validation/error messaging and field-level processing.
 
 ### Errors
 
