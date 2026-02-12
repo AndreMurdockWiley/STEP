@@ -12,13 +12,16 @@
 
 ### Functional description
 
-Placeholder rule for dynamic other product collections (currently no actions defined). It primarily works with attribute(s): OtherProductCollectionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This rule is a control point for products that belong to **dynamic** "Other Product Collections."  
+It evaluates the **Other Product Collection Type** attribute and only qualifies products where the value is **Dynamic**.  
+At present, the rule does not perform any update or enrichment action after qualification; it is effectively a ready-to-extend business action shell for future bundle-code logic.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Precondition only: checks if OtherProductCollectionType equals 'Dynamic'. No actions defined in the rule body.
+- Read **OtherProductCollectionType** on the current product.
+- Compare the value to the constant **"Dynamic"**.
+- Continue only when the comparison matches (`=`).
+- No action steps are configured in the rule body, so the current runtime effect is **no data change** even when the precondition is met.
 
 ### Errors
 
