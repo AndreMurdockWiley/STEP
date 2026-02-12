@@ -12,13 +12,19 @@
 
 ### Functional description
 
-Other Products Functions. It primarily works with attribute(s): OPAndBackfileSystemMatNo. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This library supports sequential numbering for **OtherProducts** and **Backfiles** by maintaining the **Other Products and Backfile System Material Number** (`OPAndBackfileSystemMatNo`).  
+Its purpose is to provide a reusable function that moves the stored system material number to the next value, so downstream business rules or workflows can assign the next available sequence number consistently.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+When `sequentialMatNoIncrement(materialNumber)` is called, the library performs the following steps:
 
-- Reads/writes attributes including: OPAndBackfileSystemMatNo.
+1. Reads the current value of `OPAndBackfileSystemMatNo` from the provided object.
+2. Increments the value by `1`.
+3. Writes the incremented value back to `OPAndBackfileSystemMatNo`.
+4. Returns the updated number to the calling logic.
+
+In business terms, this function acts as a simple **counter service** for Other Products and Backfiles material numbering. It does not apply additional validation, formatting, or error messaging itself; those controls are expected to be handled by the calling rule or process.
 
 ### Errors
 
