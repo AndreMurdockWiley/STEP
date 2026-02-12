@@ -13,13 +13,19 @@
 
 ### Functional description
 
-Other Product On Save Triggers. It primarily works with attribute(s): ProductActivated. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action runs during save processing for Other Product records and uses the **Product Activated** status to decide whether downstream automation should run.  
+When a product is marked as **Activated**, the rule automatically triggers the **AutoClassificationOtherProducts** action so the product is classified without manual intervention.  
+If the product is not activated, the rule performs no additional action.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: ProductActivated.
+- Reads the `ProductActivated` attribute from the current node on save.
+- Evaluates whether the value equals `Activated`.
+- If true:
+  - Gets the parent node and manager context.
+  - Resolves the business action `AutoClassificationOtherProducts`.
+  - Executes that action for the current node.
+- If false, exits without triggering classification.
 
 ### Errors
 
