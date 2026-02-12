@@ -13,13 +13,31 @@
 
 ### Functional description
 
-This business action is triggered, when save button is clicked on web ui for partner products. It primarily works with attribute(s): JournalStatus, JournalUrlAuthorGuidelinesLink, ProductActivated, ProductEISSN, ProductPISSN, ProductRevenueModel, ProductUrl. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action runs when a Partner Journal record is saved in the STEP UI. Its purpose is to maintain the journal activation state (`ProductActivated`) based on whether key onboarding/completeness fields are populated.
+
+On save, the rule checks that the journal has a title, at least one ISSN (either eISSN or pISSN), a revenue model, a journal status, a homepage URL, and an author-guidelines URL. When all required information is present, the journal is marked as **Activated**. If any required information is missing, the journal remains **In Progress**.
+
+The action updates status only; it does not raise a blocking validation error.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: ProductEISSN, ProductPISSN, ProductRevenueModel, JournalStatus, ProductUrl, JournalUrlAuthorGuidelinesLink, ProductActivated.
+- On save, read current values for:
+  - record title (`node.getName()`)
+  - `ProductEISSN`
+  - `ProductPISSN`
+  - `ProductRevenueModel`
+  - `JournalStatus`
+  - `ProductUrl`
+  - `JournalUrlAuthorGuidelinesLink`
+- Evaluate completeness criteria:
+  - title is not empty
+  - at least one ISSN is present (`ProductEISSN` **or** `ProductPISSN`)
+  - revenue model is not empty
+  - journal status is not empty
+  - homepage URL is not empty
+  - author-guidelines URL is not empty
+- If all criteria are met, set `ProductActivated` to `Activated`.
+- Otherwise, set `ProductActivated` to `In Progress`.
 
 ### Errors
 
