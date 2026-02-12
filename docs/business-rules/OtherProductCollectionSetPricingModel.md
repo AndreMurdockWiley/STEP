@@ -8,13 +8,21 @@
 
 ### Functional description
 
-Other Product Collection Set Pricing Model. It primarily works with attribute(s): OtherProductCollectionPricingModel, OtherProductCollectionType. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action automatically assigns the correct pricing model for an Other Product Collection based on the selected collection type. It standardizes pricing-model selection for group-pricing scenarios, reduces manual data entry, and helps keep collection records consistent.
+
+In scope, the rule maps:
+- **Group Pricing Non FTE** -> **PMNFTE**
+- **Group Pricing FTE** -> **PMFTE**
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+This section summarizes the configured functional logic captured in the rules inventory and script.
 
-- Reads/writes attributes including: OtherProductCollectionType, OtherProductCollectionPricingModel.
+- Reads `OtherProductCollectionType` from the current object.
+- If `OtherProductCollectionType` is **Group Pricing Non FTE**, sets `OtherProductCollectionPricingModel` to LOV ID **PMNFTE**.
+- If `OtherProductCollectionType` is **Group Pricing FTE**, sets `OtherProductCollectionPricingModel` to LOV ID **PMFTE**.
+- For any other collection type, the rule does not change `OtherProductCollectionPricingModel`.
+- Logs the resolved collection type for traceability.
 
 ### Errors
 
