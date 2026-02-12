@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Other Product Initiate Save Button. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+When the user clicks **Other Product Initiate Save Button** in the Other Products navigation flow, this business action provides immediate UI feedback that the process has started.  
+The action displays an informational message to the user: **"Search Initiated For Other Products"**.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+1. The action is executed from the Web UI context for the current object.
+2. It reads the current UI selection (`UI.getSelection()`), establishing context for the user-triggered action.
+3. It shows an informational alert (`UI.showAlert`) with the message **"Search Initiated For Other Products"**.
+4. No conditional validation, error branching, or data update is performed in this rule.
 
 ### Errors
 
