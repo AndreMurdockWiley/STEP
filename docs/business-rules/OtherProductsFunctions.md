@@ -12,13 +12,18 @@
 
 ### Functional description
 
-Other Products Functions. It primarily works with attribute(s): OPAndBackfileSystemMatNo. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Other Products Functions is a shared library used by automation that creates or updates **OtherProducts** and **Backfiles** records. Its business purpose is to maintain a single running system material-number counter in **OPAndBackfileSystemMatNo** and provide the next available value to calling rules (for example, when assigning SAP material numbers).  
+The library performs a technical sequence update and does not surface a user-facing validation message by itself; any business messaging is handled by the calling action/integration rule.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The library exposes one helper method, **sequentialMatNoIncrement(materialNumber)**, with the following behavior:
 
-- Reads/writes attributes including: OPAndBackfileSystemMatNo.
+- Reads the current numeric value from **OPAndBackfileSystemMatNo** on the provided sequence object.
+- Increments that value by **1** to generate the next system material number.
+- Writes the incremented value back to **OPAndBackfileSystemMatNo** so the counter is persisted for subsequent calls.
+- Returns the new incremented value to the caller, which then uses it in downstream attribute population (for example, `ProductSAPMaterialNumber`).
+- Maintains sequential assignment through a shared counter; no additional format or null-validation logic is implemented inside this library function.
 
 ### Errors
 
