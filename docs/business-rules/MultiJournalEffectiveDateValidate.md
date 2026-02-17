@@ -8,13 +8,23 @@
 
 ### Functional description
 
-Multi Journal Effective Date Validate. It primarily works with attribute(s): MultiJournalEffectiveDate, MultiJournalFuturePackageStatus, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action monitors when a Multi Journal reaches its planned effective date.  
+When the value in **MultiJournalEffectiveDate** is today or earlier, the rule sends an email notification (to a configured recipient) indicating that the future-date milestone has been reached for that Multi Journal.  
+The notification includes the journal title (**ProductTitle**), the configured future package status (**MultiJournalFuturePackageStatus**), and the date comparison details.  
+After notification, the rule clears **MultiJournalEffectiveDate** so the same date event is not repeatedly processed.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: MultiJournalEffectiveDate, MultiJournalFuturePackageStatus, ProductTitle.
+- Read **MultiJournalEffectiveDate** from the current MultiJournal object.
+- Get today’s date in `yyyy-MM-dd` format.
+- If `MultiJournalEffectiveDate <= today`:
+  - Read **ProductTitle** and **MultiJournalFuturePackageStatus**.
+  - Compose an email subject/body describing that the effective date has been reached.
+  - Send the email to the configured mailbox (`sasteven@wiley.com` in the current script).
+  - Clear **MultiJournalEffectiveDate** by setting it to blank.
+- If the effective date is in the future, no email is sent and no attribute values are changed.
 
 ### Errors
 
