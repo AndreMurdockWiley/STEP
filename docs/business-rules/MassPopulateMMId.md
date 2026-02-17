@@ -12,13 +12,18 @@
 
 ### Functional description
 
-Mass Populate MM Id. It primarily works with attribute(s): JournalMMPackageID. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+When this business action runs on a Journal, it automatically derives the Journal MM Package ID from the related Multimedia package and writes that ID into `JournalMMPackageID`. In the same flow, it propagates the Journal's Publishing Manager relationship to the Multimedia object so both objects stay aligned for publishing and downstream integrations.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: JournalMMPackageID.
+- Gets the first child under the current Journal node (treated as Journal Media).
+- From that child, follows the `BOMS_TO_JOURNAL_MULTIMEDIA` reference and selects the first related Multimedia source object.
+- Reads the Multimedia object's ID and sets Journal attribute `JournalMMPackageID` to that value.
+- Reads the first `JournalPublishingManager` reference on the Journal to identify the target Publishing Manager.
+- Creates a `JournalPublishingManager` reference from the Multimedia object to the same Publishing Manager.
+- Performs no explicit null/empty validation in script; it assumes the required child and references exist.
 
 ### Errors
 
