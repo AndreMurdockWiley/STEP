@@ -7,13 +7,17 @@
 
 ### Functional description
 
-Navigate Away From Volume Creation Screen. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This rule handles the user action to leave the Volume Creation screen. It confirms that the process was cancelled and returns the user to the appropriate Publication Year screen so they can continue working in the correct context.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+When executed, the rule performs the following steps:
 
-- No further functional logic details were extracted.
+1. Shows an informational alert: **"Volume Creation Process cancelled."**
+2. Checks the current node object type (`NODE.getObjectType().getID()`).
+3. If the object type is `JournalPrintPublicationYear`, navigates to `PrintPublicationYearScreen` using the current node context.
+4. If the object type is `JournalDigitalPublicationYear`, navigates to `DigitalPublicationYearScreen` using the current node context.
+5. For other object types, no additional navigation is explicitly defined in this rule.
 
 ### Errors
 
