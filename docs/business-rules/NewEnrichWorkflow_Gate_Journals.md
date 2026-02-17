@@ -11,16 +11,20 @@
 
 ### Functional description
 
-NewEnrichWorkflow_Gate_Journals. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Update_1). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action acts as a workflow gate for Journal records in **JournalCreationWFV3Backup**.  
+When a Journal is in **State-2**, the rule programmatically fires the **Update_1** event to move the record through the next enrichment step.  
+It is an orchestration action (not a validation rule), so no business validation message is expected from this rule itself.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule uses the **BulkUpdateTriggerStateFlowEvent** operation to transition workflow state in STEP.
 
-- Plugin: BulkUpdateTriggerStateFlowEvent.
-- Parameter "currentStateID": State-2
-- Parameter "eventID": Update_1
-- Parameter "stateFlowID": JournalCreationWFV3Backup
+- Targets workflow: **JournalCreationWFV3Backup** (`stateFlowID`)
+- Applies when current task state is: **State-2** (`currentStateID`)
+- Triggers workflow event: **Update_1** (`eventID`)
+- `processNote` is configured as blank, so no additional transition note is added by this action.
+
+In practical terms, once invoked in State-2, this action pushes the Journal forward by raising the configured event in the same workflow.
 
 ### Errors
 
