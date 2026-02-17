@@ -10,13 +10,17 @@
 
 ### Functional description
 
-Navigate Away From Issue Creation Screen. If validation fails, the user sees an error message such as: "INFO: Volume Creation Process cancelled.".
+This business action supports exiting the Issue Creation screen. When triggered, it notifies the user that the volume creation flow was cancelled and routes the user back to the appropriate publication-year screen based on the current object's type.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The rule executes the following UI actions in sequence:
 
-- No further functional logic details were extracted.
+1. Shows an informational alert to the user: **"Volume Creation Process cancelled."**
+2. Reads the current object's type ID (`NODE.getObjectType().getID()`).
+3. If the object type is `JournalPrintPublicationYear`, navigates to `PrintPublicationYearScreen` with the current node context.
+4. Else if the object type is `JournalDigitalPublicationYear`, navigates to `DigitalPublicationYearScreen` with the current node context.
+5. For any other object type, no additional navigation is defined in this script.
 
 ### Errors
 
