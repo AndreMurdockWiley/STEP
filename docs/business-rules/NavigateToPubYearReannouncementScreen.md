@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Navigate To Pub Year Reannouncement Screen. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Launches the Publication Year Reannouncement workflow from the current selection in STEP.  
+When a user runs this action, STEP confirms the process start and opens the Publication Year Reannouncement screen for the selected record so the user can continue reannouncement activities in the correct business context.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+1. The action displays an informational message to the user: **"Publication Year Reannouncement Process initiated."**
+2. The action reads the first object in the current UI selection.
+3. STEP navigates the user to **`ReannouncementPubYearScreen`** and passes the selected object as the screen context.
+4. The rule contains no additional branching or validation logic; it acts as a navigation handoff into the Publication Year Reannouncement experience.
 
 ### Errors
 
