@@ -11,13 +11,18 @@
 
 ### Functional description
 
-Navigate To Reannouncement By Issues Screen. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Opens the **Reannouncement by Issues** follow-up screen for the record currently selected in the UI.  
+This action helps users move directly from an issues-level view to the detailed reannouncement screen (`ReannouncementPubYearByIssuesSubScreen`) for the selected item, without manual searching or re-navigation.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+When the action is triggered:
 
-- No further functional logic details were extracted.
+1. The rule reads the first object from the current UI selection (`UI.getSelection.get(0)`).
+2. It calls `UI.navigate("ReannouncementPubYearByIssuesSubScreen", selectedObject)` using that selected object as the navigation context.
+3. The target sub-screen opens in the context of that selected object.
+
+No conditional branching, calculations, or data updates are performed in this rule.
 
 ### Errors
 
