@@ -11,16 +11,20 @@
 
 ### Functional description
 
-NewEnrichWorkflow_Gate_Media. It is triggered from: JournalCreationWFV3Backup (State-2, Event: Media_To_Complete). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+`NewEnrichWorkflow_Gate_Media` is a workflow transition action used to move journal media records forward in the media lifecycle.  
+When a `JournalPrintMedia` or `JournalDigitalMedia` item reaches `State-2` in the `JournalCreationWFV3Backup` workflow, this rule triggers the `Media_To_Complete` event to progress the item to the next workflow step.  
+The rule is designed as an execution/gating action (Business Action), not as a validation rule, and therefore does not perform field-level checks or raise a dedicated validation error message.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+This rule is implemented with the `BulkUpdateTriggerStateFlowEvent` operation plugin and is configured to execute the following workflow action:
 
-- Plugin: BulkUpdateTriggerStateFlowEvent.
-- Parameter "currentStateID": State-2
-- Parameter "eventID": Media_To_Complete
-- Parameter "stateFlowID": JournalCreationWFV3Backup
+1. Target the `JournalCreationWFV3Backup` state flow.
+2. Apply only when the current workflow state is `State-2`.
+3. Trigger the workflow event `Media_To_Complete`.
+4. Submit an empty process note (`processNote = ""`) as part of the event trigger.
+
+In business terms, the logic acts as a controlled gate that programmatically advances media objects from the media processing state toward completion in a consistent, repeatable way.
 
 ### Errors
 
