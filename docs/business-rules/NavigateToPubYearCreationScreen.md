@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Navigate To Pub Year Creation Screen. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Starts the Publication Year creation flow for the current object. When the action is executed, the user is informed that the creation process has started and is taken to the Publication Year Creation screen in the same object context.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+The rule executes a direct UI navigation sequence with no validation or branching logic:
 
-- No further functional logic details were extracted.
+1. Uses the bound STEP UI context and current object (`NODE`).
+2. Displays an informational alert to the user: **"Publication Year Creation Process initiated."**
+3. Navigates to `PublicationYearCreationScreen`, passing the current object so the target screen opens in the same business context.
 
 ### Errors
 
