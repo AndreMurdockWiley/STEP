@@ -9,13 +9,15 @@
 
 ### Functional description
 
-Navigates user to the Journal Creation Baseline Workflow Task List screen after journal creation. It is triggered from: JournalCreationWFv2 (Journal_Baseline state). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This action streamlines the post-creation journey for journal users. When a journal reaches the **Journal_Baseline** state in **JournalCreationWFv2**, the rule automatically redirects the user to the **JournalCreationBaselineWorkflowTaskLIst** screen so they can continue baseline workflow tasks without manual navigation. If the action cannot complete successfully, STEP shows the configured business-action message: **"N/A (Business Action)."**
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic.
+This rule performs a UI navigation-only action (no data update).
 
-- Constructs URL to JournalCreationBaselineWorkflowTaskLIst screen and navigates user using UI.navigateUrl()
+- Trigger point: **JournalCreationWFv2** workflow, **Journal_Baseline** state.
+- Build/resolve the destination URL for the **JournalCreationBaselineWorkflowTaskLIst** task list screen.
+- Execute navigation with **UI.navigateUrl()** so the current user session lands on the baseline task list immediately after creation.
 
 ### Errors
 
