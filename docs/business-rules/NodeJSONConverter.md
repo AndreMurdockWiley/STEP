@@ -11,13 +11,20 @@
 
 ### Functional description
 
-NodeJSONConverter. It primarily works with attribute(s): Color, ManufacturerName. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+NodeJSONConverter is a business action used to convert a STEP node event into an outbound JSON message. In its current implementation, the rule runs when invoked through a business-action context (for example, from Web UI/workflow-driven execution), logs event context for traceability, and publishes an `upsert` message for product nodes. The rule is positioned as a node-to-JSON conversion point; `ManufacturerName` and `Color` are listed as relevant attributes, but their mapping is currently commented out in source.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule follows a simple event-handling flow to produce an outbound JSON payload:
 
-- Reads/writes attributes including: ManufacturerName, Color.
+- Reads the incoming event type from the node handler source and writes informational logs for monitoring.
+- Retrieves the current node and continues only when the node exists and is a `Product`.
+- Creates a JSON payload object (currently a static placeholder with `first` and `second` fields).
+- Serializes the payload and publishes it via `nodeHandlerResult.addMessage("upsert", ...)`.
+- Does not add an outbound message when the node is missing or not a product.
+- Contains commented logic indicating planned/previous support for:
+  - mapping `ManufacturerName` and `Color` into the payload, and
+  - branching for delete vs. upsert message types.
 
 ### Errors
 
