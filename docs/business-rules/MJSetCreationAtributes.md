@@ -12,13 +12,17 @@
 
 ### Functional description
 
-MJ Set Creation Atributes. It primarily works with attribute(s): ProductStatus. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action standardizes the initial status of a `MultiJournal` record by setting the `ProductStatus` attribute to a predefined status from the journal status list of values. The rule does not validate input or raise a configured user-facing error; it performs a direct status assignment.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
+The rule executes a direct attribute update on the current object (`NODE`) with no conditional branching:
 
-- Reads/writes attributes including: ProductStatus.
+- Reads the `ProductStatus` value handle from the current `MultiJournal`.
+- Looks up list-of-values `JRNLSTATUS_LOV` using value ID `"P"`.
+- Retrieves the corresponding LOV value via `getValue()`.
+- Writes that value to `ProductStatus` using `setSimpleValue()`.
+- Always overwrites the current `ProductStatus` value when triggered.
 
 ### Errors
 
