@@ -12,13 +12,14 @@
 
 ### Functional description
 
-MJ Sequential Mat No Increment. It primarily works with attribute(s): ProductSAPMaterialNumber. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action automatically assigns the next sequential SAP Material Number to the current **MultiJournal** record. It uses a dedicated sequence product (`ProductSequentialMatNo`) as the source/counter and writes the generated value into **ProductSAPMaterialNumber**. The goal is to ensure consistent, system-driven numbering instead of manual entry.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: ProductSAPMaterialNumber.
+- Retrieves the sequence control product by ID: `ProductSequentialMatNo` (via Product Home).
+- Calls `journalPackageLibrary.sequentialMatNoIncrement(...)` to get the next material number in sequence.
+- Updates the current object (`NODE`) attribute `ProductSAPMaterialNumber` with the returned value using `setSimpleValue(...)`.
+- The script contains no conditional branching or explicit validation/error handling; sequencing behavior is delegated to the shared library function.
 
 ### Errors
 
