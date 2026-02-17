@@ -7,13 +7,17 @@
 
 ### Functional description
 
-Navigate Away From Pub Reannouncement. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+Cancels the Publication Year Reannouncement flow and returns the user to the parent journal details page. The rule provides immediate user feedback by showing an informational message that the reannouncement process was cancelled.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+This rule executes as a UI navigation action and applies parent-type-based branching:
 
-- No further functional logic details were extracted.
+1. Show an informational alert to the user: **"Publication Year Reannouncement Process cancelled."**
+2. Read the current object's parent and evaluate the parent object type ID.
+3. If the parent type is `JournalPrintMedia`, navigate to `PrintJournalNodeDetails` for that parent.
+4. Else, if the parent type is `JournalDigitalMedia`, navigate to `DigitalJournalNodeDetails` for that parent.
+5. If the parent is any other type, no additional navigation is triggered by this rule.
 
 ### Errors
 
