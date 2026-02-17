@@ -7,13 +7,15 @@
 
 ### Functional description
 
-Navigate To Reannouncement By Volume Screen. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action starts the volume reannouncement workflow in the STEP Web UI. When triggered, it informs the user that the process has started and opens the **Reannouncement by Volumes** sub-screen for the selected object.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
+1. Display an informational alert to the user: **"Volumes Reannouncement Process initiated."**
+2. Read the current UI selection and take the first selected node (`UI.getSelection().get(0)`).
+3. Navigate to the target screen: `ReannouncementPubYearByVolumesSubScreen`, passing that selected node as the context parameter.
 
-- No further functional logic details were extracted.
+The rule contains no additional branching, validation checks, or error-handling logic in the source implementation.
 
 ### Errors
 
