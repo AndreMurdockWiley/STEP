@@ -12,13 +12,22 @@
 
 ### Functional description
 
-Validates that "ProductMediaType" = "Both". It primarily works with attribute(s): JournalGroupCode, ProductFinanceBillingModel, ProductSAPMaterialNumber, ProductShortTitle, ProductStatus, ProductTitle. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+When `ProductMediaType = Both`, this business action automatically creates a new **MultiMedia package** from the `MM_InitialCreate` template. It then captures the newly created package ID back on the originating record (`JournalMMPackageID`) and populates core commercial metadata on the new package (status, short title, billing model, SAP material number, and display name/title). The result is a consistently initialized multimedia package ready for downstream classification and operational use.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Reads/writes attributes including: JournalGroupCode, ProductStatus, ProductShortTitle, ProductFinanceBillingModel, ProductSAPMaterialNumber, ProductTitle.
+- **Precondition**: Runs only when `ProductMediaType` equals `Both`.
+- Reads source values from the current node, including `JournalGroupCode`, `ProductShortTitle`, `ProductFinanceBillingModel`, and `ProductTitle`.
+- Creates a new product of type `MultiMedia` under `MM_InitialCreate`.
+- Writes the generated package ID to `JournalMMPackageID` on the source node.
+- Normalizes `JournalGroupCode` to 4 characters using `genericFunctions.pad(...)` when needed.
+- Sets values on the new MultiMedia package:
+  - `ProductStatus` = `Current publication`
+  - `ProductShortTitle` = source `ProductShortTitle`
+  - `ProductFinanceBillingModel` = source `ProductFinanceBillingModel`
+  - `ProductSAPMaterialNumber` = padded `JournalGroupCode` + `C`
+  - Product name = source `ProductTitle`
+- Executes follow-up business action `AutoClassificationMultiMediaPackages` on the new package.
 
 ### Errors
 
