@@ -8,17 +8,26 @@
 
 ### Functional description
 
-MM Package Attributes Update. It primarily works with attribute(s): JournalMMPackageID, ProductFinanceBillingModel, ProductOwnershipStatus, ProductProfitCenter, ProductShortTitle, SAPProfitCenter, SocietyPrimaryAffiliated. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action keeps the Multimedia (MM) package aligned with its source Journal record. When a Journal is activated and has an MM Package ID, the rule finds the linked MM package and synchronizes core commercial attributes (profit center, ownership status, short title, and finance billing model). It also refreshes MM society-group references so rights ownership on the MM package reflects the Journal's current affiliation setup. If the MM package cannot be found, the user is alerted.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
-
-- Validate: "ProductActivated" = "Activated".
-- If "SocietyPrimaryAffiliated" == "Primary", continue; otherwise error.
-- If "SocietyPrimaryAffiliated" == "Owner", continue; otherwise error.
-- If "SocietyPrimaryAffiliated" == "Part-owner", continue; otherwise error.
-- Reads/writes attributes including: SAPProfitCenter, JournalMMPackageID, ProductProfitCenter, ProductOwnershipStatus, ProductShortTitle, ProductFinanceBillingModel, SocietyPrimaryAffiliated, ProductActivated.
+1. Precondition checks:
+   - `JournalMMPackageID` is not blank.
+   - `ProductActivated` equals `Activated`.
+2. From the Journal context, the rule reads:
+   - the MM Package ID (`JournalMMPackageID`) to locate the target MM product,
+   - the Journal's profit center (`SAPProfitCenter`) from the Journal media/cost-center link,
+   - society-group references and each reference's `SocietyPrimaryAffiliated` value.
+3. If the MM package exists:
+   - remove existing MM society-group references,
+   - update MM attributes:
+     - `ProductProfitCenter` (mapped from the Journal SAP profit center LOV value),
+     - `ProductOwnershipStatus`,
+     - `ProductShortTitle`,
+     - `ProductFinanceBillingModel`,
+   - recreate society-group references on the MM package only where `SocietyPrimaryAffiliated` is `Owner` or `Part-owner` (duplicate-reference attempts are safely ignored).
+4. If the MM package does not exist for the provided ID, show: `There is no Multimedia for the journal. Please Check`.
 
 ### Errors
 
