@@ -12,13 +12,19 @@
 
 ### Functional description
 
-OIEP_Monitoring_2. It primarily works with attribute(s): ActiveBGP. It is triggered from: Business action (triggered via Web UI / workflow event). If validation fails, the user sees an error message such as: "N/A (Business Action).".
+OIEP_Monitoring_2 is an operational monitoring action for outbound integration endpoints in STEP. When triggered from the Web UI or a workflow event, it checks configured endpoints, identifies failed or unhealthy background processes, and notifies the support team by email with process-level details. The rule uses **ActiveBGP** to persist the most recent running background-process ID for each endpoint so repeated executions can detect jobs that appear to be stuck for an extended period.
 
 ### Functional logic
 
 This section summarizes the configured functional logic captured in the rules inventory. The bullet points below are a concise, human-readable summary of the rule logic (inferred where necessary from the script).
 
-- Reads/writes attributes including: ActiveBGP.
+- Resolves the environment-specific STEP base URL (dev/qa/test/prod) and calls STEP REST endpoints using a service account.
+- Reads endpoint entities under **Enpoint Monitoring** and retrieves each outbound endpoint status.
+- For eligible endpoint states, retrieves associated worker/background process IDs.
+- For each background process in **failed** or **completedwitherrors** state, fetches the execution report and extracts error text for notification.
+- Sends an alert email containing endpoint ID, background process ID, and error context so support teams can investigate quickly.
+- For processes in **running** state, compares the current process ID with the endpoint's stored **ActiveBGP** value to detect potentially long-running jobs.
+- Updates **ActiveBGP** with the latest running process ID to support comparison on the next monitoring run.
 
 ### Errors
 
