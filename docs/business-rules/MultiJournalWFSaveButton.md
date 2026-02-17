@@ -11,13 +11,18 @@
 
 ### Functional description
 
-Multi Journal WF Save Button. If validation fails, the user sees an error message such as: "N/A (Business Action).".
+This business action supports the Multi Journal workflow save interaction in STEP Web UI.  
+When the action is executed, it provides immediate user feedback by showing an informational confirmation message: **"MultiJournal Successfully Created!"**.
+
+The current implementation is a notification-only action: it does not perform field validation, data updates, or workflow state changes.
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+1. The rule is invoked as a Web UI business action with access to the current UI context (`UI`) and current object (`NODE`).
+2. It reads the current UI selection using `UI.getSelection()` (context retrieval only; the selection is not used further in this version).
+3. It displays an information alert to the end user: **"MultiJournal Successfully Created!"** via `UI.showAlert("INFO", ...)`.
+4. No conditional branches are implemented; the same alert is shown whenever the action runs.
+5. No configured error path, exception handling, or persistence logic is present in the script.
 
 ### Errors
 
