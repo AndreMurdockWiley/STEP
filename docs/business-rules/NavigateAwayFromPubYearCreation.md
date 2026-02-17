@@ -10,13 +10,16 @@
 
 ### Functional description
 
-Navigate Away From Pub Year Creation Screen. If validation fails, the user sees an error message such as: "Publication Year Creation Process cancelled.".
+Cancels the Publication Year creation flow and returns the user to the appropriate Journal details screen.  
+When triggered, the rule informs the user that creation was cancelled by showing the message: **"Publication Year Creation Process cancelled."**
 
 ### Functional logic
 
-This section summarizes the configured functional logic captured in the rules inventory. No detailed logic statement was found in the inventory for this rule; review the source file and STEP configuration for the exact branching and parameterization.
-
-- No further functional logic details were extracted.
+1. Show an informational alert in the UI: **"Publication Year Creation Process cancelled."**
+2. Evaluate the current node object type.
+3. If the object type is `JournalPrintMedia`, navigate to `PrintJournalNodeDetails`.
+4. If the object type is `JournalDigitalMedia`, navigate to `DigitalJournalNodeDetails`.
+5. For any other object type, no additional navigation is performed by this rule.
 
 ### Errors
 
